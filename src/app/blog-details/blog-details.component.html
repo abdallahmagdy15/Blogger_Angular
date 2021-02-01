@@ -1,1 +1,69 @@
-<p>blog-details works!</p>
+<div class="card">
+    <div class="author_data">
+        <div class="blog_Pic_container">
+            <img [src]="'http://localhost:7000/'+selectedBlog.authorDp" class="auth_Pic" alt="authImg" height="10%"
+                width="15%" style="border-radius: 100%;">
+            <p class="authorName">{{selectedBlog.authorName}}</p>
+            <img class="blog_Pic" [src]="'http://localhost:7000/'+selectedBlog.photo" height="80%" width="100%"
+                alt="blogImg">
+        </div>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title ">{{selectedBlog.title}}</h3>
+        <p class="createdAt">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch"
+                viewBox="0 0 16 16">
+                <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
+                <path
+                    d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
+            </svg>
+            {{selectedBlog.createdAt}}
+        </p>
+        <p class='blog_body '>{{selectedBlog.body}}</p>
+        <p class="likes">{{selectedBlog.likesCount}}
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 2px;" width="16" height="16" fill="gray"
+                class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+            </svg>
+
+            <svg style="margin-left: 2px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-chat-left-text" viewBox="0 0 16 16">
+                <path
+                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path
+                    d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+            </svg>
+            {{counterComments}}
+            
+        </p>
+    </div>
+
+    <div class="comment_container Jumbotron card"
+        style="width: 80%; margin: 2px auto; border-radius:; background-color: rgb(235, 229, 229);"
+        *ngFor='let comnt of selectedBlog.comments'>
+
+
+        <p style="padding: 2%; display: inline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-left"
+                viewBox="0 0 16 16">
+                <path
+                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+            </svg>
+            {{comnt.body}}
+        </p>
+        <p style="margin-left: 1%;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 2px;" width="16" height="16" fill="gray"
+                class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+            </svg>
+            {{comnt.likesCount}}
+
+        </p>
+    </div>
+    <div style="margin: 1% auto;">
+        <a routerLink='/home' class="mybtn" class="btn btn-primary">back</a>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+.author_data,.card-body{
+    margin: 1% auto;
+    text-align: left;
+}
+.likes{
+    text-align: right;
+}
+.mybtn{
+    margin: 1% auto;
+}
+.blog_Pic_container{
+    width: 50%;
+    height: 40%;
+    margin: 1% auto;
+}
