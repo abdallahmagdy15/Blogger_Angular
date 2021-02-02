@@ -1,7 +1,7 @@
 import { Comment } from '../_models/comment';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Blogs } from '../_models/blogs';
+import { Blog } from '../_models/blog';
 import { LocalhomeServiceService } from '../_services/localhome-service.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { LocalhomeServiceService } from '../_services/localhome-service.service'
 export class BlogDetailsComponent implements OnInit {
 
   constructor(public localhomeservice: LocalhomeServiceService, public ar: ActivatedRoute) { }
-  selectedBlog: Blogs = new Blogs();
+  selectedBlog: Blog = new Blog();
   blogcomment:Comment=new Comment();
   counterComments:number|undefined;
   ngOnInit(): void {

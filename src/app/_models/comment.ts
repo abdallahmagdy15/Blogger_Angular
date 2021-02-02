@@ -1,8 +1,8 @@
-import { User } from "./user";
+import { Author } from "./author";
 
 export class Comment {
     constructor(
-                public user?:User,
+                public user?:Author,
                 public userDp?:string,
                 public userName?:string,
                 public body?:string,

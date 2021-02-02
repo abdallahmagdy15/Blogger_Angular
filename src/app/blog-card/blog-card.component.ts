@@ -1,6 +1,6 @@
 import { Comment } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { Blogs } from '../_models/blogs';
+import { Blog } from '../_models/blog';
 import { LocalhomeServiceService } from '../_services/localhome-service.service';
 
 
@@ -11,7 +11,7 @@ import { LocalhomeServiceService } from '../_services/localhome-service.service'
 })
 export class BlogCardComponent implements OnInit {
 
-  @Input() blog:Blogs=new Blogs()
+  @Input() blog:Blog=new Blog()
   counterComments:number|undefined;
 
   flag:boolean=false;

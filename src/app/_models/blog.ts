@@ -1,9 +1,9 @@
 import { Comment } from "./comment";
-import { User } from "./user";
+import { Author } from "./author";
 
-export class Blogs {
+export class Blog {
     constructor(
-                public author?:User,
+                public author?:Author,
                 public _id?:string,
                 public title?:string,
                 public body?:string,

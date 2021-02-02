@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Blogs } from '../_models/blogs';
+import { Blog } from '../_models/blog';
 import { LocalhomeServiceService } from '../_services/localhome-service.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { LocalhomeServiceService } from '../_services/localhome-service.service'
   styleUrls: ['./local-home.component.css']
 })
 export class LocalHomeComponent implements OnInit {
-  allBlogs:Blogs[]=[];
+  allBlogs:Blog[]=[];
   selectedBlogs:number[]=[];
   constructor(public localhomeservice:LocalhomeServiceService) { }
 
