@@ -11,6 +11,7 @@ import { BlogsDetailsComponent } from './blogs-details/blogs-details.component';
 import { LocalHomeComponent } from './local-home/local-home.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { BlogCreateComponent } from './blog-create/blog-create.component';
+import { BlogDetailsComponent } from './blog-details/blog-details.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'blog/:blogid', component: HomeComponent },
   { path: 'create-blog', component: BlogCreateComponent },
-  { path: 'edit-blog/:blogid', component: BlogEditComponent }
+  { path: 'edit-blog/:blogid', component: BlogEditComponent },
+  {path:'details/:id',component:BlogDetailsComponent}
 ];
 
 @NgModule({

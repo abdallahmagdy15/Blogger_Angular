@@ -1,0 +1,20 @@
+.card{
+    margin: 1% auto;
+    width:40%;
+    height: 15%;
+}
+.blog_Pic{
+    margin: 1% auto;
+    width:100%;
+    height:50%
+}
+.card-title{
+    width: 70%;
+}
+.blog_body{
+    width: 100px;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     font-size: large;
+}

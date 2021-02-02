@@ -11,7 +11,7 @@ import { LocalhomeServiceService } from '../_services/localhome-service.service'
 export class BlogsDetailsComponent implements OnInit {
 
   constructor(public localhomeservice: LocalhomeServiceService, public ar: ActivatedRoute) { }
-  selectedBlog: Blogs = new Blogs('', '', '', '', '', '', [''], new Date(), 0)
+  selectedBlog: Blogs = new Blogs()
   ngOnInit(): void {
     let id = 0;
     this.ar.params.subscribe(a => {

@@ -15,7 +15,7 @@ export class LocalHomeComponent implements OnInit {
   flagshow:boolean=false;
 
   showDetails(a:number){
-    this.selectedBlogs.push(a);
+     this.selectedBlogs.push(a);
    // this.flagshow=true;
   }
   hideDetails(a:number){
