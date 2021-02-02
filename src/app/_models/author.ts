@@ -2,6 +2,7 @@ import { Blog } from "./blog";
 
 export class Author {
     constructor(
+        private id:string,
         private userName: string,
         private password: string,
         private firstName: string,
@@ -14,6 +15,15 @@ export class Author {
         private followers: Author[],
         private followings: Author[]
     ) { }
+
+    public get Id(): string {
+        return this.id;
+    }
+
+    public set Id(id: string
+    ) {
+        this.id = id;
+    }
 
     public get UserName(): string {
         return this.userName;
