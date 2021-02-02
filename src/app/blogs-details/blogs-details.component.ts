@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Blog } from '../_models/blog';
-import { LocalhomeServiceService } from '../_services/localhome-service.service';
+import { BlogService } from '../_services/blog.service';
 
 @Component({
   selector: 'app-blogs-details',
@@ -10,7 +10,7 @@ import { LocalhomeServiceService } from '../_services/localhome-service.service'
 })
 export class BlogsDetailsComponent implements OnInit {
 
-  constructor(public localhomeservice: LocalhomeServiceService, public ar: ActivatedRoute) { }
+  constructor(public localhomeservice: BlogService, public ar: ActivatedRoute) { }
   selectedBlog: Blog = new Blog()
   ngOnInit(): void {
     let id = 0;

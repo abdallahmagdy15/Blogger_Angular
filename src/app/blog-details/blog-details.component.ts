@@ -2,7 +2,7 @@ import { Comment } from '../_models/comment';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Blog } from '../_models/blog';
-import { LocalhomeServiceService } from '../_services/localhome-service.service';
+import { BlogService } from '../_services/blog.service';
 
 @Component({
   selector: 'app-blog-details',
@@ -11,7 +11,7 @@ import { LocalhomeServiceService } from '../_services/localhome-service.service'
 })
 export class BlogDetailsComponent implements OnInit {
 
-  constructor(public localhomeservice: LocalhomeServiceService, public ar: ActivatedRoute) { }
+  constructor(public localhomeservice: BlogService, public ar: ActivatedRoute) { }
   selectedBlog: Blog = new Blog();
   blogcomment:Comment=new Comment();
   counterComments:number|undefined;

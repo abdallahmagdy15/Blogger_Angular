@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Blog } from '../_models/blog';
-import { LocalhomeServiceService } from '../_services/localhome-service.service';
+import { BlogService } from '../_services/blog.service';
 
 @Component({
   selector: 'app-blogs',
@@ -11,7 +11,7 @@ export class BlogsComponent implements OnInit {
   
   allBlogs:Blog[]=[];
   selectedBlogs:number[]=[];
-  constructor(public localhomeservice:LocalhomeServiceService) { }
+  constructor(public localhomeservice:BlogService) { }
 
   ngOnInit(): void {
     this.localhomeservice.getBlogsForAll().subscribe(Mblogs=>{

@@ -1,7 +1,7 @@
 import { Comment } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Blog } from '../_models/blog';
-import { LocalhomeServiceService } from '../_services/localhome-service.service';
+import { BlogService } from '../_services/blog.service';
 
 
 @Component({
