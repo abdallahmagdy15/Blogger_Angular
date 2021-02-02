@@ -7,8 +7,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BlogsDetailsComponent } from './blogs-details/blogs-details.component';
-import { LocalHomeComponent } from './local-home/local-home.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { BlogCreateComponent } from './blog-create/blog-create.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
@@ -31,7 +29,7 @@ const routes: Routes = [
   { path: 'blog/:blogid', component: HomeComponent },
   { path: 'create-blog', component: BlogCreateComponent },
   { path: 'edit-blog/:blogid', component: BlogEditComponent },
-  {path:'details/:id',component:BlogDetailsComponent}
+  {path:'blog-details',component:BlogDetailsComponent}
 ];
 
 @NgModule({

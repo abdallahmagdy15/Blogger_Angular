@@ -6,8 +6,6 @@ import {FormsModule} from'@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LocalHomeComponent } from './local-home/local-home.component';
-import { BlogsDetailsComponent } from './blogs-details/blogs-details.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
@@ -27,8 +25,6 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LocalHomeComponent,
-    BlogsDetailsComponent,
     HomeComponent,
     ProfileComponent,
     RegisterComponent,

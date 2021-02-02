@@ -4,11 +4,11 @@ export class Comment {
 
         constructor(
                 private user: Author,
-                private userDp: string,
                 private userName: string,
                 private body: string,
-                private photo: string,
-                private likesCount: number,
+                private userDp?: string,
+                private photo?: string,
+                private likesCount?: number,
         ) { }
 
         public get User(): Author {
@@ -20,11 +20,11 @@ export class Comment {
                 this.user = user;
         }
 
-        public get UserDp(): string {
+        public get UserDp(): string|undefined {
                 return this.userDp;
         }
 
-        public set UserDp(userDp: string
+        public set UserDp(userDp: string|undefined
         ) {
                 this.userDp = userDp;
         }
@@ -47,20 +47,20 @@ export class Comment {
                 this.body = body;
         }
 
-        public get Photo(): string {
+        public get Photo(): string|undefined {
                 return this.photo;
         }
 
-        public set Photo(photo: string
+        public set Photo(photo: string|undefined
         ) {
                 this.photo = photo;
         }
 
-        public get LikesCount(): number {
+        public get LikesCount(): number|undefined {
                 return this.likesCount;
         }
 
-        public set LikesCount(likesCount: number) {
+        public set LikesCount(likesCount: number|undefined) {
                 this.likesCount = likesCount;
         }
 }

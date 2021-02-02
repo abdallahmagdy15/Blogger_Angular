@@ -10,13 +10,14 @@ import { BlogService } from '../_services/blog.service';
 export class BlogsComponent implements OnInit {
   
   allBlogs:Blog[]=[];
-  selectedBlogs:number[]=[];
-  constructor(public localhomeservice:BlogService) { }
+  //selectedBlogs:number[]=[];
+  constructor(public blogService:BlogService) { }
 
   ngOnInit(): void {
-    this.localhomeservice.getBlogsForAll().subscribe(Mblogs=>{
-      console.log(Mblogs);
+    this.blogService.getBlogs().subscribe(Mblogs=>{
       this.allBlogs=Mblogs
+      //console.log(this.allBlogs);
+
     })
   }
 

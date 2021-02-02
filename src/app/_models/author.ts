@@ -7,14 +7,17 @@ export class Author {
         private password: string,
         private firstName: string,
         private lastName: string,
-        private diplayPicture: string,
         private email: string,
-        private dob: Date,
-        private bio: String,
-        private blogs: Blog[],
-        private followers: Author[],
-        private followings: Author[]
+        private diplayPicture?: string,
+        private dob?: Date,
+        private bio?: String,
+        private blogs?: Blog[],
+        private followers?: Author[],
+        private followings?: Author[]
+
+        
     ) { }
+        
 
     public get Id(): string {
         return this.id;
@@ -61,11 +64,11 @@ export class Author {
         this.lastName = lastName;
     }
 
-    public get DiplayPicture(): string {
+    public get DiplayPicture(): string|undefined {
         return this.diplayPicture;
     }
 
-    public set DiplayPicture(diplayPicture: string
+    public set DiplayPicture(diplayPicture: string|undefined
     ) {
         this.diplayPicture = diplayPicture;
     }
@@ -79,47 +82,47 @@ export class Author {
         this.email = email;
     }
 
-    public get Dob(): Date {
+    public get Dob(): Date|undefined {
         return this.dob;
     }
 
-    public set Dob(dob: Date
+    public set Dob(dob: Date|undefined
     ) {
         this.dob = dob;
     }
 
-    public get Bio(): String {
+    public get Bio(): String|undefined {
         return this.bio;
     }
 
-    public set Bio(bio: String
+    public set Bio(bio: String|undefined
     ) {
         this.bio = bio;
     }
 
-    public get Blogs(): Blog[] {
+    public get Blogs(): Blog[]|undefined {
         return this.blogs;
     }
 
-    public set Blogs(blogs: Blog[]
+    public set Blogs(blogs: Blog[]|undefined
     ) {
         this.blogs = blogs;
     }
 
-    public get Followers(): Author[] {
+    public get Followers(): Author[]|undefined {
         return this.followers;
     }
 
-    public set Followers(followers: Author[]
+    public set Followers(followers: Author[]|undefined
     ) {
         this.followers = followers;
     }
 
-    public get Followings(): Author[] {
+    public get Followings(): Author[]|undefined {
         return this.followings;
     }
 
-    public set Followings(followings: Author[]) {
+    public set Followings(followings: Author[]|undefined) {
         this.followings = followings;
     }
 

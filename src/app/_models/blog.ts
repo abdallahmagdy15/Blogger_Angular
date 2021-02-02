@@ -8,21 +8,22 @@ export class Blog {
                 private id: string,
                 private title: string,
                 private body: string,
-                private authorName: string,
-                private authorDp: string,
-                private photo: string,
-                private tags: string[],
                 private createdAt: Date,
-                private likesCount: number,
-                private comments: Comment[]
-        ) { }
+                private updatedAt: Date,
+                private authorName: string,
+                private authorDp?: string,
+                private photo?: string,
+                private tags?: string[],
+                private likesCount?: number,
+                private comments?: Comment[]
+        ) {}
 
 
-        public get Author(): Author {
+        public get _Author(): Author {
                 return this.author;
         }
 
-        public set Author(author: Author
+        public set _Author(author: Author
         ) {
                 this.author = author;
         }
@@ -63,29 +64,29 @@ export class Blog {
                 this.authorName = authorName;
         }
 
-        public get AuthorDp(): string {
+        public get AuthorDp(): string|undefined {
                 return this.authorDp;
         }
 
-        public set AuthorDp(authorDp: string
+        public set AuthorDp(authorDp: string|undefined
         ) {
                 this.authorDp = authorDp;
         }
 
-        public get Photo(): string {
+        public get Photo(): string|undefined {
                 return this.photo;
         }
 
-        public set Photo(photo: string
+        public set Photo(photo: string|undefined
         ) {
                 this.photo = photo;
         }
 
-        public get Tags(): string[] {
+        public get Tags(): string[]|undefined {
                 return this.tags;
         }
 
-        public set Tags(tags: string[]
+        public set Tags(tags: string[]|undefined
         ) {
                 this.tags = tags;
         }
@@ -99,20 +100,29 @@ export class Blog {
                 this.createdAt = createdAt;
         }
 
-        public get LikesCount(): number {
+        public get UpdatedAt(): Date {
+                return this.updatedAt;
+        }
+
+        public set UpdatedAt(createdAt: Date
+        ) {
+                this.updatedAt = createdAt;
+        }
+
+        public get LikesCount(): number|undefined {
                 return this.likesCount;
         }
 
-        public set LikesCount(likesCount: number
+        public set LikesCount(likesCount: number|undefined
         ) {
                 this.likesCount = likesCount;
         }
 
-        public get Comments(): Comment[] {
+        public get Comments(): Comment[]|undefined {
                 return this.comments;
         }
 
-        public set Comments(comments: Comment[]) {
+        public set Comments(comments: Comment[]|undefined) {
                 this.comments = comments;
         }
 }

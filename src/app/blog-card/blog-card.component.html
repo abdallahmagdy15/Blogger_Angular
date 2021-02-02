@@ -2,10 +2,10 @@
     <div class="card" >
         <div class="cc">
         <a>
-        <img [src]="'http://localhost:7000/'+blog.authorDp" class="auth_Pic" alt="authImg" height="10%" width="15%" style="border-radius: 100%;" >
-            <p class="authorName">{{blog.authorName}}</p>
+        <img [src]="blog.AuthorDp" class="auth_Pic" alt="authImg" height="10%" width="15%" style="border-radius: 100%;" >
+            <p class="authorName">{{blog.AuthorName}}</p>
         </a>
-            <img class="blog_Pic" [src]="'http://localhost:7000/'+blog.photo" alt="blogImg">
+            <img class="blog_Pic" [src]="blog.Photo" alt="blogImg">
         </div>
         <div class="card-body">
 
@@ -18,14 +18,14 @@
                     <path
                         d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
                 </svg>
-                {{blog.createdAt}}
+                {{blog.CreatedAt}}
             </p>
             <div *ngIf ="flag==true">
-                <p class="blog_body">{{blog.body}} </p>
-                <span   style="display: inline; font-weight: bold; text-decoration: underline; color: blue; " routerLink='/details/{{blog._id}}'>Read More</span><br>
+                <p class="blog_body">{{blog.Body}} </p>
+                <span   style="display: inline; font-weight: bold; text-decoration: underline; color: blue; " (click)='setSelectedBlog()' routerLink='/blog-details'>Read More</span><br>
                 <button class="btn btn-secondary"  (click)='hideDetails()' style="margin-top: 1%;">Hide</button>
             </div>
-            <p >{{blog.likesCount}}
+            <p >{{blog.LikesCount}}
                 <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 2px;" width="16" height="16" fill="gray" class="bi bi-heart-fill"
                     viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
