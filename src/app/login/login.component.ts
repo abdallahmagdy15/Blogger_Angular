@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import {AuthenticationService } from '../_services/authentication.service';
+import { AlertService } from '../_services/alert.service';
+
 import { error } from '@angular/compiler/src/util';
 
 @Component({
