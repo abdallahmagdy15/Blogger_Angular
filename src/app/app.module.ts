@@ -39,7 +39,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
     BlogCreateComponent,
     BlogEditComponent,
     SearchComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,

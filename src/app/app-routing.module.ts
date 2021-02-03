@@ -10,6 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { BlogCreateComponent } from './blog-create/blog-create.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -23,13 +24,17 @@ const routes: Routes = [
     ]
   },
   { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'suggestions', component: SuggestionsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'search', component: SearchComponent },
   { path: 'blog/:blogid', component: HomeComponent },
   { path: 'create-blog', component: BlogCreateComponent },
   { path: 'edit-blog/:blogid', component: BlogEditComponent },
-  {path:'blog-details',component:BlogDetailsComponent}
+  {path:'blog-details',component:BlogDetailsComponent},
+
+  // otherwise redirect to home
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
