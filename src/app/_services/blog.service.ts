@@ -16,7 +16,7 @@ export class BlogService {
   getBlogs() {
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/home');
   }
-  getAuthorBlogs(authorId: number) {
+  getAuthorBlogs(authorId: string) {
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + authorId, { headers: { authorization: this.auth.secureToken } });
   }
   getFollowingsBlogs() {

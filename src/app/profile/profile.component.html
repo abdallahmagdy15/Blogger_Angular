@@ -4,9 +4,20 @@
             <img>
         </div>
         <div class="row">
-            <label class="nameLabel"></label>
-            <p class="bio"></p>
+            <div class="col">
+                <label class="nameLabel">{{author.Name}}</label>
+                <p class="bio">{{author.bio}}</p>
+            </div>
+            <div class="col" *ngIf="this.loggedInProfile">
+                <button class="btn">Edit</button>
+            </div>
         </div>
-        <
+        <div class="row">
+            <a class="btn btn-info"><span id="followersCount"></span> Followers</a>
+            <a class="btn btn-info"><span id="followingsCount"></span> Followings</a>
+        </div>
+        <div class="row">
+            <app-blogs [blogs]="authorBlogs"></app-blogs>
+        </div>
     </div>
 </div>
