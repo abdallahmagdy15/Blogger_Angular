@@ -1,5 +1,6 @@
+import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Blog } from '../_models/blog';
 import { Author } from '../_models/author';
@@ -8,19 +9,25 @@ import { Author } from '../_models/author';
   providedIn: 'root'
 })
 export class BlogService {
+  private headers: HttpHeaders = new HttpHeaders();
 
-  constructor(public http: HttpClient, private auth: AuthenticationService) { }
+  constructor(public http: HttpClient, private auth: AuthenticationService) {
+    this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    this.headers.append('authorization', this.auth.secureToken);
+  }
 
-  selectedBlog:Blog=new Blog(new Author('','','','','',''),'','','',new Date(),new Date(),'');
+  selectedBlog: Blog = new Blog(new Author('', '', '', '', '', ''), '', '', '', new Date(), new Date(), '');
 
-  getBlogs() {
+  getBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/home');
   }
-  getAuthorBlogs(authorId: string) {
-    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + authorId, { headers: { authorization: this.auth.secureToken } });
+  getAuthorBlogs(authorId: string): Observable<Blog[]> {
+
+    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + authorId, { headers: this.headers });
   }
-  getFollowingsBlogs() {
-    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings', { headers: { authorization: this.auth.secureToken } });
+  getFollowingsBlogs(): Observable<Blog[]> {
+
+    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings', { headers: this.headers });
   }
 
 }

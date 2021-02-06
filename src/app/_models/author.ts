@@ -3,12 +3,12 @@ import { Blog } from "./blog";
 
 export class Author {
     constructor(
-        private id:string,
+        private id: string,
         private userName: string,
         private firstName: string,
         private lastName: string,
         private email: string,
-        private jobTitle:string,
+        private jobTitle: string,
         private password?: string,
         private diplayPicture?: string,
         private dob?: Date,
@@ -16,10 +16,11 @@ export class Author {
         private blogs?: Blog[],
         private followers?: Author[],
         private followings?: Author[],
-        private links?:Links
-        
+        private links?: Links,
+        private token?: string
+
     ) { }
-        
+
 
     public get Id(): string {
         return this.id;
@@ -39,11 +40,11 @@ export class Author {
         this.userName = userName;
     }
 
-    public get Password(): string|undefined {
+    public get Password(): string | undefined {
         return this.password;
     }
 
-    public set Password(password: string|undefined
+    public set Password(password: string | undefined
     ) {
         this.password = password;
     }
@@ -66,11 +67,11 @@ export class Author {
         this.lastName = lastName;
     }
 
-    public get DiplayPicture(): string|undefined {
+    public get DiplayPicture(): string | undefined {
         return this.diplayPicture;
     }
 
-    public set DiplayPicture(diplayPicture: string|undefined
+    public set DiplayPicture(diplayPicture: string | undefined
     ) {
         this.diplayPicture = diplayPicture;
     }
@@ -84,47 +85,47 @@ export class Author {
         this.email = email;
     }
 
-    public get Dob(): Date|undefined {
+    public get Dob(): Date | undefined {
         return this.dob;
     }
 
-    public set Dob(dob: Date|undefined
+    public set Dob(dob: Date | undefined
     ) {
         this.dob = dob;
     }
 
-    public get Bio(): String|undefined {
+    public get Bio(): String | undefined {
         return this.bio;
     }
 
-    public set Bio(bio: String|undefined
+    public set Bio(bio: String | undefined
     ) {
         this.bio = bio;
     }
 
-    public get Blogs(): Blog[]|undefined {
+    public get Blogs(): Blog[] | undefined {
         return this.blogs;
     }
 
-    public set Blogs(blogs: Blog[]|undefined
+    public set Blogs(blogs: Blog[] | undefined
     ) {
         this.blogs = blogs;
     }
 
-    public get Followers(): Author[]|undefined {
+    public get Followers(): Author[] | undefined {
         return this.followers;
     }
 
-    public set Followers(followers: Author[]|undefined
+    public set Followers(followers: Author[] | undefined
     ) {
         this.followers = followers;
     }
 
-    public get Followings(): Author[]|undefined {
+    public get Followings(): Author[] | undefined {
         return this.followings;
     }
 
-    public set Followings(followings: Author[]|undefined) {
+    public set Followings(followings: Author[] | undefined) {
         this.followings = followings;
     }
     public get JobTitle(): string {
@@ -134,12 +135,19 @@ export class Author {
     public set JobTitle(jt) {
         this.jobTitle = jt;
     }
-    public get Links(): Links|undefined {
+    public get Links(): Links | undefined {
         return this.links;
     }
 
-    public set Links(lnks:Links|undefined) {
+    public set Links(lnks: Links | undefined) {
         this.links = lnks;
+    }
+
+    public get Token(): string | undefined {
+        return this.token;
+    }
+    public set Token(value: string | undefined) {
+        this.token = value;
     }
 
 }

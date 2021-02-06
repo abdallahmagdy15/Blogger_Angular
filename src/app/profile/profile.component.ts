@@ -13,11 +13,11 @@ import { Blog } from '../_models/blog';
 })
 export class ProfileComponent implements OnInit {
 
-  private author: Author = new Author("", "", "", "", "", "");
+  private author?: Author = new Author("", "", "", "", "", "");
   private blogs: Blog[] = [];
-  private authorid: string = "";
+  private authorid?: string = "";
   private loggedInProfile: boolean = false;
-  private authorBlogs: Blog[] = [];
+
 
   constructor(private router: Router, private auth: AuthenticationService,
     private blogService: BlogService,
@@ -26,7 +26,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.auth.isAuthenticated) {
-      this.router.navigate(['login']);
+      const curr = localStorage.getItem('currentUser');
+      if (curr != null)
+        this.auth.user = JSON.parse(curr);
+      else
+        this.router.navigate(['login']);
     }
     this.route.queryParams.subscribe(params => {
       this.authorid = params['authorid'];

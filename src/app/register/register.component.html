@@ -21,6 +21,14 @@
             <div *ngIf="f.username.errors.required">Username is required</div>
         </div>
     </div>
+
+    <div class="form-group">
+        <label for="jobtitle">Job Title</label>
+        <input type="text" formControlName="jobtitle" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.jobtitle.errors }" />
+        <div *ngIf="submitted && f.jobtitle.errors" class="invalid-feedback">
+            <div *ngIf="f.jobtitle.errors.required">Job Title is required</div>
+        </div>
+    </div>
     <div class="form-group">
         <label for="useremail">Email</label>
         <input type="text" formControlName="useremail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.useremail.errors }" />
