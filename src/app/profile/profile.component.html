@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
     <div class="row">
         <div class="row">
@@ -9,6 +10,12 @@
                 <p class="username">{{author.Username}}</p>
                 <p class="bio">{{author.JobTitle}}</p>
                 <div class="links">
+                    <a href="{{author.Links.facebook}}" class="fa fa-facebook" *ngIf="author.Links.facebook"></a>
+                    <a href="{{author.Links.instagram}}" class="fa fa-instagram" *ngIf="author.Links.instagram"></a>
+                    <a href="{{author.Links.twitter}}" class="fa fa-twitter" *ngIf="author.Links.twitter"></a>
+                    <a href="{{author.Links.linkedin}}" class="fa fa-linkedin" *ngIf="author.Links.linkedin"></a>
+                    <a href="{{author.Email}}" class="fa fa-email"></a>
+
                 </div>
             </div>
             <div class="col" *ngIf="this.loggedInProfile">
@@ -19,12 +26,12 @@
             <p class="bio">{{author.Bio}}</p>
         </div>
         <div class="row">
-            <a class="btn btn-info"><span id="followersCount"></span> Followers</a>
-            <a class="btn btn-info"><span id="followingsCount"></span> Followings</a> | 
-            <label>{{author.blogs.length}} Articles</label>
+            <a class="btn btn-info"><span id="followersCount">{{author.Followers.length}}</span> Followers</a>
+            <a class="btn btn-info"><span id="followingsCount">{{author.Followings.length}}</span> Followings</a> |
+            <label><span>{{author.Blogs.length}}</span> Articles</label>
         </div>
         <div class="row">
-            <app-blogs [blogs]="authorBlogs"></app-blogs>
+            <app-blogs [blogs]="blogs"></app-blogs>
         </div>
     </div>
 </div>

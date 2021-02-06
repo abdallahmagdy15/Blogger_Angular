@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
   constructor(private auth :AuthenticationService , private router : Router) { }
 
   ngOnInit(): void {
-    if(!this.auth.authenticated){
+    if(!this.auth.isAuthenticated){
       this.router.navigate(['login']);
     }
   }

@@ -15,7 +15,7 @@ export class AuthenticationService {
   public currentUser: Observable<Author>;
   public user: Author;
   public secureToken: string = ""
-  public authenticated: boolean = false
+  public isAuthenticated: boolean = false
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<Author>(JSON.parse(localStorage.getItem('currentUser')));

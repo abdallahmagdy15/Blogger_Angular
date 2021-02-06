@@ -5,11 +5,11 @@ export class Author {
     constructor(
         private id:string,
         private userName: string,
-        private password: string,
         private firstName: string,
         private lastName: string,
         private email: string,
         private jobTitle:string,
+        private password?: string,
         private diplayPicture?: string,
         private dob?: Date,
         private bio?: String,
@@ -39,11 +39,11 @@ export class Author {
         this.userName = userName;
     }
 
-    public get Password(): string {
+    public get Password(): string|undefined {
         return this.password;
     }
 
-    public set Password(password: string
+    public set Password(password: string|undefined
     ) {
         this.password = password;
     }

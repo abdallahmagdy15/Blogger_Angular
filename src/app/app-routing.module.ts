@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   { path: 'followings-blogs', component: HomeComponent },
   {
-    path: 'author/:userid', component: ProfileComponent,
+    path: 'author/:authorid', component: ProfileComponent,
     children: [
       { path: 'edit-profile', component: ProfileEditComponent }
     ]
@@ -28,10 +28,9 @@ const routes: Routes = [
   { path: 'suggestions', component: SuggestionsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'blog/:blogid', component: HomeComponent },
   { path: 'create-blog', component: BlogCreateComponent },
   { path: 'edit-blog/:blogid', component: BlogEditComponent },
-  {path:'blog-details',component:BlogDetailsComponent},
+  { path: 'blog-details', component: BlogDetailsComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }

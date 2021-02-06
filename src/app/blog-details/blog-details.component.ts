@@ -18,7 +18,7 @@ export class BlogDetailsComponent implements OnInit {
   blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
   counterComments = this.blog.Comments?.length
   ngOnInit(): void {
-    if(!this.auth.authenticated){
+    if(!this.auth.isAuthenticated){
       this.router.navigate(['login']);
     }
   }
