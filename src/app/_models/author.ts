@@ -1,20 +1,22 @@
+import { Links } from './links';
 import { Blog } from "./blog";
 
 export class Author {
     constructor(
         private id:string,
         private userName: string,
-        private password: string,
         private firstName: string,
         private lastName: string,
         private email: string,
+        private jobTitle:string,
+        private password?: string,
         private diplayPicture?: string,
         private dob?: Date,
         private bio?: String,
         private blogs?: Blog[],
         private followers?: Author[],
-        private followings?: Author[]
-
+        private followings?: Author[],
+        private links?:Links
         
     ) { }
         
@@ -37,11 +39,11 @@ export class Author {
         this.userName = userName;
     }
 
-    public get Password(): string {
+    public get Password(): string|undefined {
         return this.password;
     }
 
-    public set Password(password: string
+    public set Password(password: string|undefined
     ) {
         this.password = password;
     }
@@ -124,6 +126,20 @@ export class Author {
 
     public set Followings(followings: Author[]|undefined) {
         this.followings = followings;
+    }
+    public get JobTitle(): string {
+        return this.jobTitle;
+    }
+
+    public set JobTitle(jt) {
+        this.jobTitle = jt;
+    }
+    public get Links(): Links|undefined {
+        return this.links;
+    }
+
+    public set Links(lnks:Links|undefined) {
+        this.links = lnks;
     }
 
 }

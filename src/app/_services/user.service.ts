@@ -10,19 +10,19 @@ export class UserService {
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
-  getAuthor(id: number) {
+  getAuthor(id: string) {
     return this.http.get<Author>('https://iti-blogger.herokuapp.com/users/' + id);
   }
-  followAuthor(id: number) {
+  followAuthor(id: string) {
     return this.http.post('https://iti-blogger.herokuapp.com/users/follow/' + id, {}, { headers: { authorization: this.auth.secureToken } });
   }
-  unfollowAuthor(id: number) {
+  unfollowAuthor(id: string) {
     return this.http.post('https://iti-blogger.herokuapp.com/users/unfollow/' + id, {}, { headers: { authorization: this.auth.secureToken } });
   }
-  getFollowers(id: number) {
+  getFollowers(id: string) {
     return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/' + id + '/followers', { headers: { authorization: this.auth.secureToken } });
   }
-  getFollowings(id: number) {
+  getFollowings(id: string) {
     return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/' + id + '/followings', { headers: { authorization: this.auth.secureToken } });
   }
   register(author: Author) {

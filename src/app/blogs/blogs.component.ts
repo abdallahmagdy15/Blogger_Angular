@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Blog } from '../_models/blog';
 import { BlogService } from '../_services/blog.service';
 
@@ -9,16 +9,14 @@ import { BlogService } from '../_services/blog.service';
 })
 export class BlogsComponent implements OnInit {
   
-  allBlogs:Blog[]=[];
+  @Input() blogs:Blog[]=[] 
   //selectedBlogs:number[]=[];
-  constructor(public blogService:BlogService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.blogService.getBlogs().subscribe(Mblogs=>{
-      this.allBlogs=Mblogs
-      //console.log(this.allBlogs);
-
-    })
+    if(!this.auth.authenticated){
+      this.router.navigate(['login']);
+    }
   }
 
 }
