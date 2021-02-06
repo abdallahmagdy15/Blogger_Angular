@@ -1,3 +1,4 @@
+import { CommentCardComponent } from './comment-card/comment-card.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from'@angular/common/http'
@@ -42,6 +43,7 @@ import { FollowingsComponent } from './followings/followings.component';
     SearchComponent,
     ProfileEditComponent,
     FollowingsComponent,
+    CommentCardComponent,
   ],
   imports: [
     BrowserModule,
