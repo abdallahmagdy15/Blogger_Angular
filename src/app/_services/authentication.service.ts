@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { Author } from '../_models/author';
-
 @Injectable({
   providedIn: 'root'
 })
