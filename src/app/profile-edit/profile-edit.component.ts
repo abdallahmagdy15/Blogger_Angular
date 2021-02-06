@@ -13,7 +13,11 @@ export class ProfileEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.auth.isAuthenticated) {
-      this.router.navigate(['login']);
+      const curr = localStorage.getItem('currentUser');
+      if (curr != null)
+        this.auth.user = JSON.parse(curr);
+      else
+        this.router.navigate(['login']);
     }
   }
 

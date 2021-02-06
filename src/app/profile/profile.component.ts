@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
 
   private author?: Author = new Author("", "", "", "", "", "");
   private blogs: Blog[] = [];
-  private authorid?: string = "";
+  private authorid: string = "";
   private loggedInProfile: boolean = false;
 
 
@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
         this.author = author;
       });
     }
-    this.blogService.getAuthorBlogs(this.author.Id).subscribe(blogs => {
+    this.blogService.getAuthorBlogs(this.authorid).subscribe(blogs => {
       this.blogs = blogs;
     });
   }

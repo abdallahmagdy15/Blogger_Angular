@@ -1,3 +1,4 @@
+import { FollowingsComponent } from './followings/followings.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { SearchComponent } from './search/search.component';
 import { AboutComponent } from './about/about.component';
@@ -20,7 +21,9 @@ const routes: Routes = [
   {
     path: 'author/:authorid', component: ProfileComponent,
     children: [
-      { path: 'edit-profile', component: ProfileEditComponent }
+      { path: 'edit-profile', component: ProfileEditComponent },
+      { path: 'followers', component: FollowingsComponent },
+      { path: 'followings', component: FollowingsComponent }
     ]
   },
   { path: 'register', component: RegisterComponent },
@@ -31,7 +34,6 @@ const routes: Routes = [
   { path: 'create-blog', component: BlogCreateComponent },
   { path: 'edit-blog/:blogid', component: BlogEditComponent },
   { path: 'blog-details', component: BlogDetailsComponent },
-
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
 ];

@@ -17,8 +17,13 @@ export class FollowingsComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.auth.isAuthenticated) {
-      this.router.navigate(['login']);
+      const curr = localStorage.getItem('currentUser');
+      if (curr != null)
+        this.auth.user = JSON.parse(curr);
+      else
+        this.router.navigate(['login']);
     }
+    
     if(this.route.snapshot.toString() == "followers"){///******************* needs to be replaced with right logic******** */
       this.userSevice.getFollowers().subscribe(authors => {
         this.authors = authors;
