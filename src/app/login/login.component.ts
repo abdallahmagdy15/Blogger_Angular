@@ -15,10 +15,10 @@ import { error } from '@angular/compiler/src/util';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm!: FormGroup;  //loginForm! : this tells TS that the value will be assigned at runtime.
   loading = false;
   submitted = false;
-  returnUrl: string;
+  returnUrl!: string; //returnUrl! : this tells TS that the value will be assigned at runtime.
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private alertService: AlertService
   ) { 
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
-          this.router.navigate(['/']);
+      // redirect to home if already logged in
+      if (this.authenticationService.currentUserValue) {
+        this.router.navigate(['/']);
       }
     }
 
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get fieldget() { return this.loginForm.controls; }
   
   onSubmit() {
     this.submitted = true;
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.authenticationService.login(this.fieldget.username.value, this.fieldget.password.value)
         .pipe(first())
         .subscribe(
             data => {
