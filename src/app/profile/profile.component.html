@@ -5,16 +5,23 @@
         </div>
         <div class="row">
             <div class="col">
-                <label class="nameLabel">{{author.Name}}</label>
-                <p class="bio">{{author.bio}}</p>
+                <label class="nameLabel">{{author.FirstName + " " + author.LastName}}</label>
+                <p class="username">{{author.Username}}</p>
+                <p class="bio">{{author.JobTitle}}</p>
+                <div class="links">
+                </div>
             </div>
             <div class="col" *ngIf="this.loggedInProfile">
                 <button class="btn">Edit</button>
             </div>
         </div>
         <div class="row">
+            <p class="bio">{{author.Bio}}</p>
+        </div>
+        <div class="row">
             <a class="btn btn-info"><span id="followersCount"></span> Followers</a>
-            <a class="btn btn-info"><span id="followingsCount"></span> Followings</a>
+            <a class="btn btn-info"><span id="followingsCount"></span> Followings</a> | 
+            <label>{{author.blogs.length}} Articles</label>
         </div>
         <div class="row">
             <app-blogs [blogs]="authorBlogs"></app-blogs>

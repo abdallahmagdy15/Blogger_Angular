@@ -2,7 +2,7 @@ import { Author } from './../_models/author';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { Author } from '../_models/author';
 
@@ -26,8 +26,8 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
   login(username: string, passwprd: string) {
-    return this.http.post('https://iti-blogger.herokuapp.com/users/login', { username, passwprd })
-      .pipe(map(user => {
+    return this.http.post<Author>('https://iti-blogger.herokuapp.com/users/login', { username, passwprd })
+      .pipe(tap(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
