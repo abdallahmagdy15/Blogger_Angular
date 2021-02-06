@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Author } from './../_models/author';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-author-card',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./author-card.component.css']
 })
 export class AuthorCardComponent implements OnInit {
-
+  @Input() author: Author = new Author("", "", "", "", "", "");
   constructor() { }
 
   ngOnInit(): void {

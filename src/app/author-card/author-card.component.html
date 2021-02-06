@@ -1,1 +1,11 @@
-<p>author-card works!</p>
+<div class="row">
+    <div class="col">
+        <img src="" alt="">
+    </div>
+    <div class="col">
+        <label class="name">{{author.FirstName + " " + author.LastName}}</label>
+        <p class="jobTitle">{{author.JobTitle}}</p>
+        <p class="counters"><span>{{author.Followers.length}}</span> Followers • <span>{{author.Blogs.length}}</span>
+            Articles</p>
+    </div>
+</div>

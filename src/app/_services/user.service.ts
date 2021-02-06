@@ -25,6 +25,11 @@ export class UserService {
   getFollowings(id: string) {
     return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/' + id + '/followings', { headers: { authorization: this.auth.secureToken } });
   }
+
+  public getSuggestions() {
+    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/suggestions', { headers: { authorization: this.auth.secureToken } });
+  }
+
   register(author: Author) {
     return this.http.post('https://iti-blogger.herokuapp.com/users/register', author)
   }
