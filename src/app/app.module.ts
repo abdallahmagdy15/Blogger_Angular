@@ -21,6 +21,7 @@ import { BlogCreateComponent } from './blog-create/blog-create.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { CommentCardComponent } from './comment-card/comment-card.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
     BlogEditComponent,
     SearchComponent,
     ProfileEditComponent,
+    CommentCardComponent,
   ],
   imports: [
     BrowserModule,
