@@ -4,11 +4,11 @@ import { Blog } from "./blog";
 export class Author {
     constructor(
         private id: string,
-        private userName: string,
+        private username: string,
         private firstName: string,
         private lastName: string,
         private email: string,
-        private jobTitle: string,
+        private jobTitle?: string,
         private password?: string,
         private diplayPicture?: string,
         private dob?: Date,
@@ -31,13 +31,13 @@ export class Author {
         this.id = id;
     }
 
-    public get UserName(): string {
-        return this.userName;
+    public get Username(): string {
+        return this.username;
     }
 
-    public set UserName(userName: string
+    public set Username(userName: string
     ) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public get Password(): string | undefined {
@@ -128,11 +128,11 @@ export class Author {
     public set Followings(followings: Author[] | undefined) {
         this.followings = followings;
     }
-    public get JobTitle(): string {
+    public get JobTitle(): string | undefined {
         return this.jobTitle;
     }
 
-    public set JobTitle(jt) {
+    public set JobTitle(jt:string | undefined) {
         this.jobTitle = jt;
     }
     public get Links(): Links | undefined {

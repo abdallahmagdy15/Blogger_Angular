@@ -8,12 +8,12 @@
             <div class="col">
                 <label class="nameLabel">{{author.FirstName + " " + author.LastName}}</label>
                 <p class="username">{{author.Username}}</p>
-                <p class="bio">{{author.JobTitle}}</p>
+                <p class="bio">{{author.JobTitle?author.JobTitle.length:''}}</p>
                 <div class="links">
-                    <a href="{{author.Links.facebook}}" class="fa fa-facebook" *ngIf="author.Links.facebook"></a>
-                    <a href="{{author.Links.instagram}}" class="fa fa-instagram" *ngIf="author.Links.instagram"></a>
-                    <a href="{{author.Links.twitter}}" class="fa fa-twitter" *ngIf="author.Links.twitter"></a>
-                    <a href="{{author.Links.linkedin}}" class="fa fa-linkedin" *ngIf="author.Links.linkedin"></a>
+                    <a href="{{(author.Links)?author.Links.facebook:''}}" class="fa fa-facebook" *ngIf="author.Links && author.Links.facebook"></a>
+                    <a href="{{(author.Links)?author.Links.instagram:''}}" class="fa fa-instagram" *ngIf="author.Links && author.Links.instagram"></a>
+                    <a href="{{(author.Links)?author.Links.twitter:''}}" class="fa fa-twitter" *ngIf="author.Links && author.Links.twitter"></a>
+                    <a href="{{(author.Links)?author.Links.linkedin:''}}" class="fa fa-linkedin" *ngIf=" author.Links && author.Links.linkedin"></a>
                     <a href="{{author.Email}}" class="fa fa-email"></a>
 
                 </div>
@@ -23,12 +23,12 @@
             </div>
         </div>
         <div class="row">
-            <p class="bio">{{author.Bio}}</p>
+            <p class="bio">{{ author.Bio?author.Bio:'' }}</p>
         </div>
         <div class="row">
-            <a class="btn btn-info"><span id="followersCount">{{author.Followers.length}}</span> Followers</a>
-            <a class="btn btn-info"><span id="followingsCount">{{author.Followings.length}}</span> Followings</a> |
-            <label><span>{{author.Blogs.length}}</span> Articles</label>
+            <a class="btn btn-info" [routerLink]="['/followers']" routerLinkActive="router-link-active" ><span id="followersCount">{{(author.Followers)?author.Followers.length:0}}</span> Followers</a>
+            <a class="btn btn-info" [routerLink]="['/followings']" routerLinkActive="router-link-active" ><span id="followingsCount">{{(author.Followings)?author.Followings.length:0}}</span> Followings</a> |
+            <label><span>{{(author.Blogs)?author.Blogs.length:0}}</span> Articles</label>
         </div>
         <div class="row">
             <app-blogs [blogs]="blogs"></app-blogs>

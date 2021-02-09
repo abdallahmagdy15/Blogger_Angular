@@ -12,7 +12,6 @@ export class BlogService {
   private headers: HttpHeaders = new HttpHeaders();
 
   constructor(public http: HttpClient, private auth: AuthenticationService) {
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     this.headers.append('authorization', this.auth.secureToken);
   }
 
@@ -21,6 +20,7 @@ export class BlogService {
   getBlogs(): Observable<Blog[]> {
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/home');
   }
+
   getAuthorBlogs(authorId: string): Observable<Blog[]> {
 
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + authorId, { headers: this.headers });

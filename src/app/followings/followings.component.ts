@@ -10,9 +10,9 @@ import { AuthenticationService } from '../_services/authentication.service';
   styleUrls: ['./followings.component.css']
 })
 export class FollowingsComponent implements OnInit {
-
-  private authors: Author[] = [];
-  constructor(private userSevice: UserService, private route: ActivatedRoute, private auth: AuthenticationService,
+  isFollowers: boolean = false;
+  public authors: Author[] = [];
+  constructor(private userSevice: UserService, private route: ActivatedRoute, public auth: AuthenticationService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -23,15 +23,21 @@ export class FollowingsComponent implements OnInit {
       else
         this.router.navigate(['login']);
     }
-    
-    if(this.route.snapshot.toString() == "followers"){///******************* needs to be replaced with right logic******** */
-      this.userSevice.getFollowers().subscribe(authors => {
-        this.authors = authors;
-      });
-    }
-    else{
+    let url;
+    if (this.route.parent != null)
+      url = this.route.parent.snapshot.url;
+    if (url != undefined)
+      if (url[2].path == "followers") {
+        this.isFollowers=true;
+        this.userSevice.getFollowers(url[1].path).subscribe(authors => {
+          this.authors = authors;
+        });
+      }
+      else {
+        this.userSevice.getFollowings(url[1].path).subscribe(authors => {
+          this.authors = authors;
+        });
+      }
 
-    }
-    
   }
 }

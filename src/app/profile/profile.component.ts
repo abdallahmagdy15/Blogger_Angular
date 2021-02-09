@@ -8,18 +8,18 @@ import { Blog } from '../_models/blog';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
+  templateUrl:  './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
 
-  private author?: Author = new Author("", "", "", "", "", "");
-  private blogs: Blog[] = [];
-  private authorid: string = "";
-  private loggedInProfile: boolean = false;
+  public author: Author = new Author("", "", "", "", "", "");
+  public blogs: Blog[] = [];
+  public authorid: string = "";
+  public loggedInProfile: boolean = false;
 
 
-  constructor(private router: Router, private auth: AuthenticationService,
+  constructor(private router: Router, public auth: AuthenticationService,
     private blogService: BlogService,
     private userService: UserService,
     private route: ActivatedRoute) { }
@@ -38,9 +38,10 @@ export class ProfileComponent implements OnInit {
     });
 
   }
+
   initAuthor() {
 
-    if (this.authorid == this.auth.user.Id) {//if profile of the logged in user
+    if (this.auth.user != undefined && this.authorid == this.auth.user.Id) {//if profile of the logged in user
       this.author = this.auth.user;
       this.loggedInProfile = true;
     }

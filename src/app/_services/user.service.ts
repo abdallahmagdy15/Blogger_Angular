@@ -31,7 +31,7 @@ export class UserService {
   }
 
   public getSuggestions() {
-    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/suggestions', { headers: this.headers });
+    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/suggestions/list', { headers: this.headers });
   }
 
   register(author: Author) {

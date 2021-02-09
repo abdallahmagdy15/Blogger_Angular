@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  allBlogs:Blog[]=[];
-  constructor(private blogService:BlogService,private router:Router,private auth :AuthenticationService) { }
+  allBlogs: Blog[] = [];
+  constructor(private blogService: BlogService, private router: Router, public auth: AuthenticationService) { }
 
   ngOnInit(): void {
     //*******needs updating */
@@ -23,10 +23,8 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['login']);
     }
     //end
-    this.blogService.getBlogs().subscribe(Mblogs=>{
-      this.allBlogs=Mblogs
-      //console.log(this.allBlogs);
-
+    this.blogService.getBlogs().subscribe(Mblogs => {
+      this.allBlogs = Mblogs
     })
   }
 

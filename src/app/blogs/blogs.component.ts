@@ -1,6 +1,9 @@
+import { UserService } from './../_services/user.service';
+import { BlogService } from './../_services/blog.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Blog } from '../_models/blog';
-import { BlogService } from '../_services/blog.service';
+import { AuthenticationService } from '../_services/authentication.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-blogs',
@@ -11,12 +14,12 @@ export class BlogsComponent implements OnInit {
   
   @Input() blogs:Blog[]=[] 
   //selectedBlogs:number[]=[];
-  constructor() { }
+  constructor(private router: Router, public auth: AuthenticationService,
+    private blogService: BlogService,
+    private userService: UserService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if(!this.auth.authenticated){
-      this.router.navigate(['login']);
-    }
   }
 
 }
