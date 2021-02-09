@@ -10,23 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  allBlogs:Blog[]=[];
-  constructor(private blogService:BlogService,private router:Router,private auth :AuthenticationService) { }
+  allBlogs: Blog[] = [];
+  constructor(private blogService: BlogService, private router: Router, public auth: AuthenticationService) { }
 
   ngOnInit(): void {
-    //*******needs updating */
-    if (!this.auth.isAuthenticated) {
-      const curr = localStorage.getItem('currentUser');
-      if (curr != null)
-        this.auth.user = JSON.parse(curr);
-      else
-        this.router.navigate(['login']);
-    }
-    //end
-    this.blogService.getBlogs().subscribe(Mblogs=>{
-      this.allBlogs=Mblogs
-      //console.log(this.allBlogs);
 
+    this.blogService.getBlogs().subscribe(blogs => {
+      for (let b of blogs) {
+        this.allBlogs.push(new Blog(b.author, b.id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
+          b.authorDp, b.photo, b.tags, b.likes, b.comments));
+      }
     })
   }
 

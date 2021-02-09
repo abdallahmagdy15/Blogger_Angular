@@ -15,22 +15,18 @@ import { AlertService } from '../_services/alert.service'
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm: FormGroup;
+  registerForm: FormGroup=this.formBuilder.group({});
   loading = false;
   submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private reactFormsModule:ReactiveFormsModule,
     private authenticationService: AuthenticationService,
     private userService: UserService,
     private alertService: AlertService
-  ) { 
-      // redirect to home if already logged in
-      if (this.authenticationService.currentUserValue) {
-        this.router.navigate(['/']);
-      }
-    }
+  ) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({

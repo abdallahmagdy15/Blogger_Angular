@@ -8,7 +8,7 @@ export class Comment {
                 private body: string,
                 private userDp?: string,
                 private photo?: string,
-                private likesCount?: number,
+                private likes?: Author[],
         ) { }
 
         public get User(): Author {

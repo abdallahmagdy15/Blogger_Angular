@@ -5,7 +5,8 @@
     <div class="col">
         <label class="name">{{author.FirstName + " " + author.LastName}}</label>
         <p class="jobTitle">{{author.JobTitle}}</p>
-        <p class="counters"><span>{{author.Followers.length}}</span> Followers • <span>{{author.Blogs.length}}</span>
+        <p class="counters"><span>{{(author.Followers)?author.Followers.length:0}}</span> Followers •
+            <span>{{(author.Blogs)?author.Blogs.length:0}}</span>
             Articles</p>
     </div>
 </div>

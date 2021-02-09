@@ -13,17 +13,17 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class BlogDetailsComponent implements OnInit {
 
-  constructor(public blogService: BlogService, public ar: ActivatedRoute,private auth :AuthenticationService , private router : Router) { }
+  constructor(public blogService: BlogService, public ar: ActivatedRoute,public auth :AuthenticationService , private router : Router) { }
    blog: Blog = this.blogService.selectedBlog
   blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
   counterComments = this.blog.Comments?.length
   ngOnInit(): void {
-    if (!this.auth.isAuthenticated) {
-      const curr = localStorage.getItem('currentUser');
-      if (curr != null)
-        this.auth.user = JSON.parse(curr);
-      else
-        this.router.navigate(['login']);
-    }
+    // if (!this.auth.isAuthenticated) {
+    //   const curr = localStorage.getItem('currentUser');
+    //   if (curr != null)
+    //     this.auth.user = JSON.parse(curr);
+    //   else
+    //     this.router.navigate(['login']);
+    // }
   }
 }

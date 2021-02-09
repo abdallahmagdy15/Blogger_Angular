@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./suggestions.component.css']
 })
 export class SuggestionsComponent implements OnInit {
-  private authors: Author[] = [];
-  constructor(private userSevice: UserService, private router: Router, private auth: AuthenticationService) { }
+  public authors: Author[] = [];
+  constructor(private userSevice: UserService, private router: Router, public auth: AuthenticationService) { }
 
   ngOnInit(): void {
     if (!this.auth.isAuthenticated) {

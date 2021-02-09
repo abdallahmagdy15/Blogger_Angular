@@ -9,7 +9,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class ProfileEditComponent implements OnInit {
 
-  constructor(private auth :AuthenticationService , private router : Router) { }
+  constructor(public auth :AuthenticationService , private router : Router) { }
 
   ngOnInit(): void {
     if (!this.auth.isAuthenticated) {
