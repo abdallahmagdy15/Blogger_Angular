@@ -5,7 +5,7 @@
         <img [src]="blog.AuthorDp" class="auth_Pic" alt="authImg" height="10%" width="15%" style="border-radius: 100%;" >
             <p class="authorName">{{blog.AuthorName}}</p>
         </a>
-            <img class="blog_Pic" [src]="blog.Photo" alt="blogImg">
+            <img class="blog_Pic" [src]="blog.Photo" *ngIf="blog.Photo != undefined" alt="blogImg">
         </div>
         <div class="card-body">
 

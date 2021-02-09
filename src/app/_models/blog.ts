@@ -14,7 +14,7 @@ export class Blog {
                 private authorDp?: string,
                 private photo?: string,
                 private tags?: string[],
-                private likesCount?: number,
+                private likes?: Author[],
                 private comments?: Comment[]
         ) {}
 

@@ -29,8 +29,6 @@ export class BlogCardComponent implements OnInit {
 this.flag=false
  }
   ngOnInit(): void {
-    console.log(this.blog)
-    this.blog.Photo='../../assets/blog-119601391_888377995319353_8944912612908572524_o.jpg';
     this.blog.AuthorDp='../../assets/profile-10629561_766049776792856_645984354330777807_n.jpg';
     console.log(this.blog);
   }

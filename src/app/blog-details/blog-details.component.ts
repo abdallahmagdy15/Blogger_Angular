@@ -18,12 +18,12 @@ export class BlogDetailsComponent implements OnInit {
   blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
   counterComments = this.blog.Comments?.length
   ngOnInit(): void {
-    if (!this.auth.isAuthenticated) {
-      const curr = localStorage.getItem('currentUser');
-      if (curr != null)
-        this.auth.user = JSON.parse(curr);
-      else
-        this.router.navigate(['login']);
-    }
+    // if (!this.auth.isAuthenticated) {
+    //   const curr = localStorage.getItem('currentUser');
+    //   if (curr != null)
+    //     this.auth.user = JSON.parse(curr);
+    //   else
+    //     this.router.navigate(['login']);
+    // }
   }
 }

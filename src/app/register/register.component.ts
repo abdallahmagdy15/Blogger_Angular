@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private reactFormsModule:ReactiveFormsModule,
     private authenticationService: AuthenticationService,
     private userService: UserService,
     private alertService: AlertService
