@@ -9,8 +9,10 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private auth :AuthenticationService , private router : Router) { }
-
+  
+  constructor(private auth :AuthenticationService , private router : Router ) { }
+  //searchWord:string='';
+  
   ngOnInit(): void {
     if (!this.auth.isAuthenticated) {
       const curr = localStorage.getItem('currentUser');
