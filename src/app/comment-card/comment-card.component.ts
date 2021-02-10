@@ -15,7 +15,7 @@ export class CommentCardComponent implements OnInit {
 
   blog: Blog = this.blogService.selectedBlog
   blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
-  counterComments = this.blog.Comments?.length
+  counterComments = this.blog.comments?.length
 
   ngOnInit(): void {
     

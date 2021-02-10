@@ -3,12 +3,12 @@ import { Author } from "./author";
 export class Comment {
 
         constructor(
-                private user: Author,
-                private userName: string,
-                private body: string,
-                private userDp?: string,
-                private photo?: string,
-                private likes?: Author[],
+                public user: Author,
+                public userName: string,
+                public body: string,
+                public userDp?: string,
+                public photo?: string,
+                public likes?: Author[],
         ) { }
 
         public get User(): Author {

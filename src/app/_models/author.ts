@@ -3,21 +3,21 @@ import { Blog } from "./blog";
 
 export class Author {
     constructor(
-        private id: string,
-        private username: string,
-        private firstName: string,
-        private lastName: string,
-        private email: string,
-        private jobTitle?: string,
-        private password?: string,
-        private diplayPicture?: string,
-        private dob?: Date,
-        private bio?: String,
-        private blogs?: Blog[],
-        private followers?: Author[],
-        private followings?: Author[],
-        private links?: Links,
-        private token?: string
+        public id: string,
+        public username: string,
+        public firstName: string,
+        public lastName: string,
+        public email: string,
+        public jobTitle?: string,
+        public password?: string,
+        public diplayPicture?: string,
+        public dob?: Date,
+        public bio?: String,
+        public blogs?: Blog[],
+        public followers?: Author[],
+        public followings?: Author[],
+        public links?: Links,
+        public token?: string
 
     ) { }
 

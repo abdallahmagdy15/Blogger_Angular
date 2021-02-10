@@ -4,18 +4,18 @@ import { Author } from "./author";
 export class Blog {
 
         constructor(
-                private author: Author,
-                private id: string,
-                private title: string,
-                private body: string,
-                private createdAt: Date,
-                private updatedAt: Date,
-                private authorName: string,
-                private authorDp?: string,
-                private photo?: string,
-                private tags?: string[],
-                private likes?: Author[],
-                private comments?: Comment[]
+                public author: Author,
+                public id: string,
+                public title: string,
+                public body: string,
+                public createdAt: Date,
+                public updatedAt: Date,
+                public authorName: string,
+                public authorDp?: string,
+                public photo?: string,
+                public tags?: string[],
+                public likes?: Author[],
+                public comments?: Comment[]
         ) {}
 
 

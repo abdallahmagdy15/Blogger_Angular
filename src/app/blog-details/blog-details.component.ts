@@ -16,7 +16,7 @@ export class BlogDetailsComponent implements OnInit {
   constructor(public blogService: BlogService, public ar: ActivatedRoute,public auth :AuthenticationService , private router : Router) { }
    blog: Blog = this.blogService.selectedBlog
   blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
-  counterComments = this.blog.Comments?.length
+  counterComments = this.blog.comments?.length
   ngOnInit(): void {
     // if (!this.auth.isAuthenticated) {
     //   const curr = localStorage.getItem('currentUser');
