@@ -25,7 +25,7 @@
                 <span   style="display: inline; font-weight: bold; text-decoration: underline; color: blue; " (click)='setSelectedBlog()' routerLink='/blog-details'>Read More</span><br>
                 <button class="btn btn-secondary"  (click)='hideDetails()' style="margin-top: 1%;">Hide</button>
             </div>
-            <p >{{blog.LikesCount}}
+            <p >{{(blog.Likes)?blog.Likes.length:''}}
                 <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 2px;" width="16" height="16" fill="gray" class="bi bi-heart-fill"
                     viewBox="0 0 16 16">
                     <path fill-rule="evenodd"

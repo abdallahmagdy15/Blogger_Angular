@@ -15,9 +15,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //dont fix ..this works 
     this.blogService.getBlogs().subscribe(blogs => {
       for (let b of blogs) {
-        this.allBlogs.push(new Blog(b._Author, b.Id, b.Title, b.Body, b.CreatedAt, b.UpdatedAt, b.AuthorName));
+        this.allBlogs.push(new Blog(b.author, b.id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
+          b.authorDp, b.photo, b.tags, b.likes, b.comments));
       }
     })
   }

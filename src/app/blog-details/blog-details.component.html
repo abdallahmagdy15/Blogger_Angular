@@ -21,7 +21,7 @@
             {{blog.CreatedAt}}
         </p>
         <p class='blog_body '>{{blog.Body}}</p>
-        <p class="likes">{{blog.LikesCount}}
+        <p class="likes">{{(blog.Likes)?blog.Likes.length:''}}
             <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 2px;" width="16" height="16" fill="gray"
                 class="bi bi-heart-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"

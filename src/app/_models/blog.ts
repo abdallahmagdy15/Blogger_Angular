@@ -109,12 +109,12 @@ export class Blog {
                 this.updatedAt = createdAt;
         }
 
-        public get LikesCount(): Author[]|undefined {
+        public get Likes(): Author[]|undefined {
                 return this.likes;
         }
 
-        public set LikesCount(likesCount: Author[]|undefined) {
-                this.likes = likesCount;
+        public set Likes(likes: Author[]|undefined) {
+                this.likes = likes;
         }
         public get Comments(): Comment[]|undefined {
                 return this.comments;

@@ -17,7 +17,7 @@ export class BlogService {
 
   selectedBlog: Blog = new Blog(new Author('', '', '', '', '', ''), '', '', '', new Date(), new Date(), '');
 
-  getBlogs(): Observable<Blog[]> {
+  getBlogs()  {
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/home');
   }
 
