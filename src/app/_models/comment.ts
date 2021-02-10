@@ -56,11 +56,12 @@ export class Comment {
                 this.photo = photo;
         }
 
-        public get LikesCount(): number|undefined {
-                return this.likesCount;
+        public get LikesCount(): Author[]|undefined {
+                return this.likes;
         }
 
-        public set LikesCount(likesCount: number|undefined) {
-                this.likesCount = likesCount;
+        public set LikesCount(likesCount: Author[]|undefined) {
+                this.likes = likesCount;
         }
+        
 }
