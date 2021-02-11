@@ -16,13 +16,7 @@ export class FollowingsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.auth.isAuthenticated) {
-      const curr = localStorage.getItem('currentUser');
-      if (curr != null)
-        this.auth.user = JSON.parse(curr);
-      else
-        this.router.navigate(['login']);
-    }
+    
     let url;
     if (this.route.parent != null)
       url = this.route.parent.snapshot.url;

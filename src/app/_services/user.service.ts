@@ -1,37 +1,34 @@
 import { AuthenticationService } from './authentication.service';
 import { Author } from './../_models/author';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private headers: HttpHeaders = new HttpHeaders();
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { 
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    this.headers.append('authorization', this.auth.secureToken);
   }
 
   getAuthor(id: string) {
     return this.http.get<Author>('https://iti-blogger.herokuapp.com/users/' + id);
   }
   followAuthor(id: string) {
-    return this.http.post('https://iti-blogger.herokuapp.com/users/follow/' + id, {}, { headers: this.headers });
+    return this.http.post('https://iti-blogger.herokuapp.com/users/follow/' + id, {});
   }
   unfollowAuthor(id: string) {
-    return this.http.post('https://iti-blogger.herokuapp.com/users/unfollow/' + id, {}, { headers: this.headers });
+    return this.http.post('https://iti-blogger.herokuapp.com/users/unfollow/' + id, {});
   }
   getFollowers(id: string) {
-    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/' + id + '/followers', { headers: this.headers });
+    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/' + id + '/followers');
   }
   getFollowings(id: string) {
-    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/' + id + '/followings', { headers: this.headers });
+    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/' + id + '/followings');
   }
 
   public getSuggestions() {
-    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/suggestions/list', { headers: this.headers });
+    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/suggestions/list');
   }
 
   register(author: Author) {

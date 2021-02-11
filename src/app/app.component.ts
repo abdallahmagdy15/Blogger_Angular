@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './_services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Blogger';
+  /**
+   *
+   */
+  constructor(private auth: AuthenticationService) {
+  }
+  ngOnInit() {
+    this.auth.login("abdallahm", "123456").subscribe(u => {
+      console.log("login done " , this.auth.isAuthenticated());
+    });
+  }
 }

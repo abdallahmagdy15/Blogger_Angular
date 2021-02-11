@@ -25,13 +25,7 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if (!this.auth.isAuthenticated) {
-      const curr = localStorage.getItem('currentUser');
-      if (curr != null)
-        this.auth.user = JSON.parse(curr);
-      else
-        this.router.navigate(['login']);
-    }
+    
     this.route.queryParams.subscribe(params => {
       this.authorid = params['authorid'];
       this.initAuthor()
@@ -41,8 +35,8 @@ export class ProfileComponent implements OnInit {
 
   initAuthor() {
 
-    if (this.auth.user != undefined && this.authorid == this.auth.user.Id) {//if profile of the logged in user
-      this.author = this.auth.user;
+    if (this.auth.getCurrUser() != undefined && this.authorid == this.auth.getCurrUser().Id) {//if profile of the logged in user
+      this.author = this.auth.getCurrUser();
       this.loggedInProfile = true;
     }
     else {

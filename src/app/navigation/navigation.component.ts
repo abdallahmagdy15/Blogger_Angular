@@ -10,13 +10,11 @@ import { AuthenticationService } from '../_services/authentication.service';
 export class NavigationComponent implements OnInit {
 
   author: Author = new Author('', '', '', '', '', '');
-  isAuth: boolean = false;
-  constructor(private auth: AuthenticationService) { }
+  constructor(public auth: AuthenticationService) { }
 
   ngOnInit(): void {
-    if (this.auth.user != undefined)
-      this.author = this.auth.user;
-    this.isAuth = this.auth.isAuthenticated
+    if (this.auth.getCurrUser() != undefined)
+      this.author = this.auth.getCurrUser();
   }
 
 }
