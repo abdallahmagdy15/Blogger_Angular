@@ -15,16 +15,16 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
                     </li>
-                    <li class="nav-item" *ngIf="isAuth">
+                    <li class="nav-item" *ngIf="this.auth.isAuthenticated()">
                         <a class="nav-link active" aria-current="page" [routerLink]="['/followings-blogs']" routerLinkActive="router-link-active" >Followings Blogs</a>
                     </li>
-                    <li class="nav-item" *ngIf="isAuth">
+                    <li class="nav-item" *ngIf="this.auth.isAuthenticated()">
                         <a class="nav-link active" aria-current="page" [routerLink]="['/followers']" routerLinkActive="router-link-active" >Followers</a>
                     </li>
-                    <li class="nav-item" *ngIf="isAuth">
+                    <li class="nav-item" *ngIf="this.auth.isAuthenticated()">
                         <a class="nav-link active" aria-current="page" [routerLink]="['/followings']" routerLinkActive="router-link-active" >Followings</a>
                     </li>
-                    <li class="nav-item" *ngIf="isAuth">
+                    <li class="nav-item" *ngIf="this.auth.isAuthenticated()">
                         <a class="nav-link active" aria-current="page" [routerLink]="['/suggestions']" routerLinkActive="router-link-active" >Suggestions</a>
                     </li>
                     <li class="nav-item">
@@ -34,12 +34,13 @@
             </div>
         </div>
         <div class="col btn-group">
-            <div class="btn" *ngIf="isAuth">
-                <img src="" class="profilePhoto">
-                <a class="" href="/author">{{author.FirstName+" "+author.LastName}} </a>
+            <div class="btn" *ngIf="this.auth.isAuthenticated()">
+                <img class="navProfileDp"
+                 [src]="(this.auth.getCurrUser().diplayPicture)?this.author.diplayPicture : '../assets/male_dp.jpg'" >
+                <a class="" href="/author">{{this.auth.getCurrUser().firstName+" "+this.auth.getCurrUser().lastName}} </a>
             </div>
-            <button class="btn" *ngIf="!isAuth">Login</button>
-            <button class="btn" *ngIf="isAuth">Search</button>
+            <button class="btn" *ngIf="!this.auth.isAuthenticated()">Login</button>
+            <button class="btn" *ngIf="this.auth.isAuthenticated()">Search</button>
         </div>
     </div>
 </nav>

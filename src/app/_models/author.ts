@@ -8,6 +8,7 @@ export class Author {
         public firstName: string,
         public lastName: string,
         public email: string,
+        public gender:string,
         public jobTitle?: string,
         public password?: string,
         public diplayPicture?: string,

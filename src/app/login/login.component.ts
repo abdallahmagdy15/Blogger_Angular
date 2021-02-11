@@ -29,15 +29,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    ///***needs updating */
-    if (!this.auth.isAuthenticated) {
-      const curr = localStorage.getItem('currentUser');
-      if (curr != null)
-        this.auth.user = JSON.parse(curr);
-      else
-        this.router.navigate(['login']);
-    }
-    //end
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]

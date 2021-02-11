@@ -1,7 +1,8 @@
+import { AuthInterceptor } from './_services/auth-interceptor';
 import { CommentCardComponent } from './comment-card/comment-card.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from'@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from'@angular/common/http'
 import {FormsModule, ReactiveFormsModule} from'@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -53,7 +54,11 @@ import { FollowingsComponent } from './followings/followings.component';
     FormsModule
     
   ],
-  providers: [],
+  providers: [ {
+    provide : HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi   : true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
