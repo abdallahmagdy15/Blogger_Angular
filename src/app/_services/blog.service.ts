@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Blog } from '../_models/blog';
 import { Author } from '../_models/author';
+import { Comment } from '../_models/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,11 @@ export class BlogService {
 
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings');
   }
+
+  addComment(comment:Comment){
+    
+    return this.http.post<Comment>('https://iti-blogger.herokuapp.com/blogs/'+this.selectedBlog._id+'/comments',comment);
+  }
+
 
 }
