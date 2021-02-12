@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col">
-        <img src="" alt="">
+        <img [src]="(author.dp)?author.dp:'../assets/male_dp.jpg'" class="authorDp" alt="">
     </div>
     <div class="col">
-        <label class="name">{{author.FirstName + " " + author.LastName}}</label>
-        <p class="jobTitle">{{author.JobTitle}}</p>
-        <p class="counters"><span>{{(author.Followers)?author.Followers.length:0}}</span> Followers •
-            <span>{{(author.Blogs)?author.Blogs.length:0}}</span>
+        <label class="name">{{author.firstName + " " + author.lastName}}</label>
+        <p class="jobTitle">{{author.jobTitle}}</p>
+        <p class="counters"><span>{{(author.followers)?author.followers.length:0}}</span> Followers •
+            <span>{{(author.blogs)?author.blogs.length:0}}</span>
             Articles</p>
     </div>
 </div>

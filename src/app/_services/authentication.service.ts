@@ -11,8 +11,6 @@ export class AuthenticationService {
   public getCurrUser() {
     const currUser = localStorage.getItem('currentUser');
     if (currUser != null){
-      console.log(JSON.parse(currUser));
-
       return JSON.parse(currUser);
     }
     else

@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     if (this.route.snapshot.url[0].path.toString() == "followings-blogs")
       this.blogService.getFollowingsBlogs().subscribe(blogs => {
+        console.log(blogs);
         for (let b of blogs) {
           this.allBlogs.push(new Blog(b.author, b.id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
             b.authorDp, b.photo, b.tags, b.likes, b.comments));

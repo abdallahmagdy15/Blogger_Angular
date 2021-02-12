@@ -16,22 +16,33 @@ export class FollowingsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    
-    let url;
-    if (this.route.parent != null)
-      url = this.route.parent.snapshot.url;
-    if (url != undefined)
-      if (url[2].path == "followers") {
+    const url = this.route.snapshot.url;
+    if(url[0].path.toString() == "followings"){
+        this.userSevice.getFollowings(this.auth.getCurrUser()._id).subscribe(authors => {
+          this.authors = authors;
+        });
+      }
+      else if(url[0].path.toString() == "followers")
+      {
         this.isFollowers=true;
-        this.userSevice.getFollowers(url[1].path).subscribe(authors => {
+        this.userSevice.getFollowers(this.auth.getCurrUser()._id).subscribe(authors => {
+          this.authors = authors;
+          //console.log(authors);
+        });
+      }
+      else if(url[2].path.toString() == "followings") {
+        this.userSevice.getFollowers(url[1].path.toString()).subscribe(authors => {
           this.authors = authors;
         });
       }
-      else {
-        this.userSevice.getFollowings(url[1].path).subscribe(authors => {
+      else if(url[2].path.toString() == "followers") {
+        this.isFollowers=true;
+        this.userSevice.getFollowers(url[1].path.toString()).subscribe(authors => {
           this.authors = authors;
         });
       }
+
+      
 
   }
 }

@@ -18,14 +18,12 @@ const routes: Routes = [
     path: 'home', component: HomeComponent
   },
   { path: 'followings-blogs', component: HomeComponent },
-  {
-    path: 'author/:authorid', component: ProfileComponent,
-    children: [
-      { path: 'edit-profile', component: ProfileEditComponent },
-      { path: 'followers', component: FollowingsComponent },
-      { path: 'followings', component: FollowingsComponent }
-    ]
-  },
+  { path: 'author/:authorid', component: ProfileComponent },
+  { path: 'author/:authorid/edit-profile', component: ProfileEditComponent },
+  { path: 'author/:authorid/followers', component: FollowingsComponent },
+  { path: 'author/:authorid/followings', component: FollowingsComponent },
+  { path: 'followers', component: FollowingsComponent },
+  { path: 'followings', component: FollowingsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'suggestions', component: SuggestionsComponent },

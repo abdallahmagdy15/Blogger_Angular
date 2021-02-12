@@ -35,9 +35,9 @@
         </div>
         <div class="col btn-group">
             <div class="btn" *ngIf="this.auth.isAuthenticated()">
-                <img class="navProfileDp"
-                 [src]="(this.auth.getCurrUser().diplayPicture)?this.author.diplayPicture : '../assets/male_dp.jpg'" >
-                <a class="" href="/author">{{this.auth.getCurrUser().firstName+" "+this.auth.getCurrUser().lastName}} </a>
+                <img class="authorDp"
+                 [src]="(this.auth.getCurrUser().dp)?this.author.dp : '../assets/male_dp.jpg'" >
+                <a class="" href="/author/{{this.auth.getCurrUser()._id}}">{{this.auth.getCurrUser().firstName+" "+this.auth.getCurrUser().lastName}} </a>
             </div>
             <button class="btn" *ngIf="!this.auth.isAuthenticated()">Login</button>
             <button class="btn" *ngIf="this.auth.isAuthenticated()">Search</button>

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Author } from './../_models/author';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 import { Blog } from '../_models/blog';

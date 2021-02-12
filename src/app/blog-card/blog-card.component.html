@@ -2,7 +2,7 @@
     <div class="card" >
         <div class="cc">
         <a>
-        <img [src]="blog.AuthorDp" class="auth_Pic" alt="authImg" height="10%" width="15%" style="border-radius: 100%;" >
+        <img [src]="(blog.authorDp)?blog.authorDp:'../assets/male_dp.jpg'" class="authorDp" alt="authorDp" >
             <p class="authorName">{{blog.authorName}}</p>
         </a>
             <img class="blog_Pic" [src]="blog.photo" *ngIf="blog.Photo != undefined" alt="blogImg">
@@ -37,6 +37,8 @@
                 </svg>
             </p>
             <button class="btn btn-info" (click)='showDetails()'>Details</button>
+            <button class="btn btn-info" >Like</button>
+
         </div>
     </div>
 </div>
