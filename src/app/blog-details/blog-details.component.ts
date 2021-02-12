@@ -18,6 +18,10 @@ export class BlogDetailsComponent implements OnInit {
   blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
   counterComments = this.blog.comments?.length
   ngOnInit(): void {
+    //edit remove =>blog auth id == current user id 
+
+    
+
     // if (!this.auth.isAuthenticated) {
     //   const curr = localStorage.getItem('currentUser');
     //   if (curr != null)

@@ -20,6 +20,7 @@ export class BlogCardComponent implements OnInit {
   constructor(public blogServices:BlogService) { }
   setSelectedBlog(){
     this.blogServices.selectedBlog=this.blog;
+    //console.log(this.blog);
   }
 
   showDetails(){

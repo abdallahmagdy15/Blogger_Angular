@@ -20,7 +20,7 @@ export class BlogsComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    console.log(this.blogs);
   }
 
 }
