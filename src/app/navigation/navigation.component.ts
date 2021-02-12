@@ -1,7 +1,7 @@
 import { Author } from './../_models/author';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { SearchService } from '../_services/search.service';
 import { ActivatedRoute, Router } from '@angular/router';
 

@@ -13,8 +13,12 @@ export class AuthenticationService {
     if (currUser != null){
       return JSON.parse(currUser);
     }
-    else
-      return new Author('', '', '', '', '', '');
+    else{
+       const author = new Author('', '', '', '', '', '',);
+       author.token="";
+       return author;
+
+    }
   }
   private isTokenExpired(token: string) {
     const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
