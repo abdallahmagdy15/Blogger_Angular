@@ -8,57 +8,80 @@ import { Blog } from '../_models/blog';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SearchService {
+  public query: string = "";
+  public source: string = "";
+  public id: string = "";
 
   constructor(public http: HttpClient, private auth: AuthenticationService) {
   }
 
+  public search(): Observable<any> {
+    switch (this.source) {
+      case "home":
+        return this.searchHomeBlogs();
+      case "followings-blogs":
+        return this.searchFollowingsBlogs();
+      case "suggestions":
+        return this.searchSuggestions();
+      case "followers":
+        return this.searchFollowers(this.id);
+      case "followings":
+        return this.searchFollowings(this.id);
+      case "author-blogs":
+        return this.searchProfileBlogs(this.id);
+      default:
+        return new Observable();
+    }
+  }
+
   //search for author
-  searchFollowers(query: string, uid: string): Observable<Author[]> {
-    if (query[0] == '@')
-      query = '?username=' + query.slice(1);
+  searchFollowers(uid: string): Observable<Author[]> {
+    if (this.query[0] == '@')
+      this.query = '?username=' + this.query.slice(1);
     else
-      query = '?authorname=' + query;
-    return this.http.get<Author[]>(`https://iti-blogger.herokuapp.com/users/${uid}/followers${query}`);
+      this.query = '?authorname=' + this.query;
+    return this.http.get<Author[]>(`https://iti-blogger.herokuapp.com/users/${uid}/followers${this.query}`);
   }
-  searchFollowings(query: string, uid: string): Observable<Author[]> {
-    if (query[0] == '@')
-      query = '?username=' + query.slice(1);
+  searchFollowings(uid: string): Observable<Author[]> {
+    if (this.query[0] == '@')
+      this.query = '?username=' + this.query.slice(1);
     else
-      query = '?authorname=' + query;
-    return this.http.get<Author[]>(`https://iti-blogger.herokuapp.com/users/${uid}/followings${query}`);
+      this.query = '?authorname=' + this.query;
+    return this.http.get<Author[]>(`https://iti-blogger.herokuapp.com/users/${uid}/followings${this.query}`);
   }
-  searchSuggestions(query: string): Observable<Author[]> {
-    if (query[0] == '@')
-      query = '?username=' + query.slice(1);
+  searchSuggestions(): Observable<Author[]> {
+    if (this.query[0] == '@')
+      this.query = '?username=' + this.query.slice(1);
     else
-      query = '?authorname=' + query;
-    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/suggestions/list' + query );
+      this.query = '?authorname=' + this.query;
+    return this.http.get<Author[]>('https://iti-blogger.herokuapp.com/users/suggestions/list' + this.query);
   }
 
 
   //search for blogs
-  searchHomeBlogs(query: string): Observable<Blog[]> {
-    if (query.startsWith('#'))
-      query = "?tag=" + query.slice(1);
+  searchHomeBlogs(): Observable<Blog[]> {
+    if (this.query.startsWith('#'))
+      this.query = "?tag=" + this.query.slice(1);
     else
-      query = `?title=${query}?body=${query}`;
-    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/search' + query);
+      this.query = `?title=${this.query}?body=${this.query}`;
+    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/search' + this.query);
   }
 
-  searchProfileBlogs(query: string, uid: string): Observable<Blog[]> {
-    if (query.startsWith('#'))
-      query = `${uid}?tag=${query.slice(1)}`;
+  searchProfileBlogs(uid: string): Observable<Blog[]> {
+    if (this.query.startsWith('#'))
+      this.query = `${uid}?tag=${this.query.slice(1)}`;
     else
-      query = `${uid}?title=${query}?body=${query}`;
-    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + query);
+      this.query = `${uid}?title=${this.query}?body=${this.query}`;
+    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + this.query);
   }
-  
-  searchFollowingsBlogs(query: string): Observable<Blog[]> {
-    if (query.startsWith('#'))
-      query = `$?tag=${query.slice(1)}`;
+
+  searchFollowingsBlogs(): Observable<Blog[]> {
+    if (this.query.startsWith('#'))
+      this.query = `$?tag=${this.query.slice(1)}`;
     else
-      query = `$?title=${query}?body=${query}`;
-    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings' + query );
+      this.query = `$?title=${this.query}?body=${this.query}`;
+    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings' + this.query);
   }
 }

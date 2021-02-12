@@ -1,3 +1,4 @@
+import { SearchService } from './../_services/search.service';
 import { BlogService } from './../_services/blog.service';
 import { Component, OnInit } from '@angular/core';
 import { Blog } from '../_models/blog';

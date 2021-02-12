@@ -2,3 +2,21 @@
     width: 2.5rem;
     height: 2.5rem;
 }
+.row{
+    width: 100%;
+}
+nav{
+    position: fixed;
+    height: 4rem;
+    top:1rem;
+    width:100%;
+    z-index: 1;
+}
+.searchForm{
+    position: fixed;
+    height: auto;
+    top: 5rem;
+    width:80%;
+    right: 0;
+    z-index: 1;
+}

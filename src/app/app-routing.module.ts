@@ -14,9 +14,7 @@ import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {
-    path: 'home', component: HomeComponent
-  },
+  { path: 'home', component: HomeComponent },
   { path: 'followings-blogs', component: HomeComponent },
   { path: 'author/:authorid', component: ProfileComponent },
   { path: 'author/:authorid/edit-profile', component: ProfileEditComponent },

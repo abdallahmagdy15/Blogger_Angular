@@ -1,5 +1,7 @@
-<h3 *ngIf="isFollowers">Followers</h3>
-<h3 *ngIf="!isFollowers">Followings</h3>
-<div class="card">
-    <app-author-card *ngFor="let author of authors" [author]="author"></app-author-card>
+<div class="content">
+    <h3 *ngIf="isFollowers">Followers</h3>
+    <h3 *ngIf="!isFollowers">Followings</h3>
+    <div class="card">
+        <app-author-card *ngFor="let author of authors" [author]="author"></app-author-card>
+    </div>
 </div>

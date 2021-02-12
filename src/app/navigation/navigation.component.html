@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
         <div class="col">
             <img src="" alt="logo" width="30" height="24">
         </div>
@@ -48,16 +47,17 @@
             <button class="btn" *ngIf="this.auth.isAuthenticated()"
                 (click)="(showSearch)?showSearch=false:showSearch=true">{{(showSearch)?'Close':'Search'}}</button>
         </div>
-    </div>
+
 </nav>
 
-<div class="" *ngIf="showSearch">
+
+<div class="searchForm" *ngIf="showSearch">
     <form>
         <div class="form-group row">
             <div class="col-sm-10">
                 <input class="form-control" type="search" />
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" (click)="submit()" class="btn btn-primary">Submit</button>
         </div>
     </form>
     <div class="recentResults">

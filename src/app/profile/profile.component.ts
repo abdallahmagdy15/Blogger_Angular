@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+    console.log(this.route.snapshot);
     this.route.queryParams.subscribe(params => {
       this.authorid = params['authorid'];
       this.initAuthor()
