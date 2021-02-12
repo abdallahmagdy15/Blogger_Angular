@@ -20,13 +20,7 @@
             {{blog.createdAt}}
         </p>
         <p class='blog_body '>{{blog.body}}</p>
-        <p class="likes">{{(blog.likes)?blog.likes.length:''}}
-            <svg xmlns="http://www.w3.org/2000/svg" style="margin-right: 2px;" width="16" height="16" fill="gray"
-                class="bi bi-heart-fill" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-            </svg>
-
+        <p class="likes" style="display: inline;">
             <svg style="margin-left: 2px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-chat-left-text" viewBox="0 0 16 16">
                 <path
@@ -35,7 +29,6 @@
                     d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
             </svg>
             {{counterComments}}
-            
         </p>
     </div>
     <app-comment-card></app-comment-card>
@@ -43,3 +36,38 @@
         <a routerLink='/home' class="mybtn" class="btn btn-primary">back</a>
     </div>
 </div>
+
+
+<!--
+     <div>
+            <p class="likes" style="display: inline;">{{(blog.likes)?blog.likes.length:''}}</p>
+            <form [formGroup]="formLike" (ngSubmit)="onSubmit(formLike)">
+                <button type="submit" *ngIf="flaglike == false" (click)="Like()" style="display: inline;" formControlName="likes">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                    *ngIf="flaglike == false"
+                    
+                    style="margin-right: 2px;" width="16" height="16" fill="gray"
+                        class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" 
+                            
+                            (click)="Like()"
+                            
+                            />
+                    </svg>
+                </button>
+                <button type="button" 
+                
+                *ngIf="flaglike == true" (click)="DisLike()" style="display: inline;" formControlName="likes">
+                    <svg xmlns="http://www.w3.org/2000/svg"   
+                    style="margin-right: 2px;" width="16" height="16" fill="red"
+                        class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" 
+                            />
+                    </svg>
+                </button>    
+              </form>
+        </div>
+
+-->

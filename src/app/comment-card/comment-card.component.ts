@@ -21,17 +21,14 @@ export class CommentCardComponent implements OnInit {
   commentForm:FormGroup=new FormGroup({});
   ngOnInit(): void {
     this.commentForm= new FormGroup({
-      commentBody:new FormControl('',Validators.required)//['',Validators.required]
+      body:new FormControl('',Validators.required)//['',Validators.required]
     });
   }
 
   onSubmit(form:FormGroup){
     
     if(this.authenticationService.isAuthenticated()){
-      // this.blogcomment.Body=form.value.commentBody;
-     // this.blogcomment.User=this.authenticationService.getCurrUser()
-
-     console.log(this.authenticationService.getCurrUser());
+  //   console.log(this.authenticationService.getCurrUser());
      this.blogService.addComment(form.value).subscribe(a=>{
       console.log(a);
   })

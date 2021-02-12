@@ -34,5 +34,14 @@ export class BlogService {
     return this.http.post<Comment>('https://iti-blogger.herokuapp.com/blogs/'+this.selectedBlog._id+'/comments',comment);
   }
 
+  addLike(authId:string){
+    
+    return this.http.post<Author>('https://iti-blogger.herokuapp.com/blogs/'+this.selectedBlog._id+'/like',authId);
+  }
+  unLike(authId:string){
+    
+    return this.http.post<Author>('https://iti-blogger.herokuapp.com/blogs/'+this.selectedBlog._id+'/unlike',authId);
+  }
+
 
 }
