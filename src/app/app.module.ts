@@ -23,6 +23,7 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { FollowingsComponent } from './followings/followings.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { FollowingsComponent } from './followings/followings.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
     
   ],
   providers: [ {
