@@ -1,6 +1,6 @@
-<div class="content">
+<div class="content" >
   <app-blogs *ngIf="isBlogs" [blogs]="blogs"></app-blogs>
-  <div class="card" *ngIf="!isBlogs">
+  <div class="card"  *ngIf="!isBlogs">
     <app-author-card *ngFor="let author of authors" [author]="author"></app-author-card>
   </div>
 </div>
