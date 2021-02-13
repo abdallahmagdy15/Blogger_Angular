@@ -15,10 +15,12 @@ export class AuthInterceptor implements HttpInterceptor {
   /**
    *
    */
-  constructor(private auth : AuthenticationService) {
-  }
+  constructor(private auth : AuthenticationService) { }
+  
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // add authorization header with basic auth credentials if available
+    let currentUser = this.auth.currentUserValue;
+    if (currentUser && currentUser.token) {
     req = req.clone({
       setHeaders: {
         'Content-Type' : 'application/json; charset=utf-8',
@@ -26,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
         'Authorization': this.auth.getToken(),
       },
     });
-
+  }
     return next.handle(req);
   }
 }
