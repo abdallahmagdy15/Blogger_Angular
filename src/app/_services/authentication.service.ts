@@ -14,17 +14,21 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthenticationService {
   
+  currentUser: Author;
+
   public getCurrUser() {
     const currUser = localStorage.getItem('currentUser');
-    if (currUser != null){
+    if (currUser != null)
       return JSON.parse(currUser);
-    }
+    
+    else if (this.currentUser != undefined )
+      return this.currentUser;
+    
     else{
        const author = new Author('', '', '', '', '', '',);
        author.token="";
        return author;
-
-    }
+      }
   }
   private isTokenExpired(token: string) {
     const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
@@ -38,9 +42,9 @@ export class AuthenticationService {
   }
   constructor(private http: HttpClient) { }
 
-    public get currentUserValue(): Author {
-      return this.getCurrUser();
-  }
+  //   public getcurrentUserValue(): Author {
+  //     return this.getCurrUser();
+  // }
   /**
    * tap():
    * Can perform side effects with observed data but does not modify the stream in any way. 
@@ -50,11 +54,15 @@ export class AuthenticationService {
    * @param username 
    * @param password 
    */
-  login(username: string, password: string) {
+  login(username: string, password: string, isRememberme: boolean) {
     return this.http.post<Author>('https://iti-blogger.herokuapp.com/users/login', { username, password })
       .pipe(tap(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
+        if (isRememberme)
         localStorage.setItem('currentUser', JSON.stringify(user));
+
+        this.currentUser= user;
+
         return user;
       }));
   }
