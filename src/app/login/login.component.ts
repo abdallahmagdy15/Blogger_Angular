@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AuthenticationService } from '../_services/authentication.service';
 import { AlertService } from '../_services/alert.service';
 
@@ -30,7 +29,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public auth: AuthenticationService,
     private alertService: AlertService,
-    private rememberMe: boolean
+    public rememberMe: boolean,
+    //@Inject(String) private rememberMe: boolean, private http: Http
   ) { 
       // redirect to home if already logged in
       if (this.auth.getCurrUser()) {
@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
    * Construct a new FormGroup instance. Returns FormGroup
   */
     this.rememberMe= false;
-    this.AutoLogin();
     
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -77,14 +76,10 @@ export class LoginComponent implements OnInit {
      * it can trust you that it's not and validate the empty string.
      */
     this.loading = true;  // loading Spinner= true.
-    this.auth.login(this.fieldget.username.value, this.fieldget.password.value)
+    this.auth.login(this.fieldget.username.value, this.fieldget.password.value, this.rememberMe)
       .pipe(first()) // first(): operator takes an optional predicate function and emits an error notification when no value matched when the source completed.
       .subscribe(
         data => {
-          localStorage.setItem('token', data['token'] !);
-          localStorage.setItem('username', data['username']);
-          localStorage.setItem('password', data['password'] !);
-          localStorage.setItem('userId', data['_id']);
           // Save value to local storage
           if(this.rememberMe) {
             localStorage.setItem('rememberMe', 'yes')
@@ -97,15 +92,4 @@ export class LoginComponent implements OnInit {
           this.loading = false; // loading Spinner= false.
         });
   }
-        AutoLogin(){
-          const accessTokenObj = localStorage.getItem("token");
-          // Retrieve rememberMe value from local storage
-          const rememberMe = localStorage.getItem('rememberMe');
-          //console.log(accessTokenObj);
-          if (accessTokenObj && rememberMe == 'yes') {
-            this.router.navigate(['/home']);
-          } else {
-            console.log("Plz, Login At First")
-          }
-        }
 }
