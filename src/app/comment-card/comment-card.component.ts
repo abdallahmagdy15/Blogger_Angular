@@ -1,10 +1,11 @@
 import { Comment } from '../_models/comment';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Author } from '../_models/author';
 import { Blog } from '../_models/blog';
 import { BlogService } from '../_services/blog.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../_services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comment-card',
@@ -13,27 +14,30 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class CommentCardComponent implements OnInit {
 
-  constructor(public blogService:BlogService,public authenticationService:AuthenticationService ) { }
+  @Input() comment: Comment = new Comment('',new Author('', '', '', '', '', ''), '', '', new Date(), new Date());
 
-  blog: Blog = this.blogService.selectedBlog
-  blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
-  counterComments = this.blog.comments?.length
-  commentForm:FormGroup=new FormGroup({});
+  constructor(public blogService: BlogService, public auth: AuthenticationService
+    , private router: Router
+  ) { }
+  isLiked: boolean = false;
+  likesCount: number = 0;
   ngOnInit(): void {
-    this.commentForm= new FormGroup({
-      body:new FormControl('',Validators.required)//['',Validators.required]
-    });
+    if (this.comment.likes?.includes(this.auth.getCurrUser()._id)) {
+      this.isLiked = true;
+    }
+    this.likesCount = (this.comment.likes ? this.comment.likes.length : 0)
   }
 
-  onSubmit(form:FormGroup){
-    
-    if(this.authenticationService.isAuthenticated()){
-  //   console.log(this.authenticationService.getCurrUser());
-     this.blogService.addComment(form.value).subscribe(a=>{
-      console.log(a);
-  })
+  likeComment() {
+    let likeState = "unlike";
+    this.likesCount--;
+    if (this.isLiked) {
+      likeState = "like";
+      this.likesCount += 2;
     }
 
+    this.blogService.likeComment(this.router.url.split('/')[2],this.comment._id, likeState).subscribe(res =>
+      console.log(res)
+    );
   }
-
 }

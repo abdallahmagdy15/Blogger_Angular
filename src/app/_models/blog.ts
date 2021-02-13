@@ -14,7 +14,7 @@ export class Blog {
                 public authorDp?: string,
                 public photo?: string,
                 public tags?: string[],
-                public likes?: Author[],
+                public likes?: string[],
                 public comments?: Comment[]
         ) {}
 }
