@@ -23,7 +23,7 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { FollowingsComponent } from './followings/followings.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertComponent } from './alert/alert.component';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -46,6 +46,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProfileEditComponent,
     FollowingsComponent,
     CommentCardComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule,
     //NgbModule
     
   ],
