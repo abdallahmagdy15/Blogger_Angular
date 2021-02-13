@@ -1,3 +1,7 @@
+/**
+ * The login component uses the authentication service to login to the application. 
+ * If the user is already logged in they are automatically redirected to the home page.
+ */
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,32 +19,45 @@ import { error } from '@angular/compiler/src/util';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;  //loginForm! : this tells TS that the value will be assigned at runtime.
+  loginForm!: FormGroup;  //loginForm!: this tells TS that the value will be assigned at runtime.
   loading = false;
   submitted = false;
-  returnUrl!: string; //returnUrl! : this tells TS that the value will be assigned at runtime.
+  returnUrl!: string;     //returnUrl!: this tells TS that the value will be assigned at runtime.
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     public auth: AuthenticationService,
-    private alertService: AlertService
-  ) { }
+    private alertService: AlertService,
+    private rememberMe: boolean
+  ) { 
+      // redirect to home if already logged in
+      if (this.auth.getCurrUser()) {
+        this.router.navigate(['/']);
+    }
+
+  }
 
   ngOnInit(): void {
-
+  /** object defines the form controls and validators,
+   * and is used to access data entered into the form
+   * Construct a new FormGroup instance. Returns FormGroup
+  */
+    this.rememberMe= false;
+    this.AutoLogin();
+    
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  // convenience getter for easy access to form fields
-  get fieldget() { return this.loginForm.controls; }
+    // convenience getter for easy access to form fields
+    get fieldget() { return this.loginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -53,16 +70,42 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
+    /**
+     * bind the remember me value to a model and save to local storage, do a check in the autoLogin()
+     * non-null assertion operator :
+     * It tells TypeScript that even though something looks like it could be null, 
+     * it can trust you that it's not and validate the empty string.
+     */
+    this.loading = true;  // loading Spinner= true.
     this.auth.login(this.fieldget.username.value, this.fieldget.password.value)
-      .pipe(first())
+      .pipe(first()) // first(): operator takes an optional predicate function and emits an error notification when no value matched when the source completed.
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          localStorage.setItem('token', data['token'] !);
+          localStorage.setItem('username', data['username']);
+          localStorage.setItem('password', data['password'] !);
+          localStorage.setItem('userId', data['_id']);
+          // Save value to local storage
+          if(this.rememberMe) {
+            localStorage.setItem('rememberMe', 'yes')
+          }
+            this.alertService.success('Successfully Login', true);
+            this.router.navigate([this.returnUrl]);
         },
         error => {
           this.alertService.error(error);
-          this.loading = false;
+          this.loading = false; // loading Spinner= false.
         });
   }
+        AutoLogin(){
+          const accessTokenObj = localStorage.getItem("token");
+          // Retrieve rememberMe value from local storage
+          const rememberMe = localStorage.getItem('rememberMe');
+          //console.log(accessTokenObj);
+          if (accessTokenObj && rememberMe == 'yes') {
+            this.router.navigate(['/home']);
+          } else {
+            console.log("Plz, Login At First")
+          }
+        }
 }
