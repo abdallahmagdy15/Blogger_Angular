@@ -42,6 +42,8 @@ export class SearchService {
       this.query = '?username=' + this.query.slice(1);
     else
       this.query = '?authorname=' + this.query;
+
+      console.log(uid);
     return this.http.get<Author[]>(`https://iti-blogger.herokuapp.com/users/${uid}/followers${this.query}`);
   }
   searchFollowings(uid: string): Observable<Author[]> {
@@ -65,7 +67,9 @@ export class SearchService {
     if (this.query.startsWith('#'))
       this.query = "?tag=" + this.query.slice(1);
     else
-      this.query = `?title=${this.query}?body=${this.query}`;
+      this.query = `?title=${this.query}&body=${this.query}`;
+
+    //  console.log('https://iti-blogger.herokuapp.com/blogs/search' + this.query)
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/search' + this.query);
   }
 
@@ -73,7 +77,7 @@ export class SearchService {
     if (this.query.startsWith('#'))
       this.query = `${uid}?tag=${this.query.slice(1)}`;
     else
-      this.query = `${uid}?title=${this.query}?body=${this.query}`;
+      this.query = `${uid}?title=${this.query}&body=${this.query}`;
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + this.query);
   }
 
@@ -81,7 +85,7 @@ export class SearchService {
     if (this.query.startsWith('#'))
       this.query = `$?tag=${this.query.slice(1)}`;
     else
-      this.query = `$?title=${this.query}?body=${this.query}`;
+      this.query = `$?title=${this.query}&body=${this.query}`;
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings' + this.query);
   }
 }

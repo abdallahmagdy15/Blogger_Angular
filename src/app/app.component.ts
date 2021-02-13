@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(private auth: AuthenticationService) {
   }
   ngOnInit() {
-    this.auth.login("abdallahm", "123456").subscribe(u => {
+    this.auth.login("ahmeds", "123456").subscribe(u => {
       console.log("login done " , this.auth.isAuthenticated());
     });
   }

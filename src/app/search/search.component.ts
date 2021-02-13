@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
   isBlogs: boolean = true;
   ngOnInit(): void {
     this.searchService.search().subscribe(data => {
-      console.log(data[0].author)
+      console.log(data)
       if (data[0].author == undefined) {//if it`s author array
         this.isBlogs = false;
         this.authors=data;

@@ -8,7 +8,7 @@ import { Blog } from '../_models/blog';
 
 @Component({
   selector: 'app-profile',
-  templateUrl:  './profile.component.html',
+  templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
@@ -21,16 +21,14 @@ export class ProfileComponent implements OnInit {
 
   constructor(private router: Router, public auth: AuthenticationService,
     private blogService: BlogService,
-    private userService: UserService,
-    private route: ActivatedRoute) { }
+    private userService: UserService) { }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot);
-    this.route.queryParams.subscribe(params => {
-      this.authorid = params['authorid'];
-      this.initAuthor()
-    });
 
+    this.authorid = this.router.url.split('/')[2];
+    console.log("klmkk",this.authorid);
+
+    this.initAuthor();
   }
 
   initAuthor() {
@@ -42,10 +40,12 @@ export class ProfileComponent implements OnInit {
     else {
       this.userService.getAuthor(this.authorid).subscribe(author => {
         this.author = author;
+        
       });
     }
     this.blogService.getAuthorBlogs(this.authorid).subscribe(blogs => {
       this.blogs = blogs;
+      console.log(blogs);
     });
   }
 

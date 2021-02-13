@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Blog } from '../_models/blog';
 import { Author } from '../_models/author';
+import { Comment } from '../_models/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class BlogService {
 
   selectedBlog: Blog = new Blog(new Author('', '', '', '', '', ''), '', '', '', new Date(), new Date(), '');
 
-  getBlogs()  {
+  getBlogs() {
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/home');
   }
 
@@ -27,5 +28,24 @@ export class BlogService {
 
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings');
   }
+  public getOneBlog(blogid: string): Observable<Blog> {
+    return this.http.get<Blog>('https://iti-blogger.herokuapp.com/blogs/' + blogid);
+  }
+
+  addComment(comment: Comment,blogid:string) {
+
+    return this.http.post<Comment>('https://iti-blogger.herokuapp.com/blogs/' + blogid + '/comments', comment);
+  }
+
+  likeBlog(blogid:string,likeState:string) {
+
+    return this.http.post(`https://iti-blogger.herokuapp.com/blogs/${blogid}/${likeState}`,{});
+  }
+
+  likeComment(blogid:string,commentid:string,likeState:string) {
+
+    return this.http.post(`https://iti-blogger.herokuapp.com/blogs/${blogid}/comments/${commentid}/${likeState}`,{});
+  }
+
 
 }

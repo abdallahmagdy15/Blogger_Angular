@@ -19,14 +19,14 @@ export class HomeComponent implements OnInit {
       this.blogService.getFollowingsBlogs().subscribe(blogs => {
         console.log(blogs);
         for (let b of blogs) {
-          this.allBlogs.push(new Blog(b.author, b.id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
+          this.allBlogs.push(new Blog(b.author, b._id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
             b.authorDp, b.photo, b.tags, b.likes, b.comments));
         }
       })
     else
       this.blogService.getBlogs().subscribe(blogs => {
         for (let b of blogs) {
-          this.allBlogs.push(new Blog(b.author, b.id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
+          this.allBlogs.push(new Blog(b.author, b._id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
             b.authorDp, b.photo, b.tags, b.likes, b.comments));
         }
       })
