@@ -22,7 +22,7 @@
             </p>
             <div *ngIf ="flag==true">
                 <p class="blog_body">{{blog.body}} </p>
-                <span   style="display: inline; font-weight: bold; text-decoration: underline; color: blue; " (click)='setSelectedBlog()' routerLink='/blog-details'>Read More</span><br>
+                <span   style="display: inline; font-weight: bold; text-decoration: underline; color: blue; " (click)='setSelectedBlog()' routerLink='/blog-details/{{blog._id}}' >Read More</span><br>
                 <button class="btn btn-secondary"  (click)='hideDetails()' style="margin-top: 1%;">Hide</button>
             </div>
             <p >{{(blog.likes)?blog.likes.length:''}}

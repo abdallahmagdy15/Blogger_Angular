@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'create-blog', component: BlogCreateComponent },
   { path: 'edit-blog/:blogid', component: BlogEditComponent },
-  { path: 'blog-details', component: BlogDetailsComponent },
+  { path: 'blog-details/:blogid', component: BlogDetailsComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
 ];
