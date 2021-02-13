@@ -1,5 +1,5 @@
 
-<!-- <p>login works!</p> 
+<!-- The component uses reactive form validation to validate the input fields, -->
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="username">Username</label>
@@ -16,6 +16,12 @@
         </div>
     </div>
     <div class="form-group">
+        <label style="display: flex">
+            <input type="checkbox" [(ngModel)]="rememberMe"> 
+            Remember me.
+        </label>
+    </div>
+    <div class="form-group">
         <button [disabled]="loading" class="btn btn-primary">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Login
@@ -23,4 +29,3 @@
         <a routerLink="/register" class="btn btn-link">Register</a>
     </div>
 </form>
--->
