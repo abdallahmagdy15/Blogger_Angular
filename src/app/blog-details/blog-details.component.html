@@ -1,3 +1,7 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
 <div class="card">
     <div class="author_data">
         <div class="blog_Pic_container">
@@ -30,6 +34,9 @@
             </svg>
             {{counterComments}}
         </p>
+        <i class="material-icons" (click)="Like()">favorite_border</i>
+        <i class="material-icons" style="color: red;" (click)="DisLike()" >favorite</i>
+
     </div>
     <app-comment-card></app-comment-card>
     <div style="margin: 1% auto;">
@@ -38,36 +45,3 @@
 </div>
 
 
-<!--
-     <div>
-            <p class="likes" style="display: inline;">{{(blog.likes)?blog.likes.length:''}}</p>
-            <form [formGroup]="formLike" (ngSubmit)="onSubmit(formLike)">
-                <button type="submit" *ngIf="flaglike == false" (click)="Like()" style="display: inline;" formControlName="likes">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                    *ngIf="flaglike == false"
-                    
-                    style="margin-right: 2px;" width="16" height="16" fill="gray"
-                        class="bi bi-heart-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" 
-                            
-                            (click)="Like()"
-                            
-                            />
-                    </svg>
-                </button>
-                <button type="button" 
-                
-                *ngIf="flaglike == true" (click)="DisLike()" style="display: inline;" formControlName="likes">
-                    <svg xmlns="http://www.w3.org/2000/svg"   
-                    style="margin-right: 2px;" width="16" height="16" fill="red"
-                        class="bi bi-heart-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" 
-                            />
-                    </svg>
-                </button>    
-              </form>
-        </div>
-
--->

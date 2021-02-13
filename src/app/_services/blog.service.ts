@@ -34,13 +34,13 @@ export class BlogService {
     return this.http.post<Comment>('https://iti-blogger.herokuapp.com/blogs/'+this.selectedBlog._id+'/comments',comment);
   }
 
-  addLike(authId:string){
+  addLike(id:string){
     
-    return this.http.post<Author>('https://iti-blogger.herokuapp.com/blogs/'+this.selectedBlog._id+'/like',authId);
+    return this.http.post<Author>('https://iti-blogger.herokuapp.com/blogs/'+id+'/like',{});
   }
-  unLike(authId:string){
+  unLike(id:string){
     
-    return this.http.post<Author>('https://iti-blogger.herokuapp.com/blogs/'+this.selectedBlog._id+'/unlike',authId);
+    return this.http.post<Author>('https://iti-blogger.herokuapp.com/blogs/'+id+'/unlike',{});
   }
 
 

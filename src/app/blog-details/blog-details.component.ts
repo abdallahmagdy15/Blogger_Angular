@@ -14,70 +14,56 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class BlogDetailsComponent implements OnInit {
 
-  constructor(public blogService: BlogService,public authintication:AuthenticationService ,public ar: ActivatedRoute,public auth :AuthenticationService , private router : Router) { }
-   blog: Blog = this.blogService.selectedBlog
-   //blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
+  constructor(public blogService: BlogService, public authintication: AuthenticationService, public ar: ActivatedRoute, public auth: AuthenticationService, private router: Router) { }
+  blog: Blog = this.blogService.selectedBlog
+  //blogcomment:Comment=new Comment(new Author('','','','','',''),'','');
   counterComments = this.blog.comments?.length
-  flaglike:boolean=false;
-  flagDislike:boolean=true;
+  flaglike: boolean = false;
+  //flagDislike:boolean=true;
 
-  formLike:FormGroup=new FormGroup({});
-   
-  Like(){
-    this.flaglike==false;
-    this.flagDislike==true;
-    //this.blog.likes?.push(this.authintication.getCurrUser()._id);
-  }
+  formLike: FormGroup = new FormGroup({});
 
-  DisLike(){
-    this.flaglike==true;
-    this.flagDislike==false;
-  }
+  Like() {
 
-onSubmit(form:FormGroup){
-  if(this.flaglike==false){
-    this.blogService.addLike(this.authintication.getCurrUser()._id).subscribe(a=>{
-
+    //this.flaglike == true;
+    this.blogService.addLike(this.blogService.selectedBlog._id).subscribe(a => {
+      console.log(a);
     });
-  }else{
-    this.blogService.unLike(this.authintication.getCurrUser()._id).subscribe(a=>{
+  }
 
-    })
+  DisLike() {
+    //this.flaglike == false;
+    this.blogService.unLike(this.blogService.selectedBlog._id).subscribe(a => {
+      console.log(a);
+    });
   }
   
-
-}
-
 
 
   ngOnInit(): void {
     //edit remove =>blog auth id == current user id
 
-    
-    console.log(this.blog);
-
-  /* 
-  ده انا اللى عامله 
-  
-  this.formLike=new FormGroup({
-      likes:new FormControl('')
-    }) */
-
-
-
-
-  /*  if(this.blog.likes?.length!=undefined){
-      for(let i = 0;i <this.blog.likes?.length;i++){
-        if(this.authintication.getCurrUser()._id == this.blog.likes[i]){
-            this.flaglike==true;
-        }else{
-          this.flaglike==false;
-        }
+    /*
+    check ==>
+      if(this.blogService.selectedBlog.likes?.includes(this.authintication.getCurrUser()._id)){
+        this.flaglike == true;
+      }else{
+        this.flaglike==false;
       }
-
-    }
-
-*/
+    */
+    
+    /*  if(this.blog.likes?.length!=undefined){
+        for(let i = 0;i <this.blog.likes?.length;i++){
+          if(this.authintication.getCurrUser()._id == this.blog.likes[i]){
+              this.flaglike==true;
+          }else{
+            this.flaglike==false;
+          }
+        }
+  
+      }
+  
+  */
 
 
 
