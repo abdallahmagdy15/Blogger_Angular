@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <label style="display: flex">
-                <input type="checkbox" [(ngModel)]="rememberMe">
+                <input type="checkbox" (change)="rememberMe=!rememberMe">
                 Remember me.
             </label>
         </div>
@@ -28,7 +28,7 @@
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                 Login
             </button>
-            <a [routerLink]="['/register']" routerLinkActive="router-link-active"  class="btn btn-link">Register</a>
+            <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="btn btn-link">Register</a>
         </div>
     </form>
 

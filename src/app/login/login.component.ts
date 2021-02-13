@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl!: string;     //returnUrl!: this tells TS that the value will be assigned at runtime.
-  rememberMe: boolean;
+  rememberMe: boolean=false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
      * and is used to access data entered into the form
      * Construct a new FormGroup instance. Returns FormGroup
     */
-    this.rememberMe = false;
+
+    console.log('remember me : ',this.rememberMe );
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
+    
     // reset alerts on submit
     this.alertService.clear();
 
