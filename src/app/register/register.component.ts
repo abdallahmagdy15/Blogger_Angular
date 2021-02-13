@@ -41,13 +41,13 @@ export class RegisterComponent implements OnInit {
      * 	A collection of child controls. The key for each child is the name under which it is registered.
      */
     this.registerForm = this.formBuilder.group({ 
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      username: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.maxLength(140)]],
+      lastName: ['', [Validators.required, Validators.maxLength(140)]],
+      username: ['', [Validators.required, Validators.maxLength(140)]],
       gender: [''],
       jobTitle: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern('/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/')]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       
   });
   
