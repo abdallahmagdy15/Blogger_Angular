@@ -32,21 +32,23 @@ export class BlogService {
     return this.http.get<Blog>('https://iti-blogger.herokuapp.com/blogs/' + blogid);
   }
 
-  addComment(comment: Comment,blogid:string) {
+  createBlog(blog:any) {
+    return this.http.post<Blog>('https://iti-blogger.herokuapp.com/blogs/',blog);
+  }
+
+  addComment(comment: Comment, blogid: string) {
 
     return this.http.post<Comment>('https://iti-blogger.herokuapp.com/blogs/' + blogid + '/comments', comment);
   }
 
-  
+  likeBlog(blogid: string, likeState: string) {
 
-  likeBlog(blogid:string,likeState:string) {
-
-    return this.http.post(`https://iti-blogger.herokuapp.com/blogs/${blogid}/${likeState}`,{});
+    return this.http.post(`https://iti-blogger.herokuapp.com/blogs/${blogid}/${likeState}`, {});
   }
 
-  likeComment(blogid:string,commentid:string,likeState:string) {
+  likeComment(blogid: string, commentid: string, likeState: string) {
 
-    return this.http.post(`https://iti-blogger.herokuapp.com/blogs/${blogid}/comments/${commentid}/${likeState}`,{});
+    return this.http.post(`https://iti-blogger.herokuapp.com/blogs/${blogid}/comments/${commentid}/${likeState}`, {});
   }
 
 
