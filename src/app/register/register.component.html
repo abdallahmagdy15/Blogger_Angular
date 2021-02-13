@@ -1,4 +1,4 @@
-<!-- <p>register works!</p> 
+<!-- The component uses reactive form validation to validate the input fields, -->
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="firstName">First Name</label>
@@ -21,7 +21,18 @@
             <div *ngIf="f.username.errors.required">Username is required</div>
         </div>
     </div>
-
+    <div class="form-group">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="gender" name="inlineRadioOptions" id="inlineRadio1"  value="male">
+            <label class="form-check-label" for="inlineRadio1">Male</label>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" formControlName="gender" name="inlineRadioOptions" id="inlineRadio2" value="female">
+        <label class="form-check-label" for="inlineRadio2">Female</label>
+      </div>
+    </div>
     <div class="form-group">
         <label for="jobtitle">Job Title</label>
         <input type="text" formControlName="jobtitle" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.jobtitle.errors }" />
@@ -52,4 +63,3 @@
         <a routerLink="/login" class="btn btn-link">Cancel</a>
     </div>
 </form>
--->
