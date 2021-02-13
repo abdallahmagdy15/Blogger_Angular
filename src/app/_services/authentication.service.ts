@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 /**
  * The authentication service is used to login and logout of the application, 
  * to login it posts the users credentials to the api and checks the response for a JWT token, 
@@ -13,24 +14,26 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  
+
   currentUser: Author;
 
   public getCurrUser() {
     const currUser = localStorage.getItem('currentUser');
     if (currUser != null)
       return JSON.parse(currUser);
-    
-    else if (this.currentUser != undefined )
+
+    else if (this.currentUser != undefined)
       return this.currentUser;
-    
-    else{
-       const author = new Author('', '', '', '', '', '',);
-       author.token="";
-       return author;
-      }
+
+    else {
+      const author = new Author('', '', '', '', '', '',);
+      author.token = "";
+      return author;
+    }
   }
   private isTokenExpired(token: string) {
+    if (token == '')
+      return true;
     const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
     return (Math.floor((new Date).getTime() / 1000)) >= expiry;
   }
@@ -40,7 +43,7 @@ export class AuthenticationService {
   public getToken(): string {
     return this.getCurrUser().token;
   }
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   //   public getcurrentUserValue(): Author {
   //     return this.getCurrUser();
@@ -59,9 +62,9 @@ export class AuthenticationService {
       .pipe(tap(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         if (isRememberme)
-        localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('currentUser', JSON.stringify(user));
 
-        this.currentUser= user;
+        this.currentUser = user;
 
         return user;
       }));
@@ -69,6 +72,9 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage and set current user to null
     localStorage.removeItem('currentUser');
+    this.currentUser = new Author('', '', '', '', '', '');
+    this.currentUser.token = "";
+    this.router.navigate(['/login']);
   }
 
 }

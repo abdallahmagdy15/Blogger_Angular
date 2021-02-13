@@ -32,7 +32,7 @@ export class BlogDetailsComponent implements OnInit {
       })
     }
     this.commentForm = new FormGroup({
-      commentBody: new FormControl(['', Validators.required])
+      commentBody: new FormControl('',[ Validators.required])
     });
   }
 

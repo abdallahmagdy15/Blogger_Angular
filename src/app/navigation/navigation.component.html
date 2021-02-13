@@ -43,11 +43,11 @@
                 <a class="" href="/author/{{this.auth.getCurrUser()._id}}">{{this.auth.getCurrUser().firstName+"
                     "+this.auth.getCurrUser().lastName}} </a>
             </div>
-            <button class="btn" *ngIf="!this.auth.isAuthenticated()">Login</button>
+            
             <button class="btn" *ngIf="this.auth.isAuthenticated()"
                 (click)="(showSearch)?showSearch=false:showSearch=true">{{(showSearch)?'Close':'Search'}}</button>
         </div>
-
+        <button class="btn" (click)="login()">{{(this.auth.isAuthenticated())?'Logout':'Login'}}</button>
 </nav>
 
 

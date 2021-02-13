@@ -24,6 +24,7 @@ import { SearchComponent } from './search/search.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { FollowingsComponent } from './followings/followings.component';
 import { AlertComponent } from './alert/alert.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -55,6 +56,7 @@ import { AlertComponent } from './alert/alert.component';
     FormsModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
     //NgbModule
     
   ],

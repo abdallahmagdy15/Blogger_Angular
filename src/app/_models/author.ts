@@ -1,7 +1,7 @@
 import { Links } from './links';
 import { Blog } from "./blog";
 
-export class Author {
+export class Author { 
     constructor(
         public _id: string,
         public username: string,

@@ -18,13 +18,11 @@ export class NavigationComponent implements OnInit {
 
     searchForm: FormGroup = new FormGroup({});
     ngOnInit(): void {
+        console.log(this.auth.isAuthenticated());
+
         this.searchForm = new FormGroup({
             searchText: new FormControl('')
         });
-
-
-
-
 
         if (this.auth.getCurrUser() != undefined)
             this.author = this.auth.getCurrUser();
@@ -36,22 +34,30 @@ export class NavigationComponent implements OnInit {
             this.searchService.query = form.value.searchText;
             const url = this.router.url.slice(1).split('/');
             if (url[0] == "author") {
-                if (url.length > 2){
+                if (url.length > 2) {
                     this.searchService.source = url[2];
                     this.searchService.id = url[1];
-                }else{
+                } else {
                     this.searchService.source = "author-blogs";
                     this.searchService.id = url[1];
                 }
             }
-            else{
+            else {
                 this.searchService.source = url[0];
                 this.searchService.id = this.auth.getCurrUser()._id;
             }
-               
+
 
 
             this.router.navigate(['/search']);
         }
+    }
+
+    login() {
+        if (this.auth.isAuthenticated())
+            this.auth.logout()
+        else
+            this.router.navigate(['/login'])
+
     }
 }

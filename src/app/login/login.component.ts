@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl!: string;     //returnUrl!: this tells TS that the value will be assigned at runtime.
+  rememberMe: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,23 +30,21 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public auth: AuthenticationService,
     private alertService: AlertService,
-    public rememberMe: boolean,
-    //@Inject(String) private rememberMe: boolean, private http: Http
-  ) { 
-      // redirect to home if already logged in
-      if (this.auth.getCurrUser()) {
-        this.router.navigate(['/']);
+  ) {
+    // redirect to home if already logged in
+    if (this.auth.isAuthenticated()) {
+      this.router.navigate(['/']);
     }
 
   }
 
   ngOnInit(): void {
-  /** object defines the form controls and validators,
-   * and is used to access data entered into the form
-   * Construct a new FormGroup instance. Returns FormGroup
-  */
-    this.rememberMe= false;
-    
+    /** object defines the form controls and validators,
+     * and is used to access data entered into the form
+     * Construct a new FormGroup instance. Returns FormGroup
+    */
+    this.rememberMe = false;
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -55,8 +54,8 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-    // convenience getter for easy access to form fields
-    get fieldget() { return this.loginForm.controls; }
+  // convenience getter for easy access to form fields
+  get fieldget() { return this.loginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -81,11 +80,11 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           // Save value to local storage
-          if(this.rememberMe) {
+          if (this.rememberMe) {
             localStorage.setItem('rememberMe', 'yes')
           }
-            this.alertService.success('Successfully Login', true);
-            this.router.navigate([this.returnUrl]);
+          this.alertService.success('Successfully Login', true);
+          this.router.navigate([this.returnUrl]);
         },
         error => {
           this.alertService.error(error);

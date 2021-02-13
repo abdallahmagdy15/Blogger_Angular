@@ -31,11 +31,9 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private alertService: AlertService
   ) { 
-      // redirect to home if already logged in
-      if (this.auth.getCurrUser()) {
-        this.router.navigate(['/']);
-    }
+     
   }
+  get fieldget() { return this.registerForm.controls; }
 
   ngOnInit(): void {
     /**
@@ -46,28 +44,29 @@ export class RegisterComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
-      gender: ['', Validators.required],
+      gender: [''],
       jobTitle: ['', Validators.required],
-      useremail: ['', [Validators.required, Validators.pattern('/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g')]],
+      email: ['', [Validators.required, Validators.pattern('/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       
   });
   
   }
 
-    onSubmit() {
+    onSubmit(registerForm:FormGroup) {
         this.submitted = true;
 
         // reset alerts on submit
         this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        if (registerForm.invalid) {
             return;
         }
 
         this.loading = true; // loading Spinner= true.
-        this.userService.register(this.registerForm.value)
+        console.log(registerForm.value);
+        this.userService.register(registerForm.value)
             .pipe(first()) // first(): operator takes an optional predicate function and emits an error notification when no value matched when the source completed.
             .subscribe(
                 data => {
