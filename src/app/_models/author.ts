@@ -1,14 +1,14 @@
 import { Links } from './links';
 import { Blog } from "./blog";
 
-export class Author {
+export class Author { 
     constructor(
         public _id: string,
         public username: string,
         public firstName: string,
         public lastName: string,
         public email: string,
-        public gender:string,
+        public gender: string,
         public jobTitle?: string,
         public password?: string,
         public dp?: string,
@@ -21,8 +21,4 @@ export class Author {
         public token?: string
 
     ) { }
-
-
-    
-
 }

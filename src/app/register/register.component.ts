@@ -1,3 +1,5 @@
+// The register component creates a new user with the user service when the register form is submitted.
+// If the user is already logged in they are automatically redirected to the home page.
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -14,50 +16,58 @@ import { AlertService } from '../_services/alert.service'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  registerForm: FormGroup=this.formBuilder.group({});
+  /** object defines the form controls and validators,
+   * and is used to access data entered into the form
+   * Construct a new FormGroup instance. Returns FormGroup
+  */  
+  registerForm: FormGroup = this.formBuilder.group({}); 
   loading = false;
   submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private reactFormsModule:ReactiveFormsModule,
-    private authenticationService: AuthenticationService,
+    public auth: AuthenticationService,
     private userService: UserService,
     private alertService: AlertService
-  ) { }
+  ) { 
+     
+  }
+  get fieldget() { return this.registerForm.controls; }
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      username: ['', Validators.required],
+    /**
+     *  controlsConfig Object :
+     * 	A collection of child controls. The key for each child is the name under which it is registered.
+     */
+    this.registerForm = this.formBuilder.group({ 
+      firstName: ['', [Validators.required, Validators.maxLength(140)]],
+      lastName: ['', [Validators.required, Validators.maxLength(140)]],
+      username: ['', [Validators.required, Validators.maxLength(140)]],
+      gender: [''],
       jobTitle: ['', Validators.required],
-      useremail: ['', [Validators.required, Validators.pattern('/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g')]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.pattern('/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/')]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       
   });
   
   }
-  
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
 
-    onSubmit() {
+    onSubmit(registerForm:FormGroup) {
         this.submitted = true;
 
         // reset alerts on submit
         this.alertService.clear();
 
         // stop here if form is invalid
-        if (this.registerForm.invalid) {
+        if (registerForm.invalid) {
             return;
         }
 
-        this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
+        this.loading = true; // loading Spinner= true.
+        console.log(registerForm.value);
+        this.userService.register(registerForm.value)
+            .pipe(first()) // first(): operator takes an optional predicate function and emits an error notification when no value matched when the source completed.
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
@@ -65,7 +75,7 @@ export class RegisterComponent implements OnInit {
                 },
                 error => {
                     this.alertService.error(error);
-                    this.loading = false;
+                    this.loading = false; // loading Spinner= false.
                 });
     }
 

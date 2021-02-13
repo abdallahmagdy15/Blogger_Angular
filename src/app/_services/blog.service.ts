@@ -16,7 +16,7 @@ export class BlogService {
 
   selectedBlog: Blog = new Blog(new Author('', '', '', '', '', ''), '', '', '', new Date(), new Date(), '');
 
-  getBlogs()  {
+  getBlogs() {
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/home');
   }
 
@@ -28,19 +28,25 @@ export class BlogService {
 
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings');
   }
-
-  addComment(comment:Comment){
-    
-    return this.http.post<Comment>('https://iti-blogger.herokuapp.com/blogs/'+this.selectedBlog._id+'/comments',comment);
+  public getOneBlog(blogid: string): Observable<Blog> {
+    return this.http.get<Blog>('https://iti-blogger.herokuapp.com/blogs/' + blogid);
   }
 
-  addLike(id:string){
-    
-    return this.http.post<Author>('https://iti-blogger.herokuapp.com/blogs/'+id+'/like',{});
+  addComment(comment: Comment,blogid:string) {
+
+    return this.http.post<Comment>('https://iti-blogger.herokuapp.com/blogs/' + blogid + '/comments', comment);
   }
-  unLike(id:string){
-    
-    return this.http.post<Author>('https://iti-blogger.herokuapp.com/blogs/'+id+'/unlike',{});
+
+  
+
+  likeBlog(blogid:string,likeState:string) {
+
+    return this.http.post(`https://iti-blogger.herokuapp.com/blogs/${blogid}/${likeState}`,{});
+  }
+
+  likeComment(blogid:string,commentid:string,likeState:string) {
+
+    return this.http.post(`https://iti-blogger.herokuapp.com/blogs/${blogid}/comments/${commentid}/${likeState}`,{});
   }
 
 
