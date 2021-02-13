@@ -1,3 +1,9 @@
+/**
+ * The authentication service is used to login and logout of the application, 
+ * to login it posts the users credentials to the api and checks the response for a JWT token, 
+ * if there is one it means authentication was successful so the user details including 
+ * the token are added to local storage.
+ */
 import { Author } from './../_models/author';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -30,10 +36,20 @@ export class AuthenticationService {
   public getToken(): string {
     return this.getCurrUser().token;
   }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
 
+    public get currentUserValue(): Author {
+      return this.getCurrUser();
   }
-
+  /**
+   * tap():
+   * Can perform side effects with observed data but does not modify the stream in any way. 
+   * Formerly called do(). 
+   * You can think of it as if observable was an array over time, 
+   * then tap() would be an equivalent to Array.forEach().
+   * @param username 
+   * @param password 
+   */
   login(username: string, password: string) {
     return this.http.post<Author>('https://iti-blogger.herokuapp.com/users/login', { username, password })
       .pipe(tap(user => {
