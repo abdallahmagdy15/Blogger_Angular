@@ -1,10 +1,8 @@
 import { BlogService } from './../_services/blog.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-blog-create',
@@ -14,12 +12,10 @@ import { HttpClient } from '@angular/common/http';
 export class BlogCreateComponent implements OnInit {
 
   createBlogForm: FormGroup;
-  fileSource: File ;
+  fileSource: File;
 
   constructor(
-    private http: HttpClient,
     public auth: AuthenticationService,
-    private router: Router,
     private formBuilder: FormBuilder,
     private blogsService: BlogService
   ) { }
@@ -28,33 +24,37 @@ export class BlogCreateComponent implements OnInit {
     this.createBlogForm = this.formBuilder.group({
       title: new FormControl('', [Validators.required, Validators.maxLength(140)]),
       body: new FormControl('', [Validators.required, Validators.maxLength(140)]),
-      photo: new FormControl('')
+      photo: new FormControl(''),
+      photoSource: new FormControl('')
     })
   }
-  
-  fileProgress(fileInput: any) {
-      this.fileSource = <File>fileInput.target.files[0];
+  uploadFile(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      console.log(file);
+      this.createBlogForm.patchValue({
+        photoSource: file
+      });
+    }
   }
 
-  onSubmit(){
+  onSubmit() {
     // stop here if form is invalid
     if (this.createBlogForm.invalid) {
       return;
     }
-    this.blogsService.createBlog(this.createBlogForm.value).subscribe(
+
+    var formData: any = new FormData();
+    formData.append("title", this.createBlogForm.get('title')!.value);
+    formData.append("body", this.createBlogForm.get('body')!.value);
+    const file = this.createBlogForm.get('photoSource')!.value;
+    if (file != "")
+      formData.append("photo", file);
+
+    this.blogsService.createBlog(formData).subscribe(
       res => {
-      console.log(res);
+        console.log(res);
       });
 
-    const formData = new FormData();
-    formData.append('file', this.fileSource);
-    //this.http.post<any>('https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload', formData)
-    this.http.post('http://localhost:4200/create-blog/', formData)
-      .subscribe(res => {
-        console.log(res);
-        alert('Uploaded Successfully.');
-      })
-  
-  
-}
+  }
 }

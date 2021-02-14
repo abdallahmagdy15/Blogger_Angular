@@ -21,7 +21,6 @@ import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { BlogCreateComponent } from './blog-create/blog-create.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { SearchComponent } from './search/search.component';
-import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { FollowingsComponent } from './followings/followings.component';
 import { AlertComponent } from './alert/alert.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -45,7 +44,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     BlogCreateComponent,
     BlogEditComponent,
     SearchComponent,
-    ProfileEditComponent,
     FollowingsComponent,
     CommentCardComponent,
     AlertComponent,

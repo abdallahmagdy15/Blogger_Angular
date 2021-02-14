@@ -2,7 +2,7 @@
     <form [formGroup]="createBlogForm" (ngSubmit)="onSubmit()">
         <input class="form-control" formControlName="title" type="text" placeholder="enter title">
         <textarea class="form-control" formControlName="body" placeholder="enter blog body"></textarea>
-        <input class="form-control" type="file" formControlName="photo" placeholder="attach photo">
+        <input class="form-control" type="file" (change)="uploadFile($event)" formControlName="photo" placeholder="attach photo">
         <input class="form-control" type="submit" value="Post as @{{this.auth.getCurrUser().username}}">
     </form>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormControlName, FormGroup } from '@angular/forms';
+import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../_models/author';
 import { AuthenticationService } from '../_services/authentication.service';
 import { UserService } from '../_services/user.service';
@@ -10,62 +10,59 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
-
+  author: Author;
   editProfileForm: FormGroup;
   constructor(public auth: AuthenticationService, public userService: UserService) { }
-  mData: Author = this.auth.getCurrUser();
 
-  onSubmit(form: FormGroup) {
-
-    if (form.value.firstName != undefined || form.value.firstName != "")
-      this.mData.firstName = form.value.firstName;
-
-    if (form.value.lastName != undefined || form.value.lastName != "")
-      this.mData.lastName = form.value.lastName;
-
-    if (form.value.gender != undefined || form.value.firstName != "")
-      this.mData.gender = form.value.gender;
-
-    if (form.value.dob != undefined || form.value.dob != "")
-      this.mData.dob = form.value.dob;
-
-    if (form.value.bio != undefined || form.value.bio != "")
-      this.mData.bio = form.value.bio;
-
-    if (form.value.email != undefined || form.value.email != "")
-      this.mData.email = form.value.email;
-
-    if (form.value.jobTitle != undefined || form.value.jobTitle != "")
-      this.mData.jobTitle = form.value.jobTitle;
-
-    if (form.value.password != undefined || form.value.firstName != "")
-      this.mData.password = form.value.password;
-
-
-    this.userService.editProfile(this.mData).subscribe(a => {
-      //this.auth.currentUser=a;
-      console.log(a);
-      localStorage.setItem('currentUser',JSON.stringify(this.mData));
-      
-    })
-
-    //console.log(this.auth.getCurrUser());
-
-
-  }
   ngOnInit(): void {
-    console.log(this.auth.getCurrUser());
+    this.author = this.auth.getCurrUser()
     this.editProfileForm = new FormGroup({
       email: new FormControl(''),
       firstName: new FormControl(''),
       lastName: new FormControl(''),
-      gender: new FormControl(''),
       jobTitle: new FormControl(''),
       dob: new FormControl(''),
       bio: new FormControl(''),
-      password: new FormControl('')
+      dp: new FormControl(''),
+      dpSource: new FormControl('')
     })
 
   }
+
+  uploadFile(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      console.log(file);
+      this.editProfileForm.patchValue({
+        dpSource: file
+      });
+    }
+  }
+
+  onSubmit() {
+
+    // stop here if form is invalid
+    if (this.editProfileForm.invalid) {
+      return;
+    }
+    var formData: any = new FormData();
+    formData.append("firstName", this.editProfileForm.get('firstName')!.value);
+    formData.append("lastName", this.editProfileForm.get('lastName')!.value);
+    formData.append("dob", this.editProfileForm.get('dob')!.value);
+    formData.append("bio", this.editProfileForm.get('bio')!.value);
+    formData.append("email", this.editProfileForm.get('email')!.value);
+    formData.append("jobTitle", this.editProfileForm.get('jobTitle')!.value);
+
+  
+    const file = this.editProfileForm.get('dpSource')!.value;
+    if (file != "")
+      formData.append("dp", file);
+
+    this.userService.editProfile(formData).subscribe(a => {
+      console.log(a);
+    })
+
+  }
+
 
 }

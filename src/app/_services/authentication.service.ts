@@ -31,15 +31,18 @@ export class AuthenticationService {
       return author;
     }
   }
+  
   private isTokenExpired(token: string) {
     if (token == '')
       return true;
     const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
     return (Math.floor((new Date).getTime() / 1000)) >= expiry;
   }
+
   public isAuthenticated(): boolean {
     return !this.isTokenExpired(this.getToken());
   }
+
   public getToken(): string {
     return this.getCurrUser().token;
   }
