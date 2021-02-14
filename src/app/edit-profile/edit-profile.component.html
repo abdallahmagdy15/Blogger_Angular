@@ -18,35 +18,40 @@
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">First Name</label>
                             <input type="text" formControlName="firstName"
-                                class="form-control" placeholder="first name" value={{mData.firstName}}></div>
+                                class="form-control" placeholder="first name"[(ngModel)]="mData.firstName" value={{mData.firstName}}></div>
                         <div class="col-md-6"><label class="labels">Last Name</label>
                             <input type="text" formControlName="lastName"
-                                class="form-control" placeholder="lastName"></div>
+                                class="form-control" placeholder="lastName"
+                                [(ngModel)]="mData.lastName" value={{mData.lastName}}
+                                ></div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <label class="labels">Email</label>
                             <input formControlName="email" type="text" class="form-control" placeholder="Email"
-                            [(ngModel)]="mData.email"
+                            [(ngModel)]="mData.email" value="{{mData.email}}"
                                 >
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Gender</label>
-                            <input formControlName="gender" type="text" class="form-control" placeholder="Gender"
+                            <input formControlName="gender" type="text" class="form-control" [(ngModel)]="mData.gender" value={{mData.gender}} placeholder="Gender"
                                >
                         </div>
                         <div class="col-md-12">
                             <label class="labels">jobTitle</label>
                             <input formControlName="jobTitle" type="text" class="form-control" placeholder="jobTitle"
+                            [(ngModel)]="mData.jobTitle" value={{mData.jobTitle}}
                                 >
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Date of Birth</label>
-                            <input formControlName="dob" type="text" class="form-control" placeholder="BirthDate"
+                            <input formControlName="dob" type="datetime" class="form-control" placeholder="BirthDate"
+                            [(ngModel)]="mData.dob" value={{mData.dob}}
                                 >
                         </div>
                         <div class="col-md-12"><label class="labels">bio</label>
                             <textarea formControlName="bio" type="text" class="form-control" placeholder="bio"
+                            [(ngModel)]="mData.bio" value={{mData.bio}}
                                 ></textarea>
                         </div>
                         <div class="col-md-12">
