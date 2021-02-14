@@ -1,7 +1,45 @@
-<div class="row">
+<div class="container ">
+    <div class="row ">
+        <div class="col-md-11">
+            <div class="people-nearby bg-light">
+
+                <div class="nearby-user" style="padding: 2%;">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2" style="padding: 2%;">
+                            <img [src]="(author.dp)?author.dp:'../assets/male_dp.jpg'" class="authorDp" alt="">
+                        </div>
+                        <div class="col-md-7 col-sm-7" style="padding: 2%;">
+                            <h5><a href="#" class="profile-link"><label class="name">{{author.firstName + " " +
+                                        author.lastName}}</label></a></h5>
+                            <p class="jobTitle">{{author.jobTitle}}</p>
+                            <p class="text-muted"><span>{{(author.followers)?author.followers.length:0}}</span>
+                                Followers •
+                                <span>{{(author.blogs)?author.blogs.length:0}}</span>Blog
+                            </p>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="padding: 2%;">
+                            <button type="button" class="btn btn-primary" (click)="follow()">follow</button>
+                            <button type="button" class="btn btn-danger" (click)="unfollow()">unfollow</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--
+<div class="row bg-light">
     <div class="col">
         <img [src]="(author.dp)?author.dp:'../assets/male_dp.jpg'" class="authorDp" alt="">
     </div>
+<div >
+    <button type="button" class="btn btn-primary" (click)="follow()">follow</button>
+    <button type="button" class="btn btn-danger" (click)="unfollow()">unfollow</button>
+
+</div>    
     <div class="col">
         <label class="name">{{author.firstName + " " + author.lastName}}</label>
         <p class="jobTitle">{{author.jobTitle}}</p>
@@ -10,3 +48,4 @@
             Articles</p>
     </div>
 </div>
+-->
