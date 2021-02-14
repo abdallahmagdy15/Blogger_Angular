@@ -1,13 +1,13 @@
 <div class="container rounded bg-white mt-5 mb-5">
-    
-        <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit(editProfileForm)">
-            <div class="row">
+
+    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+        <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" style="width: 100%; height: 100%;"
-                        src="../../assets/profile-10629561_766049776792856_645984354330777807_n.jpg">
-                    <span class="font-weight-bold">{{mData.firstName+" "+mData.lastName}}</span>
-                    <span class="text-black-50">{{mData.email}}</span><span> </span>
+                    <img class="rounded-circle mt-5" style="width: 100%; height: 100%;" [src]="author.dp">
+                    <input formControlName="dp" (change)="uploadFile($event)" type="file">
+                    <span class="font-weight-bold">{{author.firstName+" "+author.lastName}}</span>
+                    <span class="text-black-50">{{author.email}}</span><span> </span>
                 </div>
             </div>
             <div class="col-md-5 border-right">
@@ -17,64 +17,44 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">First Name</label>
-                            <input type="text" formControlName="firstName"
-                                class="form-control" placeholder="first name"[(ngModel)]="mData.firstName" value={{mData.firstName}}></div>
+                            <input type="text" formControlName="firstName" class="form-control" placeholder="first name"
+                                [(ngModel)]="author.firstName" value={{author.firstName}}>
+                        </div>
                         <div class="col-md-6"><label class="labels">Last Name</label>
-                            <input type="text" formControlName="lastName"
-                                class="form-control" placeholder="lastName"
-                                [(ngModel)]="mData.lastName" value={{mData.lastName}}
-                                ></div>
+                            <input type="text" formControlName="lastName" class="form-control" placeholder="lastName"
+                                [(ngModel)]="author.lastName" value={{author.lastName}}>
+                        </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <label class="labels">Email</label>
                             <input formControlName="email" type="text" class="form-control" placeholder="Email"
-                            [(ngModel)]="mData.email" value="{{mData.email}}"
-                                >
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Gender</label>
-                            <input formControlName="gender" type="text" class="form-control" [(ngModel)]="mData.gender" value={{mData.gender}} placeholder="Gender"
-                               >
+                                [(ngModel)]="author.email" value="{{author.email}}">
                         </div>
                         <div class="col-md-12">
                             <label class="labels">jobTitle</label>
                             <input formControlName="jobTitle" type="text" class="form-control" placeholder="jobTitle"
-                            [(ngModel)]="mData.jobTitle" value={{mData.jobTitle}}
-                                >
+                                [(ngModel)]="author.jobTitle" value={{author.jobTitle}}>
                         </div>
                         <div class="col-md-12">
                             <label class="labels">Date of Birth</label>
                             <input formControlName="dob" type="datetime" class="form-control" placeholder="BirthDate"
-                            [(ngModel)]="mData.dob" value={{mData.dob}}
-                                >
+                                [(ngModel)]="author.dob" value={{author.dob}}>
                         </div>
                         <div class="col-md-12"><label class="labels">bio</label>
                             <textarea formControlName="bio" type="text" class="form-control" placeholder="bio"
-                            [(ngModel)]="mData.bio" value={{mData.bio}}
-                                ></textarea>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Password</label>
-                            <input formControlName="password" type="password" class="form-control"
-                                placeholder="new Password">
+                                [(ngModel)]="author.bio" value={{author.bio}}></textarea>
                         </div>
 
                     </div>
-                    <!--
-                    <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                    </div>
-                    -->
-
+                    
                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save
                             Profile</button></div>
                 </div>
 
             </div>
-    </div>
+        </div>
 
-        </form>
+    </form>
 
 </div>
