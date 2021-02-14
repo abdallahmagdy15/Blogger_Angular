@@ -13,8 +13,6 @@
         <p class='blog_body'>{{comment.body}}</p>
         <p>{{likesCount}} Likes</p>
         <button class="btn" (click)="isLiked?isLiked=false:isLiked=true" [ngClass]="{'btn-primary': isLiked}"
-        (click)="likeComment()"
-        >{{isLiked?'Unlike':'like'}}</button>
-        
+            (click)="likeComment()">{{isLiked?'Unlike':'like'}}</button>
+
     </div>
-   
