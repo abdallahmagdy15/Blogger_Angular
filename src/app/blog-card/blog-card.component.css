@@ -1,7 +1,9 @@
+
 .card{
     margin: 1% auto;
     width:40%;
     height: 15%;
+    transition: all 1s;
 }
 .blog_Pic{
     margin: 1% auto;
@@ -17,4 +19,17 @@
      overflow: hidden;
      text-overflow: ellipsis;
      font-size: large;
+}
+input:focus,
+span:focus,
+.card:hover {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 2px solid #D500F9 !important;
+    background-image: linear-gradient(to right ,  #e794f875,#f8e5a8a2);
+    outline-width: 0;
+    font-weight: 400;
+    width:45%;
+    height:25%;
 }

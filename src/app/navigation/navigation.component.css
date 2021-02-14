@@ -1,3 +1,4 @@
+
 .authorDp{
     width: 2.5rem;
     height: 2.5rem;
@@ -11,6 +12,7 @@ nav{
     top:1rem;
     width:100%;
     z-index: 1;
+    background-image: linear-gradient(to right, #D500F9, #FFD54F);
 }
 .searchForm{
     position: fixed;
@@ -19,4 +21,21 @@ nav{
     width:80%;
     right: 0;
     z-index: 1;
+}
+li{
+    color: #fff;
+    background-image: linear-gradient(to right, #FFD54F, #D500F9);
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 10%;
+    
+}
+li:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #D500F9, #FFD54F)
+}
+img{
+    width: 60px;
+    height: 80%;
+    
 }

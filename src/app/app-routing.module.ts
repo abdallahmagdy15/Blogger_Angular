@@ -8,16 +8,17 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+//import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { BlogCreateComponent } from './blog-create/blog-create.component';
 import { BlogDetailsComponent } from './blog-details/blog-details.component';
 import { LoginComponent } from './login/login.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'followings-blogs', component: HomeComponent },
   { path: 'author/:authorid', component: ProfileComponent },
-  { path: 'author/:authorid/edit-profile', component: ProfileEditComponent },
+  { path: 'author/:authorid/edit-profile', component: EditProfileComponent },
   { path: 'author/:authorid/followers', component: FollowingsComponent },
   { path: 'author/:authorid/followings', component: FollowingsComponent },
   { path: 'followers', component: FollowingsComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'create-blog', component: BlogCreateComponent },
   { path: 'edit-blog/:blogid', component: BlogEditComponent },
   { path: 'blog-details/:blogid', component: BlogDetailsComponent },
+  
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
 ];

@@ -25,6 +25,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { FollowingsComponent } from './followings/followings.component';
 import { AlertComponent } from './alert/alert.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FollowingsComponent,
     CommentCardComponent,
     AlertComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

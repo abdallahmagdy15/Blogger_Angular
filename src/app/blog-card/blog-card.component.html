@@ -1,5 +1,5 @@
-<div>
-    <div class="card" >
+<div style="background-image: linear-gradient(to right,#eed47f62, #eb8afc9f);" >
+    <div class="card " style="background-image: linear-gradient(to right , #f8e5a8a2, #e794f875);" >
         <div class="cc">
         <a>
         <img [src]="(blog.authorDp)?blog.authorDp:'../assets/male_dp.jpg'" class="authorDp" alt="authorDp" >
@@ -16,7 +16,7 @@
                 {{blog.createdAt}}
             </p>
             
-                <span   style="display: inline; font-weight: bold; text-decoration: underline; color: blue; " (click)='setSelectedBlog()' routerLink='/blog-details/{{blog._id}}' >Read More</span><br>
+                <span   style="display: inline; font-weight: bold; text-decoration: underline; color: #8800a0; " (click)='setSelectedBlog()' routerLink='/blog-details/{{blog._id}}' >Read More</span><br>
             <div>
                 <span>{{(blog.likes)?blog.likes.length:'0'}} Likes </span>
                 <span>{{(blog.comments)?blog.comments.length:'0'}} Comments </span>

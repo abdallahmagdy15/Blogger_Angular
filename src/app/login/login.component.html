@@ -1,6 +1,98 @@
-<div class="content">
-    <!-- The component uses reactive form validation to validate the input fields, -->
+<div class="container px-4 py-5 mx-auto" style="background-color: #eb98fa8e;">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="card card0">
+            <div class="d-flex flex-lg-row flex-column-reverse">
+                <div class="card card1">
+                    <div class="row justify-content-center my-auto">
+                        <div class="col-md-8 col-10 my-5">
+                            <div class="row justify-content-center px-3 mb-3"> <img id="logo"
+                                    src="../../assets/unnamed.jpg"> </div>
+                            <h3 class="mb-5 text-center heading">We are B</h3>
+                            <h6 class="msg-info">Please login to your account</h6>
+                            <div class="form-group"> <label class="form-control-label text-muted">UserName</label>
+                                <input type="text" formControlName="username" id="email" name="email"
+                                    placeholder="UserName"
+                                    [ngClass]="{ 'is-invalid': submitted && fieldget.username.errors }"
+                                    class="form-control">
+                            </div>
+
+                            <div *ngIf="submitted && fieldget.password.errors" class="invalid-feedback">
+                                <div *ngIf="fieldget.password.errors.required">Password is required</div>
+                            </div>
+                            <div class="form-group"> <label class="form-control-label text-muted">Password</label>
+                                <input type="password" formControlName="password" id="psw" name="psw"
+                                    placeholder="password"
+                                    [ngClass]="{ 'is-invalid': submitted && fieldget.password.errors }"
+                                    class="form-control">
+                            </div>
+                            <div *ngIf="submitted && fieldget.password.errors" class="invalid-feedback">
+                                <div *ngIf="fieldget.password.errors.required">Password is required</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label style="display: flex">
+                                    <input type="checkbox" (change)="rememberMe=!rememberMe">
+                                    Remember me.
+                                </label>
+                            </div>
+
+                            <div class="row justify-content-center my-3 px-3"> <button [disabled]="loading"
+                                    type="submit" class="btn-block btn-color">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                    Login</button> </div>
+                            <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Forgot
+                                        Password?</small></a> </div>
+                        </div>
+                    </div>
+                    <div class="bottom text-center mb-5">
+                        <p [routerLink]="['/register']" routerLinkActive="router-link-active"
+                            class="sm-text mx-auto mb-3">Don't have an account?<button class="btn btn-white ml-2">Create
+                                new</button></p>
+                    </div>
+                </div>
+                <div class="card card2">
+                    <div class="my-auto mx-md-5 px-md-5 right">
+                        <h3 class="text-white">Welcome to our Site</h3> <small class="text-white">This site allows you
+                            to publish your own articles or projects that you have already done, and it also allows you
+                            to see what others have published and see their projects and learn from them.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+<div class="content">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" formControlName="username" class="form-control"
@@ -33,3 +125,10 @@
     </form>
 
 </div>
+
+
+
+
+
+
+-->

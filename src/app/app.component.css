@@ -7,3 +7,6 @@
 .content{
     margin-top: 6rem;
 }
+.router-outlet{
+    margin-top: 1%;
+}

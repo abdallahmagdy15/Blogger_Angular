@@ -35,4 +35,8 @@ export class UserService {
     return this.http.post('https://iti-blogger.herokuapp.com/users/register', author)
   }
 
+  editProfile(author: Author) {
+    return this.http.patch('https://iti-blogger.herokuapp.com/users/', author)
+  }
+
 }

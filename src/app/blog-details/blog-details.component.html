@@ -2,7 +2,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<div class="card">
+<div class="card" >
     <div class="author_data">
         <div class="blog_Pic_container">
             <img [src]="blog.authorDp" class="authorDp" alt="authorDp">
@@ -38,7 +38,7 @@
 <!-- comments -->
 <!-- add comment -->
 <form [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm)">
-    <input type="text" formControlName="commentBody" placeholder="enter your comment">
+    <textarea type="text" formControlName="commentBody" placeholder="enter your comment"></textarea>
     <button type="submit">Post as @{{auth.getCurrUser().username}}</button>
 </form>
 <!-- show comments -->

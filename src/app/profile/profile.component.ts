@@ -18,10 +18,11 @@ export class ProfileComponent implements OnInit {
   public authorid: string = "";
   public loggedInProfile: boolean = false;
 
-
   constructor(private router: Router, public auth: AuthenticationService,
     private blogService: BlogService,
     private userService: UserService) { }
+
+  public id:string = this.auth.getCurrUser()._id;
 
   ngOnInit(): void {
 
