@@ -12,7 +12,7 @@ nav{
     top:1rem;
     width:100%;
     z-index: 1;
-    background-image: linear-gradient(to right, #D500F9, #FFD54F);
+    background-image: linear-gradient(to right, #555455, #a7a5a2);
 }
 .searchForm{
     position: fixed;
@@ -24,7 +24,7 @@ nav{
 }
 li{
     color: #fff;
-    background-image: linear-gradient(to right, #FFD54F, #D500F9);
+    background-image: linear-gradient(to right, #a7a5a2);
     padding: 10px;
     cursor: pointer;
     margin-left: 10%;
@@ -32,7 +32,7 @@ li{
 }
 li:hover {
     color: #fff;
-    background-image: linear-gradient(to right, #D500F9, #FFD54F)
+    background-image: linear-gradient(to right, #555455, #a7a5a2);
 }
 img{
     width: 60px;

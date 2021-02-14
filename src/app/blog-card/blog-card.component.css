@@ -26,8 +26,8 @@ span:focus,
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border: 2px solid #D500F9 !important;
-    background-image: linear-gradient(to right ,  #e794f875,#f8e5a8a2);
+    border: 2px solid #363536 !important;
+    background-image: linear-gradient(to right ,  #363536af,#a7a5a2c4);
     outline-width: 0;
     font-weight: 400;
     width:45%;
