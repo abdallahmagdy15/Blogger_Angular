@@ -45,6 +45,8 @@ export class EditProfileComponent implements OnInit {
     this.userService.editProfile(this.mData).subscribe(a => {
       //this.auth.currentUser=a;
       console.log(a);
+      localStorage.setItem('currentUser',JSON.stringify(this.mData));
+      
     })
 
     //console.log(this.auth.getCurrUser());
