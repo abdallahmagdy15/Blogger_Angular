@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-blog-create',
@@ -10,8 +12,12 @@ import { AuthenticationService } from '../_services/authentication.service';
   styleUrls: ['./blog-create.component.css']
 })
 export class BlogCreateComponent implements OnInit {
+
   createBlogForm: FormGroup;
+  fileSource: File ;
+
   constructor(
+    private http: HttpClient,
     public auth: AuthenticationService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -25,16 +31,30 @@ export class BlogCreateComponent implements OnInit {
       photo: new FormControl('')
     })
   }
+  
+  fileProgress(fileInput: any) {
+      this.fileSource = <File>fileInput.target.files[0];
+  }
 
-  onSubmit() {
+  onSubmit(){
     // stop here if form is invalid
     if (this.createBlogForm.invalid) {
       return;
     }
-    this.blogsService.createBlog( this.createBlogForm.value).subscribe(res => {
+    this.blogsService.createBlog(this.createBlogForm.value).subscribe(
+      res => {
       console.log(res);
-    });
+      });
 
-  }
-
+    const formData = new FormData();
+    formData.append('file', this.fileSource);
+    //this.http.post<any>('https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload', formData)
+    this.http.post('http://localhost:4200/create-blog/', formData)
+      .subscribe(res => {
+        console.log(res);
+        alert('Uploaded Successfully.');
+      })
+  
+  
+}
 }
