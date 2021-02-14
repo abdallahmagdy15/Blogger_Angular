@@ -9,7 +9,8 @@
 nav{
     position: fixed;
     height: 4rem;
-    top:1rem;
+    top:0;
+    left: 0;
     width:100%;
     z-index: 1;
     background-image: linear-gradient(to right, #555455, #a7a5a2);
