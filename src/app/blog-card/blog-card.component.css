@@ -1,35 +1,37 @@
+body{
+    margin-top:20px;
+    background:#bebcbc;    
+}
+/*==================================================
+  Nearby People CSS
+  ==================================================*/
 
-.card{
-    margin: 1% auto;
-    width:40%;
-    height: 15%;
-    transition: all 1s;
+.people-nearby .google-maps{
+  background: #c7c5c5;
+  border-radius: 4px;
+  border: 1px solid #c7c5c5;
+  padding: 20px;
+  margin-bottom: 20px;
 }
-.blog_Pic{
-    margin: 1% auto;
-    width:100%;
-    height:50%
+
+.people-nearby .google-maps .map{
+  height: 300px;
+  width: 100%;
+  border: none;
 }
-.card-title{
-    width: 70%;
+
+.people-nearby .nearby-user{
+  padding: 20px 0;
+  border-top: 1px solid #c7c5c5;
+  border-bottom: 1px solid #c7c5c5;
+  margin-bottom: 20px;
 }
-.blog_body{
-    width: 100px;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
-     font-size: large;
+
+img.profile-photo-lg{
+  height: 10%;
+  width: 10%;
 }
-input:focus,
-span:focus,
-.card:hover {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 2px solid #363536 !important;
-    background-image: linear-gradient(to right ,  #363536af,#a7a5a2c4);
-    outline-width: 0;
-    font-weight: 400;
-    width:45%;
-    height:25%;
+.pp{
+  height: 100%;
+  width: 100%;
 }
