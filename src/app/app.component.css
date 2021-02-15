@@ -10,3 +10,33 @@
 .router-outlet{
     margin-top: 1%;
 }
+a{
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+  .btn{
+    color: var(--shade-grey);
+  }
+  
+.btn:hover{
+    color: black;
+}
+.btn:focus{
+border:none;
+box-shadow: none;
+}
+:root {
+    --shade-white:#fbfbfb;
+    --shade-blue: #3398db;
+    --shade-teal: #19bc9c;
+    --shade-green: #2ecc71;
+    --shade-purple: #9b59b6;
+    --shade-grey: #959799;
+    --shade-dark: #202020;
+
+}

@@ -1,42 +1,60 @@
+a:hover {
+    text-decoration: none;
+}
 
-.authorDp{
+.authorDp {
     width: 2.5rem;
     height: 2.5rem;
 }
-.row{
+
+.nav-row {
     width: 100%;
-}
-nav{
-    position: fixed;
     height: 4rem;
-    top:0;
-    left: 0;
-    width:100%;
-    z-index: 1;
-    background-image: linear-gradient(to right, #555455, #a7a5a2);
+    padding: 0 5%;
 }
-.searchForm{
-    position: fixed;
-    height: auto;
-    top: 5rem;
-    width:80%;
-    right: 0;
-    z-index: 1;
+
+.navbar {
+    background-color: var(--shade-dark);
 }
-li{
-    color: #fff;
-    background-image: linear-gradient(to right, #a7a5a2);
-    padding: 10px;
+
+.logo {
+    width: 10rem;
+    margin-left: 2.2rem;
+    margin-top: 1rem;
+}
+
+nav.row {
+    margin-left: 0;
+}
+
+.nav-link {
+    color: var(--shade-grey);
+}
+
+.nav-link:hover, .searchBtn:hover {
+    color: white;
+}
+
+.nav-row:first-child > .col:last-child {
+    margin-top: .4rem;
+}
+
+.active {
+    color: white;
+}
+
+.searchBtn {
     cursor: pointer;
-    margin-left: 1%;
-    
+    color: var(--shade-grey);
 }
-li:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #555455, #a7a5a2);
-}
-img{
+
+.searchForm {}
+
+img {
     width: 60px;
     height: 80%;
-    
+}
+
+.nav-container {
+    background-color: var(--shade-white);
 }

@@ -1,10 +1,10 @@
 import { Author } from './../_models/author';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
-//import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { SearchService } from '../_services/search.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-navigation',
@@ -13,6 +13,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class NavigationComponent implements OnInit {
     author: Author = new Author('', '', '', '', '', '');
+    faSearch=faSearch;
     constructor(public auth: AuthenticationService, private searchService: SearchService, private router: Router, private route: ActivatedRoute) { }
     showSearch: boolean = false;
 

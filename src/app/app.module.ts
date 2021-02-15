@@ -25,6 +25,7 @@ import { FollowingsComponent } from './followings/followings.component';
 import { AlertComponent } from './alert/alert.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -57,6 +58,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
+    FontAwesomeModule,
     //NgbModule
     
   ],
