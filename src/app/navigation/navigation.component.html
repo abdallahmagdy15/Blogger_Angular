@@ -21,8 +21,8 @@
         </div>
     </div>
     <nav class="navbar row nav-row navbar-expand-lg">
-        <div class="col">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="col-8">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="!showSearch">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" [routerLink]="['/home']"
@@ -53,6 +53,19 @@
                     </li>
                 </ul>
             </div>
+            <div class="searchForm" *ngIf="showSearch">
+                <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <input class="form-control" placeholder="What are you searching for?" formControlName="searchText" type="search" />
+                        </div>
+                        <a type="submit" class="btn btn-dark">Go!</a>
+                    </div>
+                </form>
+                <div class="recentResults">
+        
+                </div>
+            </div>
         </div>
         <div class="col">
             <div class="float-right">
@@ -64,19 +77,4 @@
             </div>
         </div>
     </nav>
-
-
-    <div class="searchForm" *ngIf="showSearch">
-        <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <input class="form-control" formControlName="searchText" type="search" />
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-        <div class="recentResults">
-
-        </div>
-    </div>
 </div>
