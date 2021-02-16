@@ -12,8 +12,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 export class BlogCreateComponent implements OnInit {
 
   createBlogForm: FormGroup;
-  fileSource: File;
-
+  photoPath: string | ArrayBuffer | null;
   constructor(
     public auth: AuthenticationService,
     private formBuilder: FormBuilder,
@@ -23,7 +22,7 @@ export class BlogCreateComponent implements OnInit {
   ngOnInit(): void {
     this.createBlogForm = this.formBuilder.group({
       title: new FormControl('', [Validators.required, Validators.maxLength(140)]),
-      body: new FormControl('', [Validators.required, Validators.maxLength(140)]),
+      body: new FormControl('', [Validators.required, Validators.maxLength(3000)]),
       photo: new FormControl(''),
       photoSource: new FormControl('')
     })
@@ -31,7 +30,16 @@ export class BlogCreateComponent implements OnInit {
   uploadFile(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      console.log(file);
+      var mimeType = file.type;
+      if (mimeType.match(/image\/*/) == null) {
+        alert("Only images are supported.");
+        return;
+      }
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.photoPath = reader.result;
+      }
       this.createBlogForm.patchValue({
         photoSource: file
       });
@@ -53,8 +61,13 @@ export class BlogCreateComponent implements OnInit {
 
     this.blogsService.createBlog(formData).subscribe(
       res => {
+        alert("Posted Successfully!");
         console.log(res);
-      });
+      },
+      err=>{
+        console.log(err);
+      }
+      );
 
   }
 }

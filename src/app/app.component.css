@@ -48,6 +48,12 @@ a {
 .img-responsive{
     width: inherit;
 }
+.b{
+    font-weight: bold;
+}
+.dark{
+    color: var(--shade-dark);
+}
 :root {
     --shade-white: #fbfbfb;
     --shade-smoke: #dfdfdf;

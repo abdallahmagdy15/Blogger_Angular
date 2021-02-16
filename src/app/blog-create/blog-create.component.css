@@ -1,0 +1,14 @@
+.content{
+    margin:1rem auto;
+    width: 80%;
+}
+.form-input{
+    margin: 1rem 0;
+}
+.form-control{
+    border-radius:0 ;
+}
+.form-submit{
+    background-color: var(--shade-blue);
+    color: white;
+}

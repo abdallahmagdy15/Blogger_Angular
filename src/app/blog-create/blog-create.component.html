@@ -1,8 +1,22 @@
 <div class="content">
+    <h2 class="b dark">Create New Blog</h2>
     <form [formGroup]="createBlogForm" (ngSubmit)="onSubmit()">
-        <input class="form-control" formControlName="title" type="text" placeholder="enter title">
-        <textarea class="form-control" formControlName="body" placeholder="enter blog body"></textarea>
-        <input class="form-control" type="file" (change)="uploadFile($event)" formControlName="photo" placeholder="attach photo">
-        <input class="form-control" type="submit" value="Post as @{{this.auth.getCurrUser().username}}">
+        <div class="form-input">
+            <input class="form-control" formControlName="title" type="text" placeholder="enter title">
+        </div>
+        <div class="form-input">
+            <textarea class="form-control" rows="10" formControlName="body" placeholder="enter blog body"></textarea>
+
+        </div>
+        <div class="form-input">
+            <input class="form-control" type="file" accept='image/*' (change)="uploadFile($event)" formControlName="photo"
+                placeholder="attach photo">
+        </div>
+        <div class="col mb-4" *ngIf="photoPath">
+            <img [src]="photoPath" class="img-responsive">
+        </div>
+        <div class="">
+            <input class="form-control form-submit" type="submit" value="Post as @{{this.auth.getCurrUser().username}}">
+        </div>
     </form>
 </div>
