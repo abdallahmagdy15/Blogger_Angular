@@ -45,9 +45,12 @@ a {
     border: none;
     box-shadow: none;
 }
-
+.img-responsive{
+    width: inherit;
+}
 :root {
     --shade-white: #fbfbfb;
+    --shade-smoke: #dfdfdf;
     --shade-blue: #3398db;
     --shade-teal: #19bc9c;
     --shade-green: #2ecc71;

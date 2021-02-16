@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Author } from '../_models/author';
 import { Blog } from '../_models/blog';
 import { BlogService } from '../_services/blog.service';
+import { faThumbsUp , faComment } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -15,8 +16,11 @@ export class BlogCardComponent implements OnInit {
   @Input() blog:Blog=new Blog(new Author('','','','','',''),'','','',new Date(),new Date(),'');
   
   counterComments:number|undefined;
-
+  faThumbsUp = faThumbsUp;
+  faComment = faComment;
+  
   flag:boolean=false;
+
   constructor(public blogServices:BlogService) { }
   setSelectedBlog(){
     this.blogServices.selectedBlog=this.blog;

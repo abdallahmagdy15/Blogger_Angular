@@ -1,58 +1,29 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
-            <div class="people-nearby">
-
-                <div class="nearby-user">
-                    <div class="row">
-                        <div class="col-md-5 col-sm-5">
-                            <img [src]="(blog.authorDp)?blog.authorDp:'../assets/male_dp.jpg'"  class="pp"
-                                alt="authorDp">
-                        </div>
-                        <div class="col-md-7 col-sm-7">
-                            <h3><a routerLink='/blog-details/{{blog._id}}' class="profile-link"><label class="title">{{blog.title}}</label></a></h3>
-                            <h5><a href="#" class="profile-link"><label class="name">by: {{blog.authorName}}</label></a>
-                            </h5>
-
-                            <p class="text-muted"><span>{{(blog.likes)?blog.likes.length:'0'}}</span> Like
-                                <span>{{(blog.comments)?blog.comments.length:'0'}}</span> Comment
-                            </p>
-                            
-                        </div>
-
-                    </div>
-                </div>
+        <div class="col-md-5 col-sm-5">
+            <img [src]="(blog.photo)?blog.photo:'../assets/male_dp.jpg'" class="img-responsive" alt="authorDp">
+        </div>
+        <div class="col-md-7 col-sm-7">
+            <div class="blogContent">
+                <h3>
+                    <a routerLink='/blog-details/{{blog._id}}' class="title">
+                        <label class=" title">{{blog.title}}</label>
+                    </a>
+                </h3>
             </div>
-        </div>
+            <div class="blogInfo">
+                <div class="btn">
+                    <img class="authorDp img-responsive" [src]="(blog.authorDp)?blog.authorDp:'../assets/male_dp.jpg'">
+                    <a class="btn" [routerLink]="['/author/'+blog.author]">By {{blog.authorName}} </a>
+                </div>
 
-
-
-
-        <!--
-<div >
-    <div class="card " >
-        <div class="cc">
-        <a>
-        <img [src]="(blog.authorDp)?blog.authorDp:'../assets/male_dp.jpg'" class="authorDp" alt="authorDp" >
-            <p class="authorName">{{blog.authorName}}</p>
-        </a>
-            <img class="blog_Pic" [src]="blog.photo" *ngIf="blog.photo" alt="blogImg">
-        </div>
-        <div class="card-body">
-
-            <h3 class="card-title">{{blog.title}}</h3>
-            <p class="createdAt" style="font-size:smaller;">
-
-                
-                {{blog.createdAt}}
-            </p>
-            
-                <span   style="display: inline; font-weight: bold; text-decoration: underline; color: #363536; " (click)='setSelectedBlog()' routerLink='/blog-details/{{blog._id}}' >Read More</span><br>
-            <div>
-                <span>{{(blog.likes)?blog.likes.length:'0'}} Likes </span>
-                <span>{{(blog.comments)?blog.comments.length:'0'}} Comments </span>
+                <p class="counter">
+                    <fa-icon [icon]="faThumbsUp"></fa-icon>
+                    <span> {{(blog.likes)?blog.likes.length:'0'}}</span> Likes •
+                    <fa-icon [icon]="faComment"></fa-icon>
+                    <span> {{(blog.comments)?blog.comments.length:'0'}}</span> Comments
+                </p>
             </div>
         </div>
     </div>
 </div>
--->
