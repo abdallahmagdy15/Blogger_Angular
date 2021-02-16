@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'suggestions', component: SuggestionsComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'search/:page', component: SearchComponent },
   { path: 'create-blog', component: BlogCreateComponent },
   { path: 'edit-blog/:blogid', component: BlogEditComponent },
   { path: 'blog-details/:blogid', component: BlogDetailsComponent },

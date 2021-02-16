@@ -13,27 +13,56 @@ export class SearchService {
   public query: string = "";
   public source: string = "";
   public id: string = "";
+  isResultsFound: boolean = false;
+  isBlogs: boolean = true;
+  authors: Author[] = [];
+  blogs: Blog[] = [];
 
   constructor(public http: HttpClient, private auth: AuthenticationService) {
   }
 
-  public search(): Observable<any> {
+  public search() {
+    let res!: Observable<any>;
     switch (this.source) {
       case "home":
-        return this.searchHomeBlogs();
+        res = this.searchHomeBlogs();
+        break;
       case "followings-blogs":
-        return this.searchFollowingsBlogs();
+        res = this.searchFollowingsBlogs();
+        break;
       case "suggestions":
-        return this.searchSuggestions();
+        res = this.searchSuggestions();
+        break;
       case "followers":
-        return this.searchFollowers(this.id);
+        res = this.searchFollowers(this.id);
+        break;
       case "followings":
-        return this.searchFollowings(this.id);
+        res = this.searchFollowings(this.id);
+        break;
       case "author-blogs":
-        return this.searchProfileBlogs(this.id);
+        res = this.searchProfileBlogs(this.id);
+        break;
       default:
-        return new Observable();
+        res = new Observable<any>();
     }
+    res.subscribe(data => {
+      if (data[0] != undefined) {//if there are any data 
+        this.isResultsFound = true;
+        if (data[0].author == undefined) {//if it`s author array
+          this.isBlogs = false;
+          this.authors = data;
+        }
+        else {
+          this.isBlogs = true;
+          this.blogs = data;
+        }
+      }
+      else {
+        this.isResultsFound = false;
+        this.blogs = [];
+        this.authors = [];
+      }
+    });
   }
 
   //search for author
@@ -43,7 +72,7 @@ export class SearchService {
     else
       this.query = '?authorname=' + this.query;
 
-      console.log(uid);
+    console.log(uid);
     return this.http.get<Author[]>(`https://iti-blogger.herokuapp.com/users/${uid}/followers${this.query}`);
   }
   searchFollowings(uid: string): Observable<Author[]> {
@@ -83,9 +112,9 @@ export class SearchService {
 
   searchFollowingsBlogs(): Observable<Blog[]> {
     if (this.query.startsWith('#'))
-      this.query = `$?tag=${this.query.slice(1)}`;
+      this.query = `?tag=${this.query.slice(1)}`;
     else
-      this.query = `$?title=${this.query}&body=${this.query}`;
+      this.query = `?title=${this.query}&body=${this.query}`;
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings' + this.query);
   }
 }

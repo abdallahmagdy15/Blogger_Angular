@@ -12,23 +12,10 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class SearchComponent implements OnInit {
 
-  authors: Author[] = [];
-  blogs: Blog[] = [];
+  constructor(private auth: AuthenticationService, private router: Router, public searchService: SearchService) { }
 
-  constructor(private auth: AuthenticationService, private router: Router, private searchService: SearchService) { }
-
-  isBlogs: boolean = true;
   ngOnInit(): void {
-    this.searchService.search().subscribe(data => {
-      console.log(data)
-      if (data[0].author == undefined) {//if it`s author array
-        this.isBlogs = false;
-        this.authors=data;
-      }
-      else
-        this.blogs=data;
-    }
-    );
+    
   }
 
 }
