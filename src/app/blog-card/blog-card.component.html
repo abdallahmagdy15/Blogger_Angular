@@ -16,10 +16,10 @@
             <div class="blogInfo">
                 <div class="btn">
                     <img class="authorDp img-responsive" [src]="(blog.authorDp)?blog.authorDp:'../assets/male_dp.jpg'">
-                    <a class="btn" [routerLink]="['/author/'+blog.author]">By {{blog.authorName}} • {{blog.updatedAt | date}} </a>
+                    <a class="btn authorName" [routerLink]="['/author/'+blog.author]">By {{blog.authorName}} • {{blog.updatedAt | date}} </a>
                 </div>
 
-                <a class="counter d-block">
+                <a class="counter d-block ml-2">
                     <fa-icon [icon]="faThumbsUp"></fa-icon>
                     <span> {{(blog.likes)?blog.likes.length:'0'}}</span> Likes •
                     <fa-icon [icon]="faComment"></fa-icon>

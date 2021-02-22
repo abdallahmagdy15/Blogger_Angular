@@ -1,27 +1,36 @@
-*{
-    
-}
-.author_data,.card-body{
-    margin: 1% auto;
-    text-align: left;
-}
-.likes{
-    text-align: right;
-}
-.mybtn{
-    margin: 1% auto;
-}
-.blog_Pic_container{
-    width: 50%;
-    height: 40%;
-    margin: 1% auto;
+.content {
+    width: 92%;
+    margin: 10rem auto 1rem;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    height: 100vh;
-  }
-  
-  
+.authorDp {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 7px;
+}
+
+.authorName {
+    font-weight: bold;
+}
+
+.blogPhoto, .blogBody {
+    font-size: 1.3em;
+    width: 80%;
+}
+
+.card-title {
+    font-size: 3.4em;
+}
+
+.counter {
+    font-size: 1.2em;
+}
+
+.liked {
+    color: var(--shade-blue);
+}
+
+.likeBtn {
+    border: 1px solid var(--shade-blue);
+    width: 8rem;
+}

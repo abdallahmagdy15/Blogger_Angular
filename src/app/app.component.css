@@ -6,8 +6,9 @@
 }
 
 .content {
-    margin-top: 10rem;
+    margin: 10rem 1rem 1rem;
 }
+
 
 .router-outlet {
     margin-top: 1%;
@@ -38,6 +39,10 @@ a {
     user-select: none;
     /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
+}
+
+.grey{
+    color: var(--shade-grey);
 }
 
 .btn, .btn-dark {

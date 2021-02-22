@@ -23,3 +23,10 @@
   color: var(--shade-grey);
   cursor: pointer;
 }
+
+fa-icon{
+  font-size: 1.2em;
+}
+.authorName{
+  font-size: 1.2em;
+}

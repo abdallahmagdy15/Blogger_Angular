@@ -6,6 +6,8 @@ import { Blog } from '../_models/blog';
 import { AuthenticationService } from '../_services/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../_models/author';
+import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-blog-details',
@@ -16,6 +18,7 @@ export class BlogDetailsComponent implements OnInit {
   blog: Blog = this.blogService.selectedBlog
   commentForm: FormGroup = new FormGroup({});
   isLiked: boolean = false;
+  faThumbsUp = faThumbsUp; faComment = faComment;
   likesCount: number = 0;
   constructor(public blogService: BlogService, public authintication: AuthenticationService,
     public auth: AuthenticationService, private router: Router, private blogsService: BlogService) { }
@@ -26,14 +29,16 @@ export class BlogDetailsComponent implements OnInit {
     if (this.blog._id == "") {
       this.blogsService.getOneBlog(this.router.url.split('/')[2]).subscribe(_blog => {
         this.blog = _blog;
+        console.log(this.blog);
         this.likesCount = (this.blog.likes ? this.blog.likes.length : 0)
         if (this.blog.likes?.includes(this.auth.getCurrUser()._id)) {
           this.isLiked = true;
         }
       })
     }
+
     this.commentForm = new FormGroup({
-      commentBody: new FormControl('',[ Validators.required])
+      commentBody: new FormControl('', [Validators.required])
     });
   }
 
@@ -41,14 +46,16 @@ export class BlogDetailsComponent implements OnInit {
 
     if (this.auth.isAuthenticated()) {
       this.blogService.addComment(
-        new Comment('',new Author('','','','','',''),'',form.value.commentBody,new Date(),new Date())
+        new Comment('', new Author('', '', '', '', '', ''), '', form.value.commentBody, new Date(), new Date())
         , this.blog._id).subscribe(a => {
-        console.log(a);
-      })
+          console.log(a);
+        })
     }
   }
 
+  searchByTag(tag: string) {
 
+  }
 
   likeBlog() {
     let likeState = "unlike";
