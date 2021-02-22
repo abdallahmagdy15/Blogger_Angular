@@ -6,13 +6,23 @@
 }
 
 .content {
-    margin-top: 1rem;
+    margin-top: 10rem;
 }
 
 .router-outlet {
     margin-top: 1%;
 }
 
+:root {
+    --shade-white: #fbfbfb;
+    --shade-smoke: #dfdfdf;
+    --shade-blue: #3398db;
+    --shade-teal: #19bc9c;
+    --shade-green: #2ecc71;
+    --shade-purple: #9b59b6;
+    --shade-grey: #959799;
+    --shade-dark: #202020;
+}
 a {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -53,14 +63,4 @@ a {
 }
 .dark{
     color: var(--shade-dark);
-}
-:root {
-    --shade-white: #fbfbfb;
-    --shade-smoke: #dfdfdf;
-    --shade-blue: #3398db;
-    --shade-teal: #19bc9c;
-    --shade-green: #2ecc71;
-    --shade-purple: #9b59b6;
-    --shade-grey: #959799;
-    --shade-dark: #202020;
 }

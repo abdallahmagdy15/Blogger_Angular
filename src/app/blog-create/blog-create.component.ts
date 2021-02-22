@@ -11,6 +11,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class BlogCreateComponent implements OnInit {
 
+  isSubmitted:boolean;
   createBlogForm: FormGroup;
   photoPath: string | ArrayBuffer | null;
   constructor(
@@ -47,6 +48,7 @@ export class BlogCreateComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isSubmitted = true;
     // stop here if form is invalid
     if (this.createBlogForm.invalid) {
       return;
@@ -62,6 +64,7 @@ export class BlogCreateComponent implements OnInit {
     this.blogsService.createBlog(formData).subscribe(
       res => {
         alert("Posted Successfully!");
+        this.isSubmitted=false;
         console.log(res);
       },
       err=>{

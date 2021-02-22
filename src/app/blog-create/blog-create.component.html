@@ -15,8 +15,11 @@
         <div class="col mb-4" *ngIf="photoPath">
             <img [src]="photoPath" class="img-responsive">
         </div>
-        <div class="">
-            <input class="form-control form-submit" type="submit" value="Post as @{{this.auth.getCurrUser().username}}">
+        <div class="fixed-bottom">
+            <button  [attr.disabled]="isSubmitted?true:null" class="form-control form-submit" type="submit">
+             <span *ngIf="isSubmitted" class="spinner-border spinner-border-sm mr-1"></span>
+             Post as @{{this.auth.getCurrUser().username}}
+            </button>
         </div>
     </form>
 </div>
