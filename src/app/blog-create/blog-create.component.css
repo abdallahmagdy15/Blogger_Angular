@@ -1,14 +1,33 @@
-.content{
-    margin:10rem auto 1rem;
+.content {
+    margin: 10rem auto 1rem;
     width: 80%;
 }
-.form-input{
+
+.form-input {
     margin: 1rem 0;
 }
-.form-control{
-    border-radius:0 ;
+
+.form-control {
+    border-radius: 0;
 }
-.form-submit{
+
+.form-submit {
     background-color: var(--shade-blue);
     color: white;
+    height: 4rem;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.form-submit:hover {
+    box-shadow: 0px 0px 10px var(--shade-blue);
+}
+
+.btn {
+    cursor: pointer;
+    border: 1px solid var(--shade-grey);
+}
+
+#attachPhoto {
+    display: none;
 }

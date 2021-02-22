@@ -2,24 +2,51 @@
     <h2 class="b dark">Create New Blog</h2>
     <form [formGroup]="createBlogForm" (ngSubmit)="onSubmit()">
         <div class="form-input">
-            <input class="form-control" formControlName="title" type="text" placeholder="enter title">
+            <input class="form-control" formControlName="title" type="text"
+            [ngClass]="{ 'is-invalid': isSubmitted && fieldget.title.errors }"
+            placeholder="Enter title">
         </div>
-        <div class="form-input">
-            <textarea class="form-control" rows="10" formControlName="body" placeholder="enter blog body"></textarea>
+        <div *ngIf="isSubmitted && fieldget.title.errors" class="invalid-feedback d-block">
+            <div>Please enter a valid title</div>
+        </div>
 
-        </div>
         <div class="form-input">
-            <input class="form-control" type="file" accept='image/*' (change)="uploadFile($event)" formControlName="photo"
-                placeholder="attach photo">
+            <textarea class="form-control" rows="10" formControlName="body" placeholder="Enter blog body" 
+             [ngClass]="{ 'is-invalid': isSubmitted && fieldget.body.errors }"
+             ></textarea>
         </div>
+        <div *ngIf="isSubmitted && fieldget.body.errors" class="invalid-feedback  d-block">
+            <div>Please enter a valid body</div>
+        </div>
+
+        <div class="form-input">
+            <label for="attachPhoto" class="btn">
+                <fa-icon [icon]="faUpload"></fa-icon> Upload Photo
+            </label>
+            <input id="attachPhoto" class="form-control" type="file" accept='image/*' (change)="uploadFile($event)"
+                formControlName="photo" placeholder="attach photo">
+        </div>
+
         <div class="col mb-4" *ngIf="photoPath">
             <img [src]="photoPath" class="img-responsive">
         </div>
         <div class="fixed-bottom">
-            <button  [attr.disabled]="isSubmitted?true:null" class="form-control form-submit" type="submit">
-             <span *ngIf="isSubmitted" class="spinner-border spinner-border-sm mr-1"></span>
-             Post as @{{this.auth.getCurrUser().username}}
+            <button [attr.disabled]="(this.createBlogForm.invalid && isSubmitted)?true:null" class="form-control form-submit" type="submit">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-md mr-1"></span>
+                Post as @{{this.auth.getCurrUser().username}}
             </button>
         </div>
     </form>
+    <div *ngIf="isSuccess" class="alert alert-success fixed-bottom" role="alert">
+        Your article was published successfully!
+        <button type="button" (click)="isSuccess=false" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div *ngIf="isFailed" class="alert alert-danger fixed-bottom" role="alert">
+        An Error Occurred , Please try again later!
+        <button type="button" (click)="isFailed=false" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
 </div>

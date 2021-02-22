@@ -23,6 +23,7 @@
     --shade-grey: #959799;
     --shade-dark: #202020;
 }
+
 a {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -39,7 +40,7 @@ a {
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
-.btn , .btn-dark  {
+.btn, .btn-dark {
     color: var(--shade-grey);
 }
 
@@ -51,16 +52,25 @@ a {
     color: white;
 }
 
-.btn:focus , .btn-dark:focus  {
+.btn:focus, .btn-dark:focus {
     border: none;
     box-shadow: none;
 }
-.img-responsive{
+
+.img-responsive {
     width: inherit;
 }
-.b{
+
+.b {
     font-weight: bold;
 }
-.dark{
+
+.dark {
     color: var(--shade-dark);
+}
+
+.alert {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 4rem;
 }

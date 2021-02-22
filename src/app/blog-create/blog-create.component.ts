@@ -1,8 +1,9 @@
+import { Router } from '@angular/router';
 import { BlogService } from './../_services/blog.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
-
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-blog-create',
@@ -11,10 +12,13 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class BlogCreateComponent implements OnInit {
 
-  isSubmitted:boolean;
+  faUpload=faUpload;
+  isSubmitted: boolean; isSuccess = false; isFailed = false;isLoading=false;
+  error: string = "";
   createBlogForm: FormGroup;
   photoPath: string | ArrayBuffer | null;
   constructor(
+    private router: Router,
     public auth: AuthenticationService,
     private formBuilder: FormBuilder,
     private blogsService: BlogService
@@ -47,6 +51,8 @@ export class BlogCreateComponent implements OnInit {
     }
   }
 
+  get fieldget() { return this.createBlogForm.controls; }
+
   onSubmit() {
     this.isSubmitted = true;
     // stop here if form is invalid
@@ -61,16 +67,22 @@ export class BlogCreateComponent implements OnInit {
     if (file != "")
       formData.append("photo", file);
 
+      this.isLoading=true;
     this.blogsService.createBlog(formData).subscribe(
       res => {
-        alert("Posted Successfully!");
-        this.isSubmitted=false;
-        console.log(res);
+        this.isLoading=false;
+        this.isSubmitted = false;
+        this.isSuccess = true;
+        //this.router.navigate(['/home']);
       },
-      err=>{
+      err => {
         console.log(err);
+        this.isSubmitted = false;
+        this.isLoading=false;
+        this.error = err;
+        this.isFailed = true;
       }
-      );
+    );
 
   }
 }
