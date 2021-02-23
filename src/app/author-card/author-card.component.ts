@@ -13,7 +13,7 @@ export class AuthorCardComponent implements OnInit {
   constructor(public userservice: UserService, private auth: AuthenticationService) { }
 
   ngOnInit(): void {
-    if (this.auth.getCurrUser().followings.filter((id: string) => id == this.author._id) > 0) {
+    if (this.auth.getCurrUser().followings.filter((id: string) => id == this.author._id).length > 0) {
       this.isFollowed = true;
     }
   }

@@ -25,10 +25,7 @@ export class ProfileComponent implements OnInit {
   public id:string = this.auth.getCurrUser()._id;
 
   ngOnInit(): void {
-
     this.authorid = this.router.url.split('/')[2];
-    console.log("klmkk",this.authorid);
-
     this.initAuthor();
   }
 

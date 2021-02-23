@@ -19,10 +19,11 @@ export class AuthenticationService {
   currentUser: Author;
 
   public updateCurrUser() {
-    this.userService.getAuthor(this.getCurrUser()._id).subscribe(user => {
-      user.token = this.getToken();
-      localStorage.setItem('currentUser', JSON.stringify(user));
-    });;
+    this.http.get<Author>('https://iti-blogger.herokuapp.com/users/' +
+      this.getCurrUser()._id).subscribe(user => {
+        user.token = this.getToken();
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      });;
   }
 
   public getCurrUser() {
@@ -54,7 +55,7 @@ export class AuthenticationService {
   public getToken(): string {
     return this.getCurrUser().token;
   }
-  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   login(username: string, password: string, isRememberme: boolean) {
