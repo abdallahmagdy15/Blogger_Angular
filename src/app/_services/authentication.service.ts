@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { Router } from '@angular/router';
 /**
  * The authentication service is used to login and logout of the application, 
@@ -17,6 +18,13 @@ export class AuthenticationService {
 
   currentUser: Author;
 
+  public updateCurrUser() {
+    this.userService.getAuthor(this.getCurrUser()._id).subscribe(user => {
+      user.token = this.getToken();
+      localStorage.setItem('currentUser', JSON.stringify(user));
+    });;
+  }
+
   public getCurrUser() {
     const currUser = localStorage.getItem('currentUser');
     if (currUser != null)
@@ -31,7 +39,7 @@ export class AuthenticationService {
       return author;
     }
   }
-  
+
   private isTokenExpired(token: string) {
     if (token == '')
       return true;
@@ -46,20 +54,9 @@ export class AuthenticationService {
   public getToken(): string {
     return this.getCurrUser().token;
   }
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private userService: UserService) { }
 
-  //   public getcurrentUserValue(): Author {
-  //     return this.getCurrUser();
-  // }
-  /**
-   * tap():
-   * Can perform side effects with observed data but does not modify the stream in any way. 
-   * Formerly called do(). 
-   * You can think of it as if observable was an array over time, 
-   * then tap() would be an equivalent to Array.forEach().
-   * @param username 
-   * @param password 
-   */
+
   login(username: string, password: string, isRememberme: boolean) {
     return this.http.post<Author>('https://iti-blogger.herokuapp.com/users/login', { username, password })
       .pipe(tap(user => {
