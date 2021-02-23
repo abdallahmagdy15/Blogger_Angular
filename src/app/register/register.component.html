@@ -2,14 +2,14 @@
 
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)" class="bg-light">
         <div class="card card0" style="margin: 1% auto; width: 100%;">
-            <div >
+            <div>
                 <div class="card card1 " style="margin: 1% auto;">
                     <div class="row justify-content-center my-auto">
                         <div class="col-md-8 col-10 my-5">
                             <h6 class="msg-info lead">Register</h6>
-                            <div class="form-group"> <label class="form-control-label text-muted">firstName</label>
+                            <div class="form-group"> <label class="form-control-label text-muted">First Name</label>
                                 <input type="text" formControlName="firstName" id="firstName" name="firstName"
-                                    placeholder="firstName"
+                                    placeholder="First Name"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.firstName.errors }"
                                     class="form-control">
                                 <div *ngIf="submitted && fieldget.firstName.errors" class="invalid-feedback">
@@ -17,9 +17,9 @@
                                 </div>
                             </div>
 
-                            <div class="form-group"> <label class="form-control-label text-muted">lastName</label>
+                            <div class="form-group"> <label class="form-control-label text-muted">Last Name</label>
                                 <input type="text" formControlName="lastName" id="lastName" name="lastName"
-                                    placeholder="lastName"
+                                    placeholder="Last Name"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.lastName.errors }"
                                     class="form-control">
                                 <div *ngIf="submitted && fieldget.lastName.errors" class="invalid-feedback">
@@ -27,9 +27,9 @@
                                 </div>
                             </div>
 
-                            <div class="form-group"> <label class="form-control-label text-muted">username</label>
+                            <div class="form-group"> <label class="form-control-label text-muted">User Name</label>
                                 <input type="text" formControlName="username" id="username" name="username"
-                                    placeholder="username"
+                                    placeholder="User Name"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.username.errors }"
                                     class="form-control">
                                 <div *ngIf="submitted && fieldget.username.errors" class="invalid-feedback">
@@ -40,13 +40,11 @@
 
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" formControlName="gender" 
-                                        id="inlineRadio1" value="male" >
+                                    <input class="form-check-input" type="radio" formControlName="gender"
+                                        id="inlineRadio1" value="male">
                                     <label class="form-check-label" for="inlineRadio1">Male</label>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" formControlName="gender" name="gender"
                                         id="inlineRadio2" value="female">
@@ -55,9 +53,9 @@
                             </div>
 
 
-                            <div class="form-group"> <label class="form-control-label text-muted">jobtitle</label>
+                            <div class="form-group"> <label class="form-control-label text-muted">Job Title</label>
                                 <input type="text" formControlName="jobTitle" id="jobtitle" name="jobtitle"
-                                    placeholder="jobtitle"
+                                    placeholder="Job Title"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.jobtitle.errors }"
                                     class="form-control">
                                 <div *ngIf="submitted && fieldget.jobtitle.errors" class="invalid-feedback">
@@ -68,8 +66,8 @@
 
 
 
-                            <div class="form-group"> <label class="form-control-label text-muted">email</label>
-                                <input type="text" formControlName="email" id="email" name="email" placeholder="email"
+                            <div class="form-group"> <label class="form-control-label text-muted">Email</label>
+                                <input type="text" formControlName="email" id="email" name="email" placeholder="Email"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.email.errors }"
                                     class="form-control">
                                 <div *ngIf="submitted && fieldget.email.errors" class="invalid-feedback">
@@ -79,9 +77,9 @@
 
 
 
-                            <div class="form-group"> <label class="form-control-label text-muted">password</label>
+                            <div class="form-group"> <label class="form-control-label text-muted">Password</label>
                                 <input type="password" formControlName="password" id="password" name="password"
-                                    placeholder="password"
+                                    placeholder="Password"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.password.errors }"
                                     class="form-control">
                                 <div *ngIf="submitted && fieldget.password.errors" class="invalid-feedback">
