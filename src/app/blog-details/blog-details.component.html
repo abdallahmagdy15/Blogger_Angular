@@ -14,7 +14,8 @@
         <div class="tags" *ngIf="blog.tags?(blog.tags!.length>0):false">
             <label class="lead">Tags:</label>
             <div>
-                <a (click)="searchByTag(tag)" class="btn font-weight-bold" *ngFor="let tag of blog.tags">#{{tag}} </a>
+                <a (click)="searchByTag(tag)" class="btn font-weight-bold"
+                 *ngFor="let tag of tags">#{{tag}} </a>
             </div>
         </div>
     </div>

@@ -21,6 +21,7 @@ export class BlogDetailsComponent implements OnInit {
   isLiked: boolean = false;
   faThumbsUp = faThumbsUp; faComment = faComment;
   likesCount: number = 0;
+  tags = [];
   constructor(public blogService: BlogService, public authintication: AuthenticationService,
     public auth: AuthenticationService, private router: Router, private blogsService: BlogService) { }
 
@@ -31,6 +32,10 @@ export class BlogDetailsComponent implements OnInit {
       this.blogsService.getOneBlog(this.router.url.split('/')[2]).subscribe(_blog => {
         this.blog = _blog;
         console.log(this.blog);
+        if (this.blog.tags)
+          if (this.blog.tags.length > 0) {
+            this.tags = JSON.parse(this.blog.tags[0])
+          }
         this.likesCount = (this.blog.likes ? this.blog.likes.length : 0)
         if (this.blog.likes?.includes(this.auth.getCurrUser()._id)) {
           this.isLiked = true;
@@ -50,19 +55,19 @@ export class BlogDetailsComponent implements OnInit {
       return;
     }
     if (this.auth.isAuthenticated()) {
-      this.isLoading=true;
+      this.isLoading = true;
       this.blogService.addComment(form.value, this.blog._id).subscribe(a => {
-          console.log(a);
-          this.isLoading = false;
+        console.log(a);
+        this.isLoading = false;
+        this.isSubmitted = false;
+        this.isSuccess = true;
+      },
+        err => {
+          console.log(err);
           this.isSubmitted = false;
-          this.isSuccess = true;
-        },
-          err => {
-            console.log(err);
-            this.isSubmitted = false;
-            this.isLoading = false;
-            this.isFailed = true;
-          })
+          this.isLoading = false;
+          this.isFailed = true;
+        })
     }
   }
 

@@ -63,7 +63,7 @@ export class BlogCreateComponent implements OnInit {
   onSubmit() {
     this.isSubmitted = true;
     // stop here if form is invalid
-    if (this.createBlogForm.invalid) {
+    if (this.createBlogForm.invalid || this.isLoading) {
       return;
     }
 
@@ -71,9 +71,8 @@ export class BlogCreateComponent implements OnInit {
     formData.append("title", this.createBlogForm.get('title')!.value);
     formData.append("body", this.createBlogForm.get('body')!.value);
     if (this.tags.length > 0)
-      formData.append("tags", this.tags);
+      formData.append("tags", JSON.stringify(this.tags));
 
-    formData.append("body", this.createBlogForm.get('body')!.value);
     const file = this.createBlogForm.get('photoSource')!.value;
     if (file != "")
       formData.append("photo", file);
