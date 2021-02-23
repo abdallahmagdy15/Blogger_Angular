@@ -12,11 +12,13 @@ import { faUpload } from '@fortawesome/free-solid-svg-icons';
 })
 export class BlogCreateComponent implements OnInit {
 
-  faUpload=faUpload;
-  isSubmitted: boolean; isSuccess = false; isFailed = false;isLoading=false;
+  faUpload = faUpload;
+  isSubmitted: boolean; isSuccess = false; isFailed = false; isLoading = false;
   error: string = "";
   createBlogForm: FormGroup;
   photoPath: string | ArrayBuffer | null;
+  tags: string[] = [];
+
   constructor(
     private router: Router,
     public auth: AuthenticationService,
@@ -32,6 +34,7 @@ export class BlogCreateComponent implements OnInit {
       photoSource: new FormControl('')
     })
   }
+
   uploadFile(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -53,6 +56,10 @@ export class BlogCreateComponent implements OnInit {
 
   get fieldget() { return this.createBlogForm.controls; }
 
+  removeTag(tag: any) {
+    this.tags = this.tags.filter(t => t != tag)
+  }
+
   onSubmit() {
     this.isSubmitted = true;
     // stop here if form is invalid
@@ -63,21 +70,25 @@ export class BlogCreateComponent implements OnInit {
     var formData: any = new FormData();
     formData.append("title", this.createBlogForm.get('title')!.value);
     formData.append("body", this.createBlogForm.get('body')!.value);
+    if (this.tags.length > 0)
+      formData.append("tags", this.tags);
+
+    formData.append("body", this.createBlogForm.get('body')!.value);
     const file = this.createBlogForm.get('photoSource')!.value;
     if (file != "")
       formData.append("photo", file);
 
-      this.isLoading=true;
+    this.isLoading = true;
     this.blogsService.createBlog(formData).subscribe(
       res => {
-        this.isLoading=false;
+        this.isLoading = false;
         this.isSubmitted = false;
         this.isSuccess = true;
       },
       err => {
         console.log(err);
         this.isSubmitted = false;
-        this.isLoading=false;
+        this.isLoading = false;
         this.error = err;
         this.isFailed = true;
       }

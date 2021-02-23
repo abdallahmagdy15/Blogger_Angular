@@ -41,9 +41,6 @@ a {
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
-.grey{
-    color: var(--shade-grey);
-}
 
 .btn, .btn-dark {
     color: var(--shade-grey);
@@ -60,6 +57,13 @@ a {
 .btn:focus, .btn-dark:focus {
     border: none;
     box-shadow: none;
+}
+
+.grey{
+    color: var(--shade-grey);
+}
+.blue{
+    color: var(--shade-blue);
 }
 
 .img-responsive {

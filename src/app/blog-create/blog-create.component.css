@@ -1,5 +1,5 @@
 .content {
-    margin: 10rem auto 1rem;
+    margin: 10rem auto 5rem;
     width: 80%;
 }
 
@@ -14,7 +14,7 @@
 .form-submit {
     background-color: var(--shade-blue);
     color: white;
-    height: 4rem;
+    height: 3.7rem;
     font-weight: bold;
     font-size: 1.5em;
 }
