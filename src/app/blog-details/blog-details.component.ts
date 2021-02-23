@@ -6,7 +6,7 @@ import { Blog } from '../_models/blog';
 import { AuthenticationService } from '../_services/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../_models/author';
-import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faComment, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -17,9 +17,10 @@ import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons';
 export class BlogDetailsComponent implements OnInit {
   blog: Blog = this.blogService.selectedBlog
   commentForm: FormGroup = new FormGroup({});
-  isSubmitted: boolean; isSuccess = false; isFailed = false; isLoading = false;
+  successMsg = "";
+  isSubmitted: boolean; isSuccess = false; isFailed = false; isLoading = false; isDeleting = false;
   isLiked: boolean = false;
-  faThumbsUp = faThumbsUp; faComment = faComment;
+  faThumbsUp = faThumbsUp; faComment = faComment; faEdit = faEdit; faTrashAlt = faTrashAlt;
   likesCount: number = 0;
   tags = [];
   constructor(public blogService: BlogService, public authintication: AuthenticationService,
@@ -48,6 +49,19 @@ export class BlogDetailsComponent implements OnInit {
     });
   }
 
+  deleteBlog() {
+    this.blogService.removeBlog(this.blog._id).subscribe(res => {
+      this.isDeleting = false;
+      this.isSuccess = true;
+      this.successMsg = "Your article was deleted!";
+    },
+      err => {
+        this.isDeleting = false;
+        this.isFailed = true;
+      }
+    );
+  }
+
   onSubmit(form: FormGroup) {
 
     this.isSubmitted = true;
@@ -56,11 +70,13 @@ export class BlogDetailsComponent implements OnInit {
     }
     if (this.auth.isAuthenticated()) {
       this.isLoading = true;
-      this.blogService.addComment(form.value, this.blog._id).subscribe(a => {
-        console.log(a);
+      this.blogService.addComment(form.value, this.blog._id).subscribe(cmnt => {
+        console.log(cmnt);
         this.isLoading = false;
         this.isSubmitted = false;
         this.isSuccess = true;
+        this.successMsg = "Your Comment posted successfully!";
+        this.blog.comments?.push(cmnt as Comment);
       },
         err => {
           console.log(err);

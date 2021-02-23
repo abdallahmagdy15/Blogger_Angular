@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../_services/authentication.service';
 import { Comment } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Author } from '../_models/author';
@@ -21,7 +22,7 @@ export class BlogCardComponent implements OnInit {
   
   flag:boolean=false;
 
-  constructor(public blogServices:BlogService) { }
+  constructor(public blogServices:BlogService,public auth:AuthenticationService) { }
   setSelectedBlog(){
     this.blogServices.selectedBlog=this.blog;
     //console.log(this.blog);

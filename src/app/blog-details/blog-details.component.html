@@ -7,19 +7,19 @@
     <div class="metadata col-12 col-md-2">
         <div class="btn">
             <img class="authorDp img-responsive" [src]="(blog.authorDp)?blog.authorDp:'../assets/male_dp.jpg'">
-            <a class="btn authorName" [routerLink]="['/author/'+blog.author]">By {{blog.authorName}}</a>
+            <a class="btn authorName" [routerLink]="this.auth.isAuthenticated()?['/author/'+blog.author]:null">By
+                {{blog.authorName}}</a>
             <p>{{blog.updatedAt | date}}</p>
         </div>
         <hr>
         <div class="tags" *ngIf="blog.tags?(blog.tags!.length>0):false">
             <label class="lead">Tags:</label>
             <div>
-                <a (click)="searchByTag(tag)" class="btn font-weight-bold"
-                 *ngFor="let tag of tags">#{{tag}} </a>
+                <a (click)="searchByTag(tag)" class="btn font-weight-bold" *ngFor="let tag of tags">#{{tag}} </a>
             </div>
         </div>
     </div>
-    <div class="col-12 col-md-10">
+    <div class="col-12 col-md-8">
         <div class="blog-content mb-4">
             <div class="mb-5">
                 <img class="img-responsive blogPhoto" *ngIf="blog.photo" [src]="blog.photo">
@@ -28,8 +28,8 @@
         </div>
         <hr>
         <div class="react mb-2">
-            <button class="btn d-inline counter likeBtn" (click)="isLiked?isLiked=false:isLiked=true"
-                (click)="likeBlog()">
+            <button class="btn d-inline counter likeBtn" *ngIf="this.auth.isAuthenticated()"
+                (click)="isLiked?isLiked=false:isLiked=true" (click)="likeBlog()">
                 <fa-icon [ngClass]="{'liked': isLiked}" [icon]="faThumbsUp"></fa-icon>
                 {{isLiked?'Liked':'Like'}}
             </button>
@@ -40,12 +40,24 @@
             </a>
         </div>
     </div>
+    <div class="col-md-2" *ngIf="blog.author == this.auth.getCurrUser()._id">
+        <ul type="none">
+            <li><a class="btn">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                    Edit
+                </a></li>
+            <li><a class="btn" (click)="isDeleting=true;">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                    Delete
+                </a></li>
+        </ul>
+    </div>
     <!-- comments -->
     <div class="col-12">
         <hr>
         <h3 class="lead mb-3">Comments</h3>
         <!-- add comment -->
-        <div>
+        <div *ngIf="this.auth.isAuthenticated()">
             <form [formGroup]="commentForm" class="commentForm" (ngSubmit)="onSubmit(commentForm)">
                 <textarea type="text" class="form-control" formControlName="body"
                     [ngClass]="{ 'is-invalid': isSubmitted && fieldget.body.errors }"
@@ -65,10 +77,22 @@
         </div>
     </div>
     <div *ngIf="isSuccess" class="alert alert-success fixed-bottom" role="alert">
-        Your Comment posted successfully!
+        {{successMsg}}
         <button type="button" (click)="isSuccess=false" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
+    </div>
+    <div *ngIf="isDeleting" class="alert alert-danger fixed-top" role="alert">
+        <div>Are you sure you want to delete this article?</div>
+        <hr>
+        <div class="btn-group">
+            <button class="btn mr-5" (click)="isDeleting=false;deleteBlog()">
+                I'm Sure!
+            </button>
+            <button class="btn" (click)="isDeleting=false" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"> &times; Cancel</span>
+            </button>
+        </div>
     </div>
     <div *ngIf="isFailed" class="alert alert-danger fixed-bottom" role="alert">
         An Error Occurred , Please try again later!
