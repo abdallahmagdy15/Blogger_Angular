@@ -73,7 +73,6 @@ export class BlogCreateComponent implements OnInit {
         this.isLoading=false;
         this.isSubmitted = false;
         this.isSuccess = true;
-        //this.router.navigate(['/home']);
       },
       err => {
         console.log(err);

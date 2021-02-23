@@ -17,6 +17,7 @@ import { faThumbsUp, faComment } from '@fortawesome/free-solid-svg-icons';
 export class BlogDetailsComponent implements OnInit {
   blog: Blog = this.blogService.selectedBlog
   commentForm: FormGroup = new FormGroup({});
+  isSubmitted: boolean; isSuccess = false; isFailed = false; isLoading = false;
   isLiked: boolean = false;
   faThumbsUp = faThumbsUp; faComment = faComment;
   likesCount: number = 0;
@@ -38,20 +39,34 @@ export class BlogDetailsComponent implements OnInit {
     }
 
     this.commentForm = new FormGroup({
-      commentBody: new FormControl('', [Validators.required])
+      body: new FormControl('', [Validators.required])
     });
   }
 
   onSubmit(form: FormGroup) {
 
+    this.isSubmitted = true;
+    if (this.commentForm.invalid) {
+      return;
+    }
     if (this.auth.isAuthenticated()) {
-      this.blogService.addComment(
-        new Comment('', new Author('', '', '', '', '', ''), '', form.value.commentBody, new Date(), new Date())
-        , this.blog._id).subscribe(a => {
+      this.isLoading=true;
+      this.blogService.addComment(form.value, this.blog._id).subscribe(a => {
           console.log(a);
-        })
+          this.isLoading = false;
+          this.isSubmitted = false;
+          this.isSuccess = true;
+        },
+          err => {
+            console.log(err);
+            this.isSubmitted = false;
+            this.isLoading = false;
+            this.isFailed = true;
+          })
     }
   }
+
+  get fieldget() { return this.commentForm.controls; }
 
   searchByTag(tag: string) {
 
@@ -68,45 +83,4 @@ export class BlogDetailsComponent implements OnInit {
       console.log(res)
     );
   }
-
-
-
-
-  //edit remove =>blog auth id == current user id
-
-  /* 
-  ده انا اللى عامله 
-  
-  this.formLike=new FormGroup({
-      likes:new FormControl('')
-    }) */
-
-
-
-
-  /*  if(this.blog.likes?.length!=undefined){
-      for(let i = 0;i <this.blog.likes?.length;i++){
-        if(this.authintication.getCurrUser()._id == this.blog.likes[i]){
-            this.flaglike==true;
-        }else{
-          this.flaglike==false;
-        }
-  
-      }
-
- 
-    }
- 
-*/
-
-
-
-  // if (!this.auth.isAuthenticated) {
-  //   const curr = localStorage.getItem('currentUser');
-  //   if (curr != null)
-  //     this.auth.user = JSON.parse(curr);
-  //   else
-  //     this.router.navigate(['login']);
-  // }}
-
 }

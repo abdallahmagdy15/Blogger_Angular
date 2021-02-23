@@ -1,0 +1,13 @@
+.authorDp {
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-right: 7px;
+}
+.commentCard{
+    border:1px solid var(--shade-smoke);
+    padding: 1.2rem;
+}
+.commentBody{
+    padding-left: 4rem;
+    font-size: 1.1em;
+}

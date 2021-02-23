@@ -1,18 +1,12 @@
-<div class="comment_container Jumbotron card">
-    <div class="author_data">
-        <div class="blog_Pic_container">
-            <img [src]="comment.authorDp" class="authorDp" alt="authorDp">
-            <p class="authorName">{{comment.authorName}}</p>
-            <img class="blog_Pic" *ngIf="comment.photo" [src]="comment.photo" height="80%" width="100%" alt="blogImg">
-        </div>
+<div class="commentCard">
+    <div class="btn d-inline">
+        <img class="authorDp img-responsive" [src]="(comment.authorDp)?comment.authorDp:'../assets/male_dp.jpg'">
+        <a class="btn authorName" [routerLink]="['/author/'+comment.author]">{{comment.authorName}} •
+            {{comment.updatedAt |
+            date}} </a>
     </div>
-    <div class="card-body">
-        <p class="createdAt">
-            {{comment.updatedAt}}
-        </p>
-        <p class='blog_body'>{{comment.body}}</p>
-        <p>{{likesCount}} Likes</p>
-        <button class="btn" (click)="isLiked?isLiked=false:isLiked=true" [ngClass]="{'btn-primary': isLiked}"
-            (click)="likeComment()">{{isLiked?'Unlike':'like'}}</button>
 
+    <div class="commentBody">
+        <p class="">{{comment.body}}</p>
     </div>
+</div>

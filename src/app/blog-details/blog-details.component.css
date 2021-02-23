@@ -34,3 +34,21 @@
     border: 1px solid var(--shade-blue);
     width: 8rem;
 }
+
+.form-control {
+    border-radius: none;
+}
+
+.postCommentBtn {
+    font-weight: bold;
+    border: 1px solid var(--shade-blue);
+}
+
+.postCommentBtn:hover, .likeBtn:hover, .liked:hover {
+    background-color: var(--shade-blue);
+    color: white;
+}
+.submitContainer{
+    display: flex;
+    justify-content: flex-end;
+}
