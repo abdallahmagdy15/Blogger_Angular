@@ -28,9 +28,9 @@ export class BlogDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    if (this.blog._id == "") {
-      this.blogsService.getOneBlog(this.router.url.split('/')[2]).subscribe(_blog => {
+    const blogid =  this.router.url.split('/')[2];
+    if (this.blog._id != blogid) {
+      this.blogsService.getOneBlog(blogid).subscribe(_blog => {
         this.blog = _blog;
         this.blogService.selectedBlog= this.blog;
         console.log(this.blog);
