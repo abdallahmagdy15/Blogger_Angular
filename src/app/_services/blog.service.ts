@@ -29,7 +29,7 @@ export class BlogService {
     return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings');
   }
   public getOneBlog(blogid: string): Observable<Blog> {
-    return this.http.get<Blog>('https://iti-blogger.herokuapp.com/blogs/' + blogid);
+    return this.http.get<Blog>('https://iti-blogger.herokuapp.com/blogs/blog/' + blogid);
   }
 
   createBlog(blog: any) {

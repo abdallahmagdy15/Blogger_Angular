@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-2" *ngIf="blog.author == this.auth.getCurrUser()._id">
         <ul type="none">
-            <li><a class="btn">
+            <li><a class="btn" [routerLink]="['/edit-blog/'+blog._id]" >
                     <fa-icon [icon]="faEdit"></fa-icon>
                     Edit
                 </a></li>

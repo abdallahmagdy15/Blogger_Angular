@@ -9,10 +9,9 @@ import { AuthenticationService } from '../_services/authentication.service';
 })
 export class BlogEditComponent implements OnInit {
 
-  constructor(public auth :AuthenticationService , private router : Router) { }
+  constructor( public auth :AuthenticationService , private router : Router) { }
 
   ngOnInit(): void {
-    
   }
 
 }
