@@ -27,6 +27,9 @@ export class BlogCreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(!this.auth.isAuthenticated()){
+      this.router.navigate(['/login']);
+    }
     this.createBlogForm = this.formBuilder.group({
       title: new FormControl('', [Validators.required, Validators.maxLength(140)]),
       body: new FormControl('', [Validators.required, Validators.maxLength(3000)]),

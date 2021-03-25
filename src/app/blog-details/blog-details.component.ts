@@ -32,7 +32,7 @@ export class BlogDetailsComponent implements OnInit {
     if (this.blog._id != blogid) {
       this.blogsService.getOneBlog(blogid).subscribe(_blog => {
         this.blog = _blog;
-        this.blogService.selectedBlog= this.blog;
+        this.blogService.selectedBlog = JSON.parse(JSON.stringify( this.blog));
         console.log(this.blog);
         if (this.blog.tags)
           if (this.blog.tags.length > 0) {

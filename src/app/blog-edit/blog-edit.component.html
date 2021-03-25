@@ -1,1 +1,53 @@
-<p>blog-edit works!</p>
+<div class="content">
+    <h2 class="b dark">Update Blog</h2>
+    <form [formGroup]="editBlogForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmit()">
+        <div class="form-input">
+            <input class="form-control" formControlName="title" type="text"
+                 [(ngModel)]="this.blog.title" 
+                [ngClass]="{ 'is-invalid': isSubmitted && fieldget.title.errors }" placeholder="Enter title">
+        </div>
+        <div *ngIf="isSubmitted && fieldget.title.errors" class="invalid-feedback d-block">
+            <div>Please enter a valid title</div>
+        </div>
+
+        <div class="form-input">
+            <textarea class="form-control" rows="10" formControlName="body" placeholder="Enter blog body"
+            [(ngModel)]="blog.body"
+                [ngClass]="{ 'is-invalid': isSubmitted && fieldget.body.errors }"></textarea>
+        </div>
+        <div *ngIf="isSubmitted && fieldget.body.errors" class="invalid-feedback  d-block">
+            <div>Please enter a valid body</div>
+        </div>
+
+        <div class="form-input">
+            <input type="text" #taginput (keyup.enter)="tags.push(taginput.value)" class="form-control"
+                placeholder="Enter hashtag" />
+            <span class="btn blue font-weight-bold mt-2 mr-2" *ngFor="let tag of tags">
+                #{{tag}}
+                <button type="button" (click)="removeTag(tag)" class="close" data-dismiss="alert"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </span>
+        </div>
+        <div class="fixed-bottom">
+            <button [attr.disabled]="(this.editBlogForm.invalid && isSubmitted)?true:null"
+                class="form-control form-submit" type="submit">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-md mr-1"></span>
+                Update as @{{this.auth.getCurrUser().username}}
+            </button>
+        </div>
+    </form>
+    <div *ngIf="isSuccess" class="alert alert-success fixed-bottom" role="alert">
+        Your article was published successfully!
+        <button type="button" (click)="isSuccess=false" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div *ngIf="isFailed" class="alert alert-danger fixed-bottom" role="alert">
+        An Error Occurred , Please try again later!
+        <button type="button" (click)="isFailed=false" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>

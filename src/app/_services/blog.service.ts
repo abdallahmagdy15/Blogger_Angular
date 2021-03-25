@@ -36,6 +36,10 @@ export class BlogService {
     return this.http.post<any>('https://iti-blogger.herokuapp.com/blogs/', blog);
   }
 
+  updateBlog(blog: any,blogid : string) {
+    return this.http.patch<any>('https://iti-blogger.herokuapp.com/blogs/'+blogid, blog);
+  }
+
   addComment(comment: any, blogid: string) {
 
     return this.http.post('https://iti-blogger.herokuapp.com/blogs/' + blogid + '/comments', comment);
