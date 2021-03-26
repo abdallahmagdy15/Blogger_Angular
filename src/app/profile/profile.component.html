@@ -1,169 +1,46 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-<div class="content row py-5 px-4" style="width: 100%;">
-    <div class="col-md-11 mx-auto">
-        <!-- Profile widget -->
-        <div class="bg-white shadow rounded overflow-hidden">
-            <div class="px-4 pt-0 pb-4 cover">
-                <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img
-                            [src]="author.dp"
-                            alt="..." width="130" class="rounded mb-2 img-thumbnail">
-                        <a href='author/:{{id}}/edit-profile' class="btn btn-outline-dark btn-sm btn-block">Edit
-                            profile</a>
-                    </div>
-                    <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0"><label class="nameLabel">{{author.firstName + " " +
-                                author.lastName}}</label></h4>
-                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>@{{author.username}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-light p-4 d-flex justify-content-end text-center">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">{{(author.blogs)?author.blogs.length:0}}</h5><small
-                            class="text-muted"> <i class="glyphicon glyphicon-cloud"></i>Blogs</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">{{(author.followers)?author.followers.length:0}}</h5>
-                        <small class="text-muted"> <i class="glyphicon glyphicon-user"></i>Followers</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">{{(author.followings)?author.followings.length:0}}
-                        </h5><small class="text-muted"> <i class="glyphicon glyphicon-user"></i>Following</small>
-                    </li>
-                </ul>
-            </div>
-            <div class="px-4 py-3">
-                <h5 class="mb-0">About</h5>
-                <div class="p-4 rounded shadow-sm bg-light row">
-                    <div class="links">
-                        <a href="{{(author.links)?author.links.facebook:''}}" class="fa fa-facebook"
-                            *ngIf="author.links && author.links.facebook"></a>
-                        <a href="{{(author.links)?author.links.instagram:''}}" class="fa fa-instagram"
-                            *ngIf="author.links && author.links.instagram"></a>
-                        <a href="{{(author.links)?author.links.twitter:''}}" class="fa fa-twitter"
-                            *ngIf="author.links && author.links.twitter"></a>
-                        <a href="{{(author.links)?author.links.linkedin:''}}" class="fa fa-linkedin"
-                            *ngIf=" author.links && author.links.linkedin"></a>
-                        <a href="{{author.email}}" class="fa fa-email"></a>
-                    </div>
-                    <div class="row">
-                        <p class="bio">{{ author.bio?author.bio:'' }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="py-4 px-4">
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="mb-0">Recent Blogs</h5>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 mb-2 pr-lg-1">
-                        <app-blogs [blogs]="blogs"></app-blogs>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--
 <div class="content">
-<a class="btn btn-dark" href='author/:{{id}}/edit-profile'></a>
-    <div class="container">
-        <div class="row">
-            <div class="row">
-                <img>
+    <div class="row bg-smoke">
+        <div class="col-md-2">
+            <div class="img-container">
+                <img [src]="(author.dp)?author.dp:'../assets/male_dp.jpg'">
             </div>
-            <div class="row">
-                <div class="col">
-                    <label class="nameLabel">{{author.firstName + " " + author.lastName}}</label>
-                    <p class="username">@{{author.username}}</p>
-                    <p class="bio">{{author.jobTitle?author.jobTitle.length:''}}</p>
-                    <div class="links">
-                        <a href="{{(author.links)?author.links.facebook:''}}" class="fa fa-facebook"
-                            *ngIf="author.links && author.links.facebook"></a>
-                        <a href="{{(author.links)?author.links.instagram:''}}" class="fa fa-instagram"
-                            *ngIf="author.links && author.links.instagram"></a>
-                        <a href="{{(author.links)?author.links.twitter:''}}" class="fa fa-twitter"
-                            *ngIf="author.links && author.links.twitter"></a>
-                        <a href="{{(author.links)?author.links.linkedin:''}}" class="fa fa-linkedin"
-                            *ngIf=" author.links && author.links.linkedin"></a>
-                        <a href="{{author.email}}" class="fa fa-email"></a>
-
-                    </div>
-                </div>
-                <div class="col" *ngIf="this.loggedInProfile">
-                    <button class="btn" [routerLink]="['./edit-profile']"
-                        routerLinkActive="router-link-active">Edit</button>
-                </div>
-            </div>
-            <div class="row">
-                <p class="bio">{{ author.bio?author.bio:'' }}</p>
-            </div>
-            <div class="row">
-                <div class="btn-group" style="height:40px">
-                    <a class="btn btn-info" [routerLink]="['./followers']" routerLinkActive="router-link-active"><span
-                            id="followersCount">{{(author.followers)?author.followers.length:0}}</span> Followers</a>
-                    <a class="btn btn-info" [routerLink]="['./followings']" routerLinkActive="router-link-active"><span
-                            id="followingsCount">{{(author.followings)?author.followings.length:0}}</span>
-                        Followings</a> |
-                </div>
-
-                <label><span>{{(author.blogs)?author.blogs.length:0}}</span> Articles</label>
-            </div>
-            <div class="row">
-                <app-blogs [blogs]="blogs"></app-blogs>
-            </div>
+            <a *ngIf="this.loggedInProfile" href='author/:{{id}}/edit-profile' class="btn btn-default d-block mt-3">Edit
+                Profile</a>
+        </div>
+        <div class="col-md-8">
+            <h1 class="font-weight-bold">{{author.firstName + " " + author.lastName}}</h1>
+            <footer style="font-size: larger;" class="blockquote-footer">
+                @{{author.username}} <span *ngIf="author.links"> | </span>
+                <a href="{{(author.links)?author.links.facebook:''}}" class="fa fa-facebook"
+                    *ngIf="author.links && author.links.facebook"></a>
+                <a href="{{(author.links)?author.links.instagram:''}}" class="fa fa-instagram"
+                    *ngIf="author.links && author.links.instagram"></a>
+                <a href="{{(author.links)?author.links.twitter:''}}" class="fa fa-twitter"
+                    *ngIf="author.links && author.links.twitter"></a>
+                <a href="{{(author.links)?author.links.linkedin:''}}" class="fa fa-linkedin"
+                    *ngIf=" author.links && author.links.linkedin"></a>
+                <a href="{{author.email}}" class="fa fa-email"></a>
+            </footer>
+        </div>
+        <div class="col-md-2">
+            <button (click)="scrollToElement(recentblogs)"
+                class="btn btn-default">{{(author.blogs)?author.blogs.length:0}}
+                <span class="lead"> Blogs</span>
+            </button>
+            <a [routerLink]="['/followers']" class="btn btn-default">{{(author.followers)?author.followers.length:0}}
+                <span class="lead"> Followers</span></a>
+            <a [routerLink]="['/followings']" class="btn btn-default">{{(author.followings)?author.followings.length:0}}
+                <span class="lead"> Following</span></a>
+        </div>
+        <div class="col-md-12">
+            <p class="lead">{{ author.bio?author.bio:'' }}</p>
         </div>
     </div>
-</div>
-
--->
-
-
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<!--
-<div class="container row">
-    <div class="span3 well" style="align-items: center;">
-        <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" class="img-circle"></a>
-        <label class="nameLabel">{{author.firstName + " " + author.lastName}}</label>
-        <p class="username">@{{author.username}}</p>
-        <p class="bio">{{author.jobTitle?author.jobTitle.length:''}}</p>
-    </div>   
-    <div class="span3 well" style="align-items: center;"> www.facebook.com
-        <a href="{{(author.links)?author.links.facebook:''}}" class="fa fa-facebook"
-                            *ngIf="author.links && author.links.facebook"></a>
-                        <a href="{{(author.links)?author.links.instagram:''}}" class="fa fa-instagram"
-                            *ngIf="author.links && author.links.instagram"></a>
-                        <a href="{{(author.links)?author.links.twitter:''}}" class="fa fa-twitter"
-                            *ngIf="author.links && author.links.twitter"></a>
-                        <a href="{{(author.links)?author.links.linkedin:''}}" class="fa fa-linkedin"
-                            *ngIf=" author.links && author.links.linkedin"></a>
-                        <a href="{{author.email}}" class="fa fa-email"></a>
-
-    </div>    
-    <div class="col" *ngIf="this.loggedInProfile">
-        <button class="btn" [routerLink]="['./edit-profile']"
-            routerLinkActive="router-link-active">Edit</button>
+    <div #recentblogs class="row">
+        <h4 class="font-weight-bold">Recent Blogs</h4>
+        <div class="m-5">
+            <app-blogs [blogs]="blogs"></app-blogs>
+        </div>
     </div>
+
 </div>
-<div class="row">
-    <p class="bio">{{ author.bio?author.bio:'' }}</p>
-</div>
-<div class="row">
-    <div class="btn-group" style="height:40px">
-        <a class="btn btn-info" [routerLink]="['./followers']" routerLinkActive="router-link-active"><span
-                id="followersCount">{{(author.followers)?author.followers.length:0}}</span> Followers</a>
-        <a class="btn btn-info" [routerLink]="['./followings']" routerLinkActive="router-link-active"><span
-                id="followingsCount">{{(author.followings)?author.followings.length:0}}</span>
-            Followings</a> |
-    </div>
-</div>
--->

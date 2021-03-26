@@ -1,17 +1,35 @@
-.profile-head {
-    transform: translateY(5rem)
+.bg-smoke{
+    padding-top: 2rem;
+    background-color:#eaeaeb
+}
+.row{
+    padding:2rem 5rem;
 }
 
-.cover {
-    background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
-    background-size: cover;
-    background-repeat: no-repeat
-    
+.img-container {
+    position: relative;
+    width: 100%; /* The size you want */
+  }
+  .img-container:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+  }
+
+.img-container img
+{
+position: absolute; /* Take your picture out of the flow */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; /* Make the picture taking the size of it's parent */
+  width: 100%; /* This if for the object-fit */
+  height: 100%; /* This if for the object-fit */
+  object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+  object-position: center;
+  border-radius: 10%;
 }
 
-body {
-    background: #654ea3;
-    background: linear-gradient(to right, #e96443, #904e95);
-    min-height: 100vh;
-    width: 100%;
+.btn-default{
+    font-size: 1.3rem;
 }

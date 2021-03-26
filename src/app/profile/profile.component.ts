@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
 
   initAuthor() {
 
-    if (this.auth.getCurrUser() != undefined && this.authorid == this.auth.getCurrUser().Id) {//if profile of the logged in user
+    if (this.auth.getCurrUser() != undefined && this.authorid == this.auth.getCurrUser()._id) {//if profile of the logged in user
       this.author = this.auth.getCurrUser();
       this.loggedInProfile = true;
     }
@@ -45,6 +45,10 @@ export class ProfileComponent implements OnInit {
       this.blogs = blogs;
       console.log(blogs);
     });
+  }
+
+  scrollToElement($element:any): void {
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 
 }
