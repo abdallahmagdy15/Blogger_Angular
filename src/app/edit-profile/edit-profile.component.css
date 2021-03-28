@@ -1,44 +1,15 @@
-body {
-    background: #807d80
+.content{
+    padding-top: 2rem;
+}
+.submit_btn{
+    margin-top: 5rem;
+    width: 100%;
+    display: block;
+    margin:0 auto ;
+    background-color: var(--shade-blue);
+    color: var(--shade-smoke);
 }
 
-.form-control:focus {
-    box-shadow: none;
-    border-color: #363536
-}
-
-.profile-button {
-    background:#807d80;
-    box-shadow: none;
-    border: none
-}
-
-.profile-button:hover {
-    background: #363536
-}
-
-.profile-button:focus {
-    background: #363536;
-    box-shadow: none
-}
-
-.profile-button:active {
-    background: #363536;
-    box-shadow: none
-}
-
-.back:hover {
-    color: #363536;
-    cursor: pointer
-}
-
-.labels {
-    font-size: 11px
-}
-
-.add-experience:hover {
-    background: #363536;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #363536;
+.submit_btn:hover{
+    color:white;
 }

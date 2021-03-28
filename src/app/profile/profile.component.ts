@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Author } from './../_models/author';
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
+import { faEdit, faUserFriends, faNewspaper,faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { Blog } from '../_models/blog';
 
 @Component({
@@ -17,28 +18,34 @@ export class ProfileComponent implements OnInit {
   public blogs: Blog[] = [];
   public authorid: string = "";
   public loggedInProfile: boolean = false;
+  faEdit = faEdit;
+  faUserFriends = faUserFriends;
+  faNewspaper = faNewspaper;
+  faBriefcase=faBriefcase;
 
   constructor(private router: Router, public auth: AuthenticationService,
     private blogService: BlogService,
     private userService: UserService) { }
 
-  public id:string = this.auth.getCurrUser()._id;
+  public id: string = this.auth.getCurrUser()._id;
 
   ngOnInit(): void {
     this.authorid = this.router.url.split('/')[2];
     this.initAuthor();
+    console.log("ssss ",this.author); 
   }
 
   initAuthor() {
-
-    if (this.auth.getCurrUser() != undefined && this.authorid == this.auth.getCurrUser()._id) {//if profile of the logged in user
+    //if profile of the logged in user
+    if (this.auth.getCurrUser() != undefined && this.authorid == this.auth.getCurrUser()._id) {
+      this.auth.updateCurrUser();
       this.author = this.auth.getCurrUser();
       this.loggedInProfile = true;
     }
     else {
       this.userService.getAuthor(this.authorid).subscribe(author => {
         this.author = author;
-        
+
       });
     }
     this.blogService.getAuthorBlogs(this.authorid).subscribe(blogs => {
@@ -47,8 +54,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  scrollToElement($element:any): void {
-    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  scrollToElement($element: any): void {
+    $element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
   }
 
 }

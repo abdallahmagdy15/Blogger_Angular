@@ -1,60 +1,87 @@
-<div class="container rounded bg-white mt-5 mb-5">
+<div class="content">
 
-    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
-        <div class="row">
-            <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="rounded-circle mt-5" style="width: 100%; height: 100%;" [src]="author.dp">
-                    <input formControlName="dp" (change)="uploadFile($event)" type="file">
-                    <span class="font-weight-bold">{{author.firstName+" "+author.lastName}}</span>
-                    <span class="text-black-50">{{author.email}}</span><span> </span>
-                </div>
+    <form [formGroup]="editProfileForm" class="form-horizontal row" (ngSubmit)="onSubmit()">
+        <div class="col-md-2">
+            <div class="img_rounded">
+                <img [src]="this.dp">
             </div>
-            <div class="col-md-5 border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Data</h4>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">First Name</label>
-                            <input type="text" formControlName="firstName" class="form-control" placeholder="first name"
-                                [(ngModel)]="author.firstName" value={{author.firstName}}>
-                        </div>
-                        <div class="col-md-6"><label class="labels">Last Name</label>
-                            <input type="text" formControlName="lastName" class="form-control" placeholder="lastName"
-                                [(ngModel)]="author.lastName" value={{author.lastName}}>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            <label class="labels">Email</label>
-                            <input formControlName="email" type="text" class="form-control" placeholder="Email"
-                                [(ngModel)]="author.email" value="{{author.email}}">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">jobTitle</label>
-                            <input formControlName="jobTitle" type="text" class="form-control" placeholder="jobTitle"
-                                [(ngModel)]="author.jobTitle" value={{author.jobTitle}}>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Date of Birth</label>
-                            <input formControlName="dob" type="datetime" class="form-control" placeholder="BirthDate"
-                                [(ngModel)]="author.dob" value={{author.dob}}>
-                        </div>
-                        <div class="col-md-12"><label class="labels">bio</label>
-                            <textarea formControlName="bio" type="text" class="form-control" placeholder="bio"
-                                [(ngModel)]="author.bio" value={{author.bio}}></textarea>
-                        </div>
-
-                    </div>
-                    
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save
-                            Profile</button></div>
-                </div>
-
+            <div class="form-group" style="text-align: center;">
+                <label for="attachPhoto" class="btn">Upload Photo</label>
+                <input id="attachPhoto" hidden class="form-control" type="file" accept='image/*'
+                    (change)="uploadFile($event)" formControlName="dp" placeholder="attach photo">
             </div>
         </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="photo-input" formControlName="firstName" class="form-control"
+                [ngClass]="{ 'is-invalid': isSubmitted && fieldget.firstName.errors }"
+                    placeholder="First Name..." [(ngModel)]="author.firstName" value={{author.firstName}}>
+            </div>
+            <div *ngIf="isSubmitted && fieldget.firstName.errors" class="invalid-feedback  d-block">
+                <div>Please enter a valid body</div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name..."
+                [ngClass]="{ 'is-invalid': isSubmitted && fieldget.lastName.errors }"
+                    [(ngModel)]="author.lastName" value={{author.lastName}}>
+            </div>
+            <div *ngIf="isSubmitted && fieldget.lastName.errors" class="invalid-feedback  d-block">
+                <div>Please enter a valid body</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input formControlName="email" type="text" class="form-control" placeholder="Email..."
+                [ngClass]="{ 'is-invalid': isSubmitted && fieldget.email.errors }"
+                    [(ngModel)]="author.email" value="{{author.email}}">
+            </div>
+            <div *ngIf="isSubmitted && fieldget.email.errors" class="invalid-feedback  d-block">
+                <div>Please enter a valid body</div>
+            </div>
+            <div class="form-group">
+                <label for="jobTitle">Job Title</label>
+                <input formControlName="jobTitle" type="text" class="form-control" placeholder="Job Title..."
+                [ngClass]="{ 'is-invalid': isSubmitted && fieldget.jobTitle.errors }"
+                    [(ngModel)]="author.jobTitle" value={{author.jobTitle}}>
+            </div>
+            <div *ngIf="isSubmitted && fieldget.jobTitle.errors" class="invalid-feedback  d-block">
+                <div>Please enter a valid body</div>
+            </div>
+            <div class="form-group">
+                <label for="dob">BirthDate</label>
+                <input formControlName="dob" type="date" class="form-control" placeholder="BirthDate..."
+                [ngClass]="{ 'is-invalid': isSubmitted && fieldget.dob.errors }"
+                    [(ngModel)]="author.dob" value={{author.dob}}>
+            </div>
+            <div *ngIf="isSubmitted && fieldget.dob.errors" class="invalid-feedback  d-block">
+                <div>Please enter a valid body</div>
+            </div>
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea formControlName="bio" type="text" class="form-control" placeholder="Bio..."
+                [ngClass]="{ 'is-invalid': isSubmitted && fieldget.bio.errors }"
+                    [(ngModel)]="author.bio" value={{author.bio}}></textarea>
+            </div>
+            <div *ngIf="isSubmitted && fieldget.bio.errors" class="invalid-feedback  d-block">
+                <div>Please enter a valid body</div>
+            </div>
 
+            <button class="btn submit_btn" [attr.disabled]="(this.editProfileForm.invalid && isSubmitted)?true:null"
+                type="submit"><span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+                Save</button>
+        </div>
     </form>
-
+    <div *ngIf="isSuccess" class="alert alert-success fixed-bottom" role="alert">
+        Your profile was updated successfully!
+        <button type="button" (click)="isSuccess=false" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div *ngIf="isFailed" class="alert alert-danger fixed-bottom" role="alert">
+        An Error Occurred , Please try again later!
+        <button type="button" (click)="isFailed=false" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
 </div>

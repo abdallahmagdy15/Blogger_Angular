@@ -1,11 +1,12 @@
 <div class="content">
     <div class="row bg-smoke">
         <div class="col-md-2">
-            <div class="img-container">
+            <div class="img_rounded">
                 <img [src]="(author.dp)?author.dp:'../assets/male_dp.jpg'">
             </div>
-            <a *ngIf="this.loggedInProfile" href='author/:{{id}}/edit-profile' class="btn btn-default d-block mt-3">Edit
-                Profile</a>
+            <a *ngIf="this.loggedInProfile" href='author/{{id}}/edit-profile' class="btn btn-default d-block mt-3">
+                <fa-icon [icon]="faEdit"></fa-icon>
+                Edit Profile</a>
         </div>
         <div class="col-md-8">
             <h1 class="font-weight-bold">{{author.firstName + " " + author.lastName}}</h1>
@@ -21,18 +22,21 @@
                     *ngIf=" author.links && author.links.linkedin"></a>
                 <a href="{{author.email}}" class="fa fa-email"></a>
             </footer>
+            <label style="font-size: larger;" class="font-weight-bold mt-2"> 
+                <fa-icon style="color:lightgrey;" [icon]="faBriefcase"></fa-icon> &nbsp;{{(author.jobTitle?author.jobTitle:'')}}
+            </label>
         </div>
         <div class="col-md-2">
             <button (click)="scrollToElement(recentblogs)"
                 class="btn btn-default">{{(author.blogs)?author.blogs.length:0}}
-                <span class="lead"> Blogs</span>
+                &nbsp;<span class="lead"> <fa-icon [icon]="faNewspaper"></fa-icon> Blogs</span>
             </button>
             <a [routerLink]="['/followers']" class="btn btn-default">{{(author.followers)?author.followers.length:0}}
-                <span class="lead"> Followers</span></a>
+                &nbsp;<span class="lead"> <fa-icon [icon]="faUserFriends"></fa-icon> Followers</span></a>
             <a [routerLink]="['/followings']" class="btn btn-default">{{(author.followings)?author.followings.length:0}}
-                <span class="lead"> Following</span></a>
+                &nbsp;<span class="lead"> <fa-icon [icon]="faUserFriends"></fa-icon> Following</span></a>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 top-border">
             <p class="lead">{{ author.bio?author.bio:'' }}</p>
         </div>
     </div>
