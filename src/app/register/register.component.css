@@ -1,17 +1,15 @@
-
-body {
+.content {
     color: #000;
     overflow-x: hidden;
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(to right, #D500F9, #FFD54F);
-    background-repeat: no-repeat;
+    background-image: url('../../assets/bg3.jpg');
+    background-size: cover;
 }
-
 
 input,
 textarea {
-    background-color: #F3E5F5;
+    background-color: --var(--shade-teal);
     border-radius: 50px !important;
     padding: 12px 15px 12px 15px !important;
     /* width: 100%; */
@@ -42,13 +40,14 @@ button:focus {
 
 .card {
     border-radius: 0;
-    border: none
+    border: none;
+    width: 70%;
 }
 
 .card1 {
-    width: 50%;
+    width: 90%;
     padding: 30px 10px 10px 30px;
-    background-color:#f8f7f491;
+    background-color:#dafff391;
 }
 
 .card2 {
@@ -91,16 +90,15 @@ button:focus {
 .btn-color {
     border-radius: 50px;
     color: #fff;
-    background-image: linear-gradient(to right, #a7a5a2, #363536);
     padding: 15px;
     cursor: pointer;
     border: none !important;
     margin-top: 40px
 }
 
-.btn-color:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #363536, #a7a5a2)
+
+.card0{
+    background-color: #f8f7f491;
 }
 
 .btn-white {
@@ -114,6 +112,7 @@ button:focus {
 
 .btn-white:hover {
     color: #fff;
+    transition: .4s all;
     background-image: linear-gradient(to right, #a7a5a2, #363536)
 }
 
@@ -162,3 +161,7 @@ a:hover {
         margin-bottom: 50px !important
     }
 }
+.bg-transparent{
+    background: transparent;
+}
+

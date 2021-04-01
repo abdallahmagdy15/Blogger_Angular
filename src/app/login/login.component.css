@@ -1,9 +1,9 @@
-body {
+.content {
     color: #000;
     overflow-x: hidden;
     height: 100%;
-    background-image: linear-gradient(to right, #363536, #a7a5a2);
-    background-repeat: no-repeat;
+    background-image: url('../../assets/bg3.jpg');
+    background-size: cover;
 }
 
 input,
@@ -29,7 +29,9 @@ textarea:focus {
     outline-width: 0;
     font-weight: 400
 }
-
+.card0{
+    background-color: #f8f7f491;
+}
 button:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
@@ -44,12 +46,13 @@ button:focus {
 
 .card1 {
     width: 50%;
-    padding: 40px 30px 10px 30px
+    margin: 40px 30px;
+    background-color: #dafff391;
 }
 
 .card2 {
     width: 50%;
-    background-image: linear-gradient(to right, #a7a5a2, #363536)
+    background-color: #04413682;
 }
 
 #logo {
@@ -87,17 +90,12 @@ button:focus {
 .btn-color {
     border-radius: 50px;
     color: #fff;
-    background-image: linear-gradient(to right, #a7a5a2, #363536);
     padding: 15px;
     cursor: pointer;
     border: none !important;
     margin-top: 40px
 }
 
-.btn-color:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #363536,  #a7a5a2)
-}
 
 .btn-white {
     border-radius: 50px;
@@ -110,6 +108,7 @@ button:focus {
 
 .btn-white:hover {
     color: #fff;
+    transition: .4s all;
     background-image: linear-gradient(to right, #a7a5a2, #363536)
 }
 

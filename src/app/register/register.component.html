@@ -1,13 +1,13 @@
-<div class="container mt-5 px-4 py-5 mx-auto ">
+<div class="content mt-5 px-4 py-5 mx-auto ">
 
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)" class="bg-light">
-        <div class="card card0" style="margin: 1% auto; width: 100%;">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)" class="bg-transparent">
+        <div class="card card0" style="margin: 1% auto;">
             <div>
-                <div class="card card1 " style="margin: 1% auto;">
+                <div class="card1" style="margin: 1% auto;">
                     <div class="row justify-content-center my-auto">
                         <div class="col-md-8 col-10 my-5">
-                            <h6 class="msg-info lead">Register</h6>
-                            <div class="form-group"> <label class="form-control-label text-muted">First Name</label>
+                            <h6 class="msg-info display-4">Sign Up</h6>
+                            <div class="form-group"> <label class="form-control-label ">First Name</label>
                                 <input type="text" formControlName="firstName" id="firstName" name="firstName"
                                     placeholder="First Name"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.firstName.errors }"
@@ -17,7 +17,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group"> <label class="form-control-label text-muted">Last Name</label>
+                            <div class="form-group"> <label class="form-control-label ">Last Name</label>
                                 <input type="text" formControlName="lastName" id="lastName" name="lastName"
                                     placeholder="Last Name"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.lastName.errors }"
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group"> <label class="form-control-label text-muted">User Name</label>
+                            <div class="form-group"> <label class="form-control-label ">User Name</label>
                                 <input type="text" formControlName="username" id="username" name="username"
                                     placeholder="User Name"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.username.errors }"
@@ -39,21 +39,20 @@
 
 
                             <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" formControlName="gender"
-                                        id="inlineRadio1" value="male">
-                                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" formControlName="gender" name="gender"
-                                        id="inlineRadio2" value="female">
-                                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                                </div>
+                                <label class="container-radio">Male
+                                    <input type="radio" checked="checked" formControlName="gender" value="male"
+                                        name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container-radio">Female
+                                    <input type="radio" checked="checked" formControlName="gender" value="female"
+                                        name="radio">
+                                    <span class="checkmark"></span>
+                                </label>
                             </div>
 
 
-                            <div class="form-group"> <label class="form-control-label text-muted">Job Title</label>
+                            <div class="form-group"> <label class="form-control-label ">Job Title</label>
                                 <input type="text" formControlName="jobTitle" id="jobtitle" name="jobtitle"
                                     placeholder="Job Title"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.jobtitle.errors }"
@@ -66,7 +65,7 @@
 
 
 
-                            <div class="form-group"> <label class="form-control-label text-muted">Email</label>
+                            <div class="form-group"> <label class="form-control-label ">Email</label>
                                 <input type="text" formControlName="email" id="email" name="email" placeholder="Email"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.email.errors }"
                                     class="form-control">
@@ -77,7 +76,7 @@
 
 
 
-                            <div class="form-group"> <label class="form-control-label text-muted">Password</label>
+                            <div class="form-group"> <label class="form-control-label ">Password</label>
                                 <input type="password" formControlName="password" id="password" name="password"
                                     placeholder="Password"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.password.errors }"
@@ -90,17 +89,15 @@
                                 </div>
                             </div>
 
-
-
                             <div class="row justify-content-center my-3 px-3"> <button [disabled]="loading"
-                                    type="submit" class="btn-block btn-color">
+                                    type="submit" class="btn-block btn-color rgb-animation">
                                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                     Register</button> </div>
 
                         </div>
                         <div class="bottom text-center mb-5">
                             <p [routerLink]="['/login']" routerLinkActive="router-link-active"
-                                class="sm-text mx-auto mb-3">Already have an account?<button
+                                class="sm-text mx-auto mb-3 lead">Already have an account?<button
                                     class="btn btn-white ml-2">login</button></p>
                         </div>
 

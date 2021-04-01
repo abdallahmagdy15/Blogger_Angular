@@ -1,11 +1,11 @@
-<div class="container px-4 py-5 mx-auto" >
+<div class="content px-4 py-5 mx-auto" >
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="card card0">
             <div class="d-flex flex-lg-row flex-column-reverse">
                 <div class="card card1">
                     <div class="row justify-content-center my-auto">
                         <div class="col-md-8 col-10 my-5">
-                            <h6 class="msg-info mt-5 lead">Login</h6>
+                            <h6 class="msg-info mt-5 display-4">Login</h6>
                             <div class="form-group"> <label class="form-control-label text-muted">UserName</label>
                                 <input type="text" formControlName="username" id="email" name="email"
                                     placeholder="UserName"
@@ -27,15 +27,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label style="display: block;">
-                                    <input type="checkbox" style="width:auto" (change)="rememberMe=!rememberMe">
-                                    <span class="ml-2"> Remember me</span>
-                                </label>
+                                <label class="container-checkbox">Remember me
+                                    <input type="checkbox" checked="checked" (change)="rememberMe=!rememberMe">
+                                    <span class="checkmark"></span>
+                                  </label>
                             </div>
 
                             <div class="row justify-content-center my-3 px-3">
                                  <button [disabled]="loading"
-                                    type="submit" class="btn-block btn-color">
+                                    type="submit" class="btn-block btn-color rgb-animation">
                                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                     Login</button> </div>
                             <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Forgot
@@ -44,7 +44,7 @@
                     </div>
                     <div class="bottom text-center mb-5">
                         <p [routerLink]="['/register']" routerLinkActive="router-link-active"
-                            class="sm-text mx-auto mb-3">Don't have an account?<button class="btn btn-white ml-2">Create
+                            class="sm-text mx-auto mb-3 lead">Don't have an account? <button class="btn btn-white ml-2">Create
                                 new</button></p>
                     </div>
                 </div>
