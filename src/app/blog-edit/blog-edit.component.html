@@ -32,7 +32,7 @@
         </div>
         <div class="fixed-bottom">
             <button [attr.disabled]="(this.editBlogForm.invalid && isSubmitted)?true:null"
-                class="form-control form-submit" type="submit">
+                class="form-control form-submit rgb-animation" type="submit">
                 <span *ngIf="isLoading" class="spinner-border spinner-border-md mr-1"></span>
                 Update as @{{this.auth.getCurrUser().username}}
             </button>

@@ -4,8 +4,9 @@
     margin-right: 7px;
 }
 .commentCard{
-    border:1px solid var(--shade-smoke);
+    border-left:1px solid var(--shade-smoke);
     padding: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 .commentBody{
     padding-left: 4rem;

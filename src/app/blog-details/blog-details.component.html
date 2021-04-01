@@ -63,10 +63,10 @@
                     [ngClass]="{ 'is-invalid': isSubmitted && fieldget.body.errors }"
                     placeholder="Enter your comment"></textarea>
                 <div class="submitContainer">
-                    <button type="submit" class="btn postCommentBtn mt-2"
+                    <button type="submit" class="btn postCommentBtn rgb-animation mt-2"
                         [attr.disabled]="(this.commentForm.invalid && isSubmitted)?true:null">
                         <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
-                        Post as @{{auth.getCurrUser().username}}</button>
+                        Comment as @{{auth.getCurrUser().username}}</button>
                 </div>
 
             </form>

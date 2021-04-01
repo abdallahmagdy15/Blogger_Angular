@@ -67,7 +67,7 @@
                 <div>Please enter a valid body</div>
             </div>
 
-            <button class="btn submit_btn" [attr.disabled]="(this.editProfileForm.invalid && isSubmitted)?true:null"
+            <button class="btn submit_btn rgb-animation" [attr.disabled]="(this.editProfileForm.invalid && isSubmitted)?true:null"
                 type="submit"><span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
                 Save</button>
         </div>

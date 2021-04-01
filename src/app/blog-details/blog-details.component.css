@@ -1,6 +1,5 @@
 .content {
-    width: 92%;
-    margin: 10rem auto 1rem;
+    padding: 2rem 4% 1rem;
 }
 
 .authorDp {
@@ -41,13 +40,14 @@
 
 .postCommentBtn {
     font-weight: bold;
+    color: white;
     border: 1px solid var(--shade-blue);
 }
 
-.postCommentBtn:hover, .likeBtn:hover, .liked:hover {
+/* .postCommentBtn:hover, .likeBtn:hover, .liked:hover {
     background-color: var(--shade-blue);
     color: white;
-}
+} */
 .submitContainer{
     display: flex;
     justify-content: flex-end;

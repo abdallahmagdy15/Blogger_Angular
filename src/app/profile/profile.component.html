@@ -40,9 +40,9 @@
             <p class="lead">{{ author.bio?author.bio:'' }}</p>
         </div>
     </div>
-    <div #recentblogs class="row">
-        <h4 class="font-weight-bold">Recent Blogs</h4>
-        <div class="m-5">
+    <div #recentblogs class="row p-0 pt-4">
+        <h4 class="font-weight-bold text-underline" style="margin-left: 6rem;">Recent Blogs</h4>
+        <div class="m-2">
             <app-blogs [blogs]="blogs"></app-blogs>
         </div>
     </div>

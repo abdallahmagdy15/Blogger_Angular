@@ -7,31 +7,43 @@
 
 .content {
     margin: 8rem 1rem 0;
+    background-color: white;
+}
+
+.text-underline {
+    text-decoration: underline 3px var(--shade-smoke);
 }
 
 .img_rounded {
     position: relative;
     margin-left: 10%;
-    width: 80%; /* The size you want */
-  }
-  .img_rounded:after {
+    width: 80%;
+    /* The size you want */
+}
+
+.img_rounded:after {
     content: "";
     display: block;
-    padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
-  }
+    padding-bottom: 100%;
+    /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+}
 
-.img_rounded img
-{
-position: absolute; /* Take your picture out of the flow */
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0; /* Make the picture taking the size of it's parent */
-  width: 100%; /* This if for the object-fit */
-  height: 100%; /* This if for the object-fit */
-  object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
-  object-position: center;
-  border-radius: 10%;
+.img_rounded img {
+    position: absolute;
+    /* Take your picture out of the flow */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* Make the picture taking the size of it's parent */
+    width: 100%;
+    /* This if for the object-fit */
+    height: 100%;
+    /* This if for the object-fit */
+    object-fit: cover;
+    /* Equivalent of the background-size: cover; of a background-image */
+    object-position: center;
+    border-radius: 10%;
 }
 
 .router-outlet {
@@ -65,6 +77,9 @@ a {
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
+body {
+    background-color: whitesmoke;
+}
 
 .btn, .btn-dark {
     color: var(--shade-grey);
@@ -83,20 +98,27 @@ a {
     box-shadow: none;
 }
 
-.grey{
+.form-control {
+    background-color: whitesmoke;
+}
+
+.grey {
     color: var(--shade-grey);
 }
-.blue{
+
+.blue {
     color: var(--shade-blue);
 }
-.dark{
+
+.dark {
     color: var(--shade-dark);
 }
-.authorDp{
+
+.authorDp {
     width: 2rem;
     height: 2rem;
     margin-right: 7px;
-  }
+}
 
 .img-responsive {
     width: inherit;
@@ -127,24 +149,51 @@ a {
 }
 
 @-webkit-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @-moz-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @-o-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
 }
 
 .rgb-animation:hover {
@@ -153,24 +202,24 @@ a {
 }
 
 /* effect-shine */
-.effect-shine
-{
-  -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
-  -webkit-mask-size: 200%;
-  animation: shine 2s infinite;
+
+.effect-shine {
+    -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
+    -webkit-mask-size: 200%;
+    animation: shine 2s infinite;
 }
 
 @-webkit-keyframes shine {
-  from {
-    -webkit-mask-position: 150%;
-  }
-  
-  to {
-    -webkit-mask-position: -50%;
-  }
+    from {
+        -webkit-mask-position: 150%;
+    }
+    to {
+        -webkit-mask-position: -50%;
+    }
 }
 
 /* Customized checkbox*/
+
 .container-checkbox {
     display: block;
     position: relative;
@@ -185,6 +234,7 @@ a {
 }
 
 /* Hide the browser's default checkbox */
+
 .container-checkbox input {
     position: absolute;
     opacity: 0;
@@ -192,6 +242,7 @@ a {
 }
 
 /* Create a custom checkbox */
+
 .container-checkbox .checkmark {
     position: absolute;
     top: 3px;
@@ -203,16 +254,19 @@ a {
 }
 
 /* On mouse-over, add a grey background color */
-.container-checkbox:hover input ~ .checkmark {
+
+.container-checkbox:hover input~.checkmark {
     background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container-checkbox input:checked ~ .checkmark {
+
+.container-checkbox input:checked~.checkmark {
     background-color: #2196F3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
+
 .container-checkbox .checkmark:after {
     content: "";
     position: absolute;
@@ -221,11 +275,13 @@ a {
 }
 
 /* Show the checkmark when checked */
-.container-checkbox input:checked ~ .checkmark:after {
+
+.container-checkbox input:checked~.checkmark:after {
     display: block;
 }
 
 /* Style the checkmark/indicator */
+
 .container-checkbox .checkmark:after {
     left: 9px;
     top: 5px;
@@ -238,8 +294,8 @@ a {
     transform: rotate(45deg);
 }
 
-
 /* Customized radio button */
+
 .container-radio {
     display: block;
     position: relative;
@@ -254,6 +310,7 @@ a {
 }
 
 /* Hide the browser's default radio button */
+
 .container-radio input {
     position: absolute;
     opacity: 0;
@@ -261,6 +318,7 @@ a {
 }
 
 /* Create a custom radio button */
+
 .container-radio .checkmark {
     position: absolute;
     top: 0;
@@ -272,16 +330,19 @@ a {
 }
 
 /* On mouse-over, add a grey background color */
-.container-radio:hover input ~ .checkmark {
+
+.container-radio:hover input~.checkmark {
     background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-.container-radio input:checked ~ .checkmark {
+
+.container-radio input:checked~.checkmark {
     background-color: #2196F3;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
+
 .container-radio .checkmark:after {
     content: "";
     position: absolute;
@@ -289,16 +350,18 @@ a {
 }
 
 /* Show the indicator (dot/circle) when checked */
-.container-radio input:checked ~ .checkmark:after {
+
+.container-radio input:checked~.checkmark:after {
     display: block;
 }
 
 /* Style the indicator (dot/circle) */
+
 .container-radio .checkmark:after {
     top: 6px;
     left: 6px;
     width: 8px;
     height: 8px;
-	border-radius: 50%;
-	background: white;
+    border-radius: 50%;
+    background: white;
 }

@@ -42,7 +42,7 @@
         </div>
         <div class="fixed-bottom">
             <button [attr.disabled]="(this.createBlogForm.invalid && isSubmitted)?true:null"
-                class="form-control form-submit" type="submit">
+                class="form-control form-submit rgb-animation" type="submit">
                 <span *ngIf="isLoading" class="spinner-border spinner-border-md mr-1"></span>
                 Post as @{{this.auth.getCurrUser().username}}
             </button>
