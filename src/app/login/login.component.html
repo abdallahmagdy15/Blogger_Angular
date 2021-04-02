@@ -4,10 +4,10 @@
             <div class="d-flex flex-lg-row flex-column-reverse">
                 <div class="card card1">
                     <div class="row justify-content-center my-auto">
-                        <div class="col-md-8 col-10 my-5">
+                        <div class="col-md-8 col-10">
                             <h6 class="msg-info mt-5 display-4">Login</h6>
                             <div class="form-group"> <label class="form-control-label">User Name</label>
-                                <input type="text" formControlName="username" id="email" name="email"
+                                <input type="text" formControlName="username" id="email"
                                     placeholder="UserName"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.username.errors }"
                                     class="form-control">
@@ -17,7 +17,7 @@
                                 <div *ngIf="fieldget.password.errors.required">Password is required</div>
                             </div>
                             <div class="form-group"> <label class="form-control-label">Password</label>
-                                <input type="password" formControlName="password" id="psw" name="psw"
+                                <input type="password" formControlName="password" id="psw"
                                     placeholder="password"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.password.errors }"
                                     class="form-control">

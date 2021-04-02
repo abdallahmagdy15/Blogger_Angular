@@ -97,6 +97,13 @@ body {
     border: none;
     box-shadow: none;
 }
+.invalid-feedback {
+    display: inline !important;
+    float: right;
+    margin-top: -29px;
+    padding-right: 35px;
+    width: auto;
+}
 
 .form-control {
     background-color: whitesmoke;
