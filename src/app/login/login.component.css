@@ -100,15 +100,16 @@ button:focus {
 .btn-white {
     border-radius: 50px;
     color: #363536;
-    background-color: #fff;
+    background-color: whitesmoke;
     padding: 8px 40px;
     cursor: pointer;
-    border: 2px solid #363536 !important
+    border: 1px solid #363536 !important;
+    transition: .3s ease-out;
 }
 
 .btn-white:hover {
     color: #fff;
-    transition: .4s all;
+    transition: .3s ease-in;
     background-image: linear-gradient(to right, #a7a5a2, #363536)
 }
 

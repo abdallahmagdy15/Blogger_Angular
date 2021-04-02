@@ -6,7 +6,7 @@
                     <div class="row justify-content-center my-auto">
                         <div class="col-md-8 col-10 my-5">
                             <h6 class="msg-info mt-5 display-4">Login</h6>
-                            <div class="form-group"> <label class="form-control-label text-muted">UserName</label>
+                            <div class="form-group"> <label class="form-control-label">User Name</label>
                                 <input type="text" formControlName="username" id="email" name="email"
                                     placeholder="UserName"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.username.errors }"
@@ -16,7 +16,7 @@
                             <div *ngIf="submitted && fieldget.password.errors" class="invalid-feedback">
                                 <div *ngIf="fieldget.password.errors.required">Password is required</div>
                             </div>
-                            <div class="form-group"> <label class="form-control-label text-muted">Password</label>
+                            <div class="form-group"> <label class="form-control-label">Password</label>
                                 <input type="password" formControlName="password" id="psw" name="psw"
                                     placeholder="password"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.password.errors }"
@@ -38,7 +38,7 @@
                                     type="submit" class="btn-block btn-color rgb-animation">
                                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                                     Login</button> </div>
-                            <div class="row justify-content-center my-2"> <a href="#"><small class="text-muted">Forgot
+                            <div class="row justify-content-center my-2"> <a href="#"><small class="lead">Forgot
                                         Password?</small></a> </div>
                         </div>
                     </div>

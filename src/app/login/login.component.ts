@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl!: string;     //returnUrl!: this tells TS that the value will be assigned at runtime.
-  rememberMe: boolean=false;
+  rememberMe: boolean=true;
 
   constructor(
     private formBuilder: FormBuilder,
