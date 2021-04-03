@@ -8,7 +8,7 @@
                             <h6 class="msg-info mt-5 display-4">Login</h6>
                             <div class="form-group"> <label class="form-control-label">User Name</label>
                                 <input type="text" formControlName="username" id="email"
-                                    placeholder="UserName"
+                                    placeholder="User Name"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.username.errors }"
                                     class="form-control">
                             </div>
@@ -18,7 +18,7 @@
                             </div>
                             <div class="form-group"> <label class="form-control-label">Password</label>
                                 <input type="password" formControlName="password" id="psw"
-                                    placeholder="password"
+                                    placeholder="Password"
                                     [ngClass]="{ 'is-invalid': submitted && fieldget.password.errors }"
                                     class="form-control">
                             </div>
@@ -58,6 +58,12 @@
             </div>
         </div>
     </form>
+</div>
+<div *ngIf="isWrongCreds" class="alert alert-danger fixed-top" style="margin-top: 8rem;" role="alert">
+    Wrong Username or password!
+    <button type="button" (click)="isWrongCreds=false" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
 

@@ -27,6 +27,9 @@
             </label>
         </div>
         <div class="col-md-2">
+            <div *ngIf="!this.loggedInProfile" class="followCard mb-2">
+                <button class="btn followbtn" (click)="isFollowed?unfollow():follow()" [ngClass]="{followed: isFollowed}">{{isFollowed?'Following':'Follow'}}</button>
+            </div>
             <button (click)="scrollToElement(recentblogs)"
                 class="btn btn-default">{{(author.blogs)?author.blogs.length:0}}
                 &nbsp;<span class="lead"> <fa-icon [icon]="faNewspaper"></fa-icon> Blogs</span>

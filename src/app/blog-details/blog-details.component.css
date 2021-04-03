@@ -12,6 +12,11 @@
     font-weight: bold;
 }
 
+.del-alert {
+    background-color: whitesmoke;
+    color: #ae3232;
+}
+
 .blogPhoto, .blogBody {
     font-size: 1.3em;
     width: 80%;
@@ -48,7 +53,8 @@
     background-color: var(--shade-blue);
     color: white;
 } */
-.submitContainer{
+
+.submitContainer {
     display: flex;
     justify-content: flex-end;
 }

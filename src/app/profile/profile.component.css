@@ -14,3 +14,19 @@
   padding-top: 1rem;
     border-top: 1px solid #d5d5d5;
 }
+
+.followed {
+    background-color: var(--shade-blue);
+    color: white;
+    box-shadow: 0px 0px 5px var(--shade-blue);
+}
+
+.followCard {
+    width: 80%;
+    margin-top: 1rem;
+}
+
+.followbtn {
+    width: 100%;
+    border: 1px solid grey;
+}

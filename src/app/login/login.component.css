@@ -5,7 +5,9 @@
     background-image: url('../../assets/bg3.jpg');
     background-size: cover;
 }
-
+.invalid-feedback{
+    margin-top: -45px;
+}
 input,
 textarea {
     background-color: #F3E5F5;

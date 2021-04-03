@@ -1,4 +1,6 @@
 <div class="content pt-2">
     <app-blogs [blogs]="allBlogs"></app-blogs>
 </div>
-
+<div *ngIf="isLoading" class="fixed-bottom mb-3" style="width: 100%;text-align: center;">
+    <span class="spinner-border spinner-border-lg"></span>
+</div>

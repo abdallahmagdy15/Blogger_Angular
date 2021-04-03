@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl!: string;     //returnUrl!: this tells TS that the value will be assigned at runtime.
   rememberMe: boolean=true;
+  isWrongCreds=false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -88,7 +89,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.alertService.error(error);
+          this.isWrongCreds=true;
           this.loading = false; // loading Spinner= false.
         });
   }

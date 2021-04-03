@@ -85,6 +85,7 @@ export class EditProfileComponent implements OnInit {
       this.isLoading = false;
       this.isSubmitted = false;
       this.isSuccess = true;
+      this.auth.updateCurrUser();
     },
       err => {
         console.log(err);

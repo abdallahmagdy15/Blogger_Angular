@@ -12,7 +12,7 @@
         <div class="col">
             <div class="float-right">
                 <div class="btn" *ngIf="this.auth.isAuthenticated()">
-                    <img class="authorDp" [src]="(this.auth.getCurrUser().dp)?this.author.dp : '../assets/male_dp.jpg'">
+                    <img class="authorDp" [src]="this.auth.getCurrUser().dp?this.author.dp : '../assets/male_dp.jpg'">
                     <a class="btn" [routerLink]="['/author/'+this.auth.getCurrUser()._id]"  >{{this.auth.getCurrUser().firstName+"
                         "+this.auth.getCurrUser().lastName}} </a>
                 </div>
