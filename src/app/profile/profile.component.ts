@@ -2,7 +2,7 @@ import { UserService } from './../_services/user.service';
 import { BlogService } from './../_services/blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Author } from './../_models/author';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
 import { faEdit, faUserFriends, faNewspaper, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { Blog } from '../_models/blog';
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
 
   public id: string = this.auth.getCurrUser()._id;
   isFollowed = false;
-  pageIndex=0;
+  pageIndex = 0;
 
   ngOnInit(): void {
     this.authorid = this.router.url.split('/')[2];
@@ -49,10 +49,7 @@ export class ProfileComponent implements OnInit {
         this.author = author;
       });
     }
-    this.blogService.getAuthorBlogs(this.authorid,this.pageIndex).subscribe(blogs => {
-      this.blogs = blogs;
-      console.log(blogs);
-    });
+    this.getBlogs();
     if (!this.loggedInProfile)
       if (this.auth.getCurrUser().followings.filter((id: string) => id == this.author._id).length > 0) {
         this.isFollowed = true;
@@ -82,6 +79,24 @@ export class ProfileComponent implements OnInit {
 
   scrollToElement($element: any): void {
     $element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+  }
+
+  isLoading = false;
+
+  @HostListener("window:scroll", [])
+  onScroll(): void {
+    if (!this.isLoading)
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        this.pageIndex++;
+        this.getBlogs();
+      }
+  }
+  getBlogs() {
+    this.isLoading = true;
+    this.blogService.getAuthorBlogs(this.authorid, this.pageIndex).subscribe(blogs => {
+      this.blogs = blogs;
+      this.isLoading = false;
+    });
   }
 
 }

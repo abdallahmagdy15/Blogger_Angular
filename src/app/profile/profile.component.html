@@ -49,5 +49,7 @@
             <app-blogs [blogs]="blogs"></app-blogs>
         </div>
     </div>
-
+    <div *ngIf="isLoading" class="fixed-bottom mb-5" style="width: 100%;text-align: center;">
+        <span class="spinner-border spinner-border-lg" style="color: var(--shade-teal)"></span>
+    </div>
 </div>

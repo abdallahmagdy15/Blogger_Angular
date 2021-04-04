@@ -9,7 +9,7 @@ body {
 .container {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   height: 100vh;
   flex-wrap: wrap;
 }
@@ -26,7 +26,7 @@ body {
   width: 100%;
   font-family: "Yeseva One", cursive;
   font-size: 3.3em;
-  color: #fbf9bd;
+  color: #bead7d;
   margin-bottom: 15px;
 }
 
@@ -35,7 +35,7 @@ body {
   box-sizing: border-box;
   max-width: 1400px;
   width: 100%;
-  margin: auto;
+  margin: 2rem auto;
   display: flex;
   flex-wrap: wrap;
   height: auto;
@@ -62,7 +62,7 @@ body {
   font-size: 2em;
 }
 .person-desc {
-  color: rgba(255, 255, 255, 0.2);
+  color: #8a9b53;
   margin-top: 10px;
   text-transform: uppercase;
   font-size: 0.8em;
@@ -91,7 +91,7 @@ body {
   transition: 0.45s;
 }
 .person:after {
-  content: "";
+  content: "◀";
   font-family: "Ionicons";
   font-size: 36px;
   color: #282828;
@@ -205,6 +205,7 @@ body {
   position: relative;
   right: 0;
   flex-wrap: wrap;
+  padding-left: 3rem;
 }
 .team-detail-right .person-title {
   font-family: "Yeseva One", cursive;
@@ -317,4 +318,8 @@ body {
   .header {
     margin-top: 50px;
   }
+}
+
+.content {
+  background-color: rgb(15, 15, 15);
 }
