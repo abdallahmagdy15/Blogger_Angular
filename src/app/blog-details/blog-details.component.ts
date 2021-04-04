@@ -91,6 +91,7 @@ export class BlogDetailsComponent implements OnInit {
 
   searchByTag(tag: string) {
     this.searchService.query = tag;
+    this.searchService.keyword = tag;
     this.searchService.source = "home";
     this.searchService.search();
     this.router.navigate(['/search/home']);

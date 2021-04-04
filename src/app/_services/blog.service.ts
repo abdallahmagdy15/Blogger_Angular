@@ -17,16 +17,16 @@ export class BlogService {
   selectedBlog: Blog = new Blog(new Author('', '', '', '', '', ''), '', '', '', new Date(), new Date(), '');
 
   getBlogs(index:number=0) {
-    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/home?skip='+index);
+    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/home?skip='+index*10);
   }
 
   getAuthorBlogs(authorId: string,index:number=0): Observable<Blog[]> {
 
-    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + authorId+'?skip='+index);
+    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/user/' + authorId+'?skip='+index*10);
   }
   getFollowingsBlogs(index:number=0): Observable<Blog[]> {
 
-    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings?skip='+index);
+    return this.http.get<Blog[]>('https://iti-blogger.herokuapp.com/blogs/followings?skip='+index*10);
   }
   public getOneBlog(blogid: string): Observable<Blog> {
     return this.http.get<Blog>('https://iti-blogger.herokuapp.com/blogs/blog/' + blogid);

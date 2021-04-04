@@ -32,6 +32,7 @@ export class NavigationComponent implements OnInit {
     public onSubmit(form: FormGroup) {
         if (this.searchForm.valid) {
             this.searchService.query = form.value.searchText;
+            this.searchService.keyword = form.value.searchText;
             const url = this.router.url.slice(1).split('/');
             if (url[0] == "search") {
                 this.searchService.source = url[1];

@@ -1,12 +1,20 @@
 <div class="content">
   <div *ngIf="this.searchService.isResultsFound">
-    <h4 class="font-weight-bold text-underline" style="margin-left: 6rem;">{{this.searchService.source | titlecase }} Results</h4>
+    <div style="margin:1rem 6rem;">
+      <h4 class="font-weight-bold text-underline d-inline">{{this.searchService.source | titlecase }} Results</h4>
+      <div class="d-inline float-right text-info">
+        <label class="font-weight-bold">Keyword</label> : <span class="lead">{{this.searchService.keyword}}</span>
+      </div>
+    </div>
     <app-blogs *ngIf="this.searchService.isBlogs" [blogs]="this.searchService.blogs"></app-blogs>
     <div class="card" *ngIf="!this.searchService.isBlogs">
       <app-author-card *ngFor="let author of this.searchService.authors" [author]="author"></app-author-card>
     </div>
   </div>
-  <diV class="noResults" *ngIf="!this.searchService.isResultsFound">
+  <diV class="noResults" *ngIf="!this.searchService.isResultsFound && !this.searchService.isLoading">
     <img class="img-responsive" style="width: 50%;" src="../../assets/no_results_found.webp">
   </diV>
+</div>
+<div *ngIf="this.searchService.isLoading" class="fixed-bottom mb-5" style="width: 100%;text-align: center;">
+  <span class="spinner-border spinner-border-lg" style="color: var(--shade-teal)"></span>
 </div>

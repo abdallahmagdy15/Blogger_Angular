@@ -11,13 +11,14 @@ import { Blog } from '../_models/blog';
 
 export class SearchService {
   public query: string = "";
+  public keyword: string = "";
   public source: string = "";
   public id: string = "";
   isResultsFound: boolean = false;
   isBlogs: boolean = true;
   authors: Author[] = [];
   blogs: Blog[] = [];
-
+  public isLoading=false;
   constructor(public http: HttpClient, private auth: AuthenticationService) {
   }
 
@@ -46,9 +47,11 @@ export class SearchService {
         res = this.searchHomeBlogs();
         break;
     }
+    this.isLoading=true;
     res.subscribe(data => {
       if (data[0] != undefined) {//if there are any data 
         this.isResultsFound = true;
+        this.isLoading=false;
         if (data[0].author == undefined) {//if it`s author array
           this.isBlogs = false;
           this.authors = data;
