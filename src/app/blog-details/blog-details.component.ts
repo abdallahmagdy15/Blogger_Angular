@@ -7,6 +7,7 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Author } from '../_models/author';
 import { faThumbsUp, faComment, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { SearchService } from '../_services/search.service';
 
 
 @Component({
@@ -22,22 +23,20 @@ export class BlogDetailsComponent implements OnInit {
   isLiked: boolean = false;
   faThumbsUp = faThumbsUp; faComment = faComment; faEdit = faEdit; faTrashAlt = faTrashAlt;
   likesCount: number = 0;
-  tags = [];
+  tags:string[] = [];
   constructor(public blogService: BlogService, public authintication: AuthenticationService,
-    public auth: AuthenticationService, private router: Router, private blogsService: BlogService) { }
+    public auth: AuthenticationService, private router: Router, private blogsService: BlogService,
+    private searchService: SearchService) { }
 
 
   ngOnInit(): void {
-    const blogid =  this.router.url.split('/')[2];
+    const blogid = this.router.url.split('/')[2];
     if (this.blog._id != blogid) {
       this.blogsService.getOneBlog(blogid).subscribe(_blog => {
         this.blog = _blog;
-        this.blogService.selectedBlog = JSON.parse(JSON.stringify( this.blog));
-        console.log(this.blog);
-        if (this.blog.tags)
-          if (this.blog.tags.length > 0) {
-            this.tags = JSON.parse(this.blog.tags[0])
-          }
+        if (_blog.tags)
+          this.tags = _blog.tags;
+        this.blogService.selectedBlog = this.blog;
         this.likesCount = (this.blog.likes ? this.blog.likes.length : 0)
         if (this.blog.likes?.includes(this.auth.getCurrUser()._id)) {
           this.isLiked = true;
@@ -91,7 +90,10 @@ export class BlogDetailsComponent implements OnInit {
   get fieldget() { return this.commentForm.controls; }
 
   searchByTag(tag: string) {
-
+    this.searchService.query = tag;
+    this.searchService.source = "home";
+    this.searchService.search();
+    this.router.navigate(['/search/home']);
   }
 
   likeBlog() {

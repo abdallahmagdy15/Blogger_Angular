@@ -21,14 +21,14 @@ export class HomeComponent implements OnInit {
     this.getBlogs();
   }
   getBlogs() {
-    this.isLoading=true;
+    this.isLoading = true;
     if (this.route.snapshot.url[0].path.toString() == "followings-blogs")
       this.blogService.getFollowingsBlogs(this.pageIndex).subscribe(blogs => {
         for (let b of blogs) {
           this.allBlogs.push(new Blog(b.author, b._id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
             b.authorDp, b.photo, b.tags, b.likes, b.comments));
         }
-        this.isLoading=false;
+        this.isLoading = false;
       })
     else
       this.blogService.getBlogs(this.pageIndex).subscribe(blogs => {
@@ -36,15 +36,16 @@ export class HomeComponent implements OnInit {
           this.allBlogs.push(new Blog(b.author, b._id, b.title, b.body, b.createdAt, b.updatedAt, b.authorName,
             b.authorDp, b.photo, b.tags, b.likes, b.comments));
         }
-        this.isLoading=false;
+        this.isLoading = false;
       })
   }
 
   @HostListener("window:scroll", [])
   onScroll(): void {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      this.pageIndex++;
-      this.getBlogs();
-    }
+    if (!this.isLoading)
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        this.pageIndex++;
+        this.getBlogs();
+      }
   }
 }

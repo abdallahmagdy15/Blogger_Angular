@@ -33,10 +33,11 @@ export class BlogEditComponent implements OnInit {
     this.blogsService.getOneBlog(blogid).subscribe(_blog => {
       this.blog = _blog;
       if (this.blog.tags != undefined) {
-        let _tags: string[] = JSON.parse(this.blog.tags![0])
-        _tags.forEach(t => {
-          this.tags.push(t);
-        });
+        this.tags = this.blog.tags;
+        // let _tags: string[] = JSON.parse(this.blog.tags![0])
+        // _tags.forEach(t => {
+        //   this.tags.push(t);
+        // });
       }
     });
 
@@ -62,7 +63,7 @@ export class BlogEditComponent implements OnInit {
     this.blog.title = this.editBlogForm.get('title')!.value;
     this.blog.body = this.editBlogForm.get('body')!.value;
     if (this.tags.length > 0)
-      this.blog.tags![0] = JSON.stringify(this.tags);
+      this.blog.tags = this.tags;
 
     this.isLoading = true;
     this.blogsService.updateBlog(this.blog, this.blog._id).subscribe(

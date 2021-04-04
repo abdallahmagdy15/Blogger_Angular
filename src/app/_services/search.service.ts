@@ -43,7 +43,8 @@ export class SearchService {
         res = this.searchProfileBlogs(this.id);
         break;
       default:
-        res = new Observable<any>();
+        res = this.searchHomeBlogs();
+        break;
     }
     res.subscribe(data => {
       if (data[0] != undefined) {//if there are any data 

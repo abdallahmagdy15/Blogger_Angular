@@ -1,5 +1,6 @@
 <div class="content">
   <div *ngIf="this.searchService.isResultsFound">
+    <h4 class="font-weight-bold text-underline" style="margin-left: 6rem;">{{this.searchService.source | titlecase }} Results</h4>
     <app-blogs *ngIf="this.searchService.isBlogs" [blogs]="this.searchService.blogs"></app-blogs>
     <div class="card" *ngIf="!this.searchService.isBlogs">
       <app-author-card *ngFor="let author of this.searchService.authors" [author]="author"></app-author-card>

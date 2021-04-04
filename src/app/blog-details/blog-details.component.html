@@ -12,7 +12,7 @@
             <p>{{blog.updatedAt | date}}</p>
         </div>
         <hr>
-        <div class="tags" *ngIf="blog.tags?(blog.tags!.length>0):false">
+        <div class="tags" *ngIf="tags.length > 0">
             <label class="lead">Tags:</label>
             <div>
                 <a (click)="searchByTag(tag)" class="btn font-weight-bold" *ngFor="let tag of tags">#{{tag}} </a>
